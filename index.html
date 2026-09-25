@@ -6,10 +6,10 @@
 <title>Miguelitos International Corporation</title>
 <meta name="description" content="Miguelito's International Corporation blends and packs premix food products for retail and foodservice partners across the Philippines.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&family=Kaushan+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="home">
 
 <div id="preloader">
     <div class="preloader-logo">
@@ -57,15 +57,6 @@
   </div>
 </header>
 
-<div class="ticker">
-  <div class="ticker-track">
-    <span>PHILIPPINE-BASED FOOD MANUFACTURER</span>
-    <span>PREMIX BLENDING &amp; CO-PACKING</span>
-    <span>SUPPLYING RETAIL &amp; FOODSERVICE NATIONWIDE</span>
-    <span>Toll Manufacturing</span>
-  </div>
-</div>
-
 <section class="hero">
   <div class="hero-slider" id="hero-stack">
 
@@ -80,16 +71,36 @@
             <a href="contact.html" class="btn btn-ghost">Become a Partner</a>
           </div>
         </div>
-        <div class="hero-slide-art hero-product-stack">
-          <div class="hero-product-glow" aria-hidden="true"></div>
-          <img src="assets/HomepageBanner/miguelitos-hero-card-batch2-transparent.png" alt="Collage of Miguelitos beverage, dessert, and snack seasoning premix products" class="hero-product-img hero-product-img--back">
-          <img src="assets/HomepageBanner/miguelitos-hero-card-all20-transparent.png" alt="Collage of Miguelitos drink mixes, rice cake mixes, and savory seasoning premix products" class="hero-product-img hero-product-img--front">
+        <div class="hero-slide-art" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Slide 2 — New product highlight -->
+    <div class="hero-slide" data-slide="1">
+      <div class="container hero-slide-inner">
+        <div class="hero-slide-text">
+          <span class="hero-slot-tag">New Arrivals</span>
+          <h1>Three New Mixes</h1>
+          <p class="lede">Kansi Mix, Ube Biko sa Latik Mix, and Ube Bilo-Bilo Mix — Filipino favorites, made easy.</p>
+          <div class="hero-actions">
+            <a href="#whats-new" class="btn btn-primary">See What's New</a>
+          </div>
+          <div class="hero-slot-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
+            <span>Kansi · Ube Biko sa Latik · Ube Bilo-Bilo</span>
+          </div>
+        </div>
+        <div class="hero-slide-art hero-new-art">
+          <span class="hero-new-word" aria-hidden="true">NEW</span>
+          <img class="hero-new-pack hero-new-pack--left" src="assets/products/New%20Products/ube-biko-sa-latik-mix.png" alt="Miguelitos Ube Biko sa Latik Mix pouch">
+          <img class="hero-new-pack hero-new-pack--right" src="assets/products/New%20Products/ube-bilo-bilo-mix.png" alt="Miguelitos Ube Bilo-Bilo Mix pouch">
+          <img class="hero-new-pack hero-new-pack--center" src="assets/products/New%20Products/kansi-mix.png" alt="Miguelitos Kansi Mix sachet">
         </div>
       </div>
     </div>
 
     <!-- Slide 2 — Award-winning product -->
-    <div class="hero-slide" data-slide="1">
+    <div class="hero-slide" data-slide="2">
       <div class="container hero-slide-inner">
         <div class="hero-slide-text">
           <span class="hero-slot-tag">Award-Winning</span>
@@ -141,209 +152,193 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
     </button>
 
-    <div class="hero-slide-dots" id="hero-slide-dots"></div>
   </div>
 </section>
 
-<section>
+<div class="tagline-strip">
+  <div class="container tagline-strip-inner">
+    <span>Food Manufacturer, Exporter &amp; Business Solutions Provider</span>
+    <span>Proudly made in the Philippines</span>
+  </div>
+</div>
+
+<section id="whats-new">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">New Products</span>
       <h2>What's New</h2>
       <p>Our latest additions to the Miguelitos line-up — ready for your menu, your business, or your shelves.</p>
     </div>
 
-    <div class="input-needed-notice">
-      <span class="input-needed-icon">⚠</span>
-      <p><strong>Needs your input:</strong> List new product names, pack sizes, and 1–2 sentence descriptions for each. Provide product photos.</p>
-    </div>
+    <div class="new-grid">
 
-    <div class="product-grid">
+      <article class="new-card">
+        <div class="new-media">
+          <span class="new-tag">New</span>
+          <img src="assets/products/New%20Products/kansi-mix.png" alt="Miguelitos Kansi Mix sachet" loading="lazy">
+        </div>
+        <div class="new-head">
+          <h3>Kansi Mix</h3>
+          <span>50g sachet · 8 servings</span>
+        </div>
+        <p>A Filipino sour soup mix made with real batuan fruit for the tangy, savory flavor of classic kansi.</p>
+      </article>
 
-      <div class="product-card">
-        <div class="product-media product-media--placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Add product photo</span>
+      <article class="new-card">
+        <div class="new-media">
+          <span class="new-tag">New</span>
+          <img src="assets/products/New%20Products/ube-biko-sa-latik-mix.png" alt="Miguelitos Ube Biko sa Latik Mix pouch" loading="lazy">
         </div>
-        <div class="product-body">
-          <span class="product-cat">New Product</span>
-          <h3>[Product Name]</h3>
-          <p>[1–2 sentence description of the product.]</p>
-          <div class="product-meta"><span>[Pack Size]</span><span>[Ambient / Chilled / Frozen]</span></div>
+        <div class="new-head">
+          <h3>Ube Biko sa Latik Mix</h3>
+          <span>550g · 10 servings</span>
         </div>
-      </div>
+        <p>A purple yam sticky rice mix with coconut caramel sauce for a sweet, chewy Filipino biko dessert.</p>
+      </article>
 
-      <div class="product-card">
-        <div class="product-media product-media--placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Add product photo</span>
+      <article class="new-card">
+        <div class="new-media">
+          <span class="new-tag">New</span>
+          <img src="assets/products/New%20Products/ube-bilo-bilo-mix.png" alt="Miguelitos Ube Bilo-Bilo Mix pouch" loading="lazy">
         </div>
-        <div class="product-body">
-          <span class="product-cat">New Product</span>
-          <h3>[Product Name]</h3>
-          <p>[1–2 sentence description of the product.]</p>
-          <div class="product-meta"><span>[Pack Size]</span><span>[Ambient / Chilled / Frozen]</span></div>
+        <div class="new-head">
+          <h3>Ube Bilo-Bilo Mix</h3>
+          <span>500g · 9 servings</span>
         </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-media product-media--placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Add product photo</span>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">New Product</span>
-          <h3>[Product Name]</h3>
-          <p>[1–2 sentence description of the product.]</p>
-          <div class="product-meta"><span>[Pack Size]</span><span>[Ambient / Chilled / Frozen]</span></div>
-        </div>
-      </div>
+        <p>Purple yam sticky rice balls and tapioca pearls in a creamy coconut milk sauce, made easy.</p>
+      </article>
 
     </div>
-  </div>
-</section>
-
-<section class="section-alt">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Featured Products</span>
-      <h2>Featured Products</h2>
-      <p>Tried, trusted, and in demand — a fresh pick from our full catalogue every time you visit.</p>
-    </div>
-
-    <div class="product-grid" id="featured-products-grid"></div>
   </div>
 </section>
 
 <section class="section-explore">
   <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Explore Our Products</span>
+    <div class="section-head section-head--split">
       <h2>Explore Our Full Range</h2>
-      <p>From soft serve premixes to savory sauces, we supply the ingredients and equipment that keep food businesses running.</p>
+      <div class="section-head-side">
+        <p>From soft serve premixes to savory sauces, we supply the ingredients and equipment that keep food businesses running.</p>
+        <a href="products.html" class="text-link">View All Products →</a>
+      </div>
     </div>
 
     <div class="category-tile-grid">
 
       <a href="products.html#soft-serve" class="category-tile">
-        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/SOFT%20SERVE%20ICE%20CREAM.png')" aria-hidden="true"></span>
+        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/web/soft-serve.jpg')" aria-hidden="true"></span>
         <span class="category-tile-label">Soft Serve Ice Cream</span>
         <span class="category-tile-arrow">→</span>
       </a>
 
       <a href="products.html#filipino-favorites" class="category-tile">
-        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/FILIPINO%20FAVORITES.png')" aria-hidden="true"></span>
+        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/web/filipino-favorites.jpg')" aria-hidden="true"></span>
         <span class="category-tile-label">Filipino Favorites</span>
         <span class="category-tile-arrow">→</span>
       </a>
 
       <a href="products.html#beverages" class="category-tile">
-        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/BEVERAGES.png')" aria-hidden="true"></span>
+        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/web/beverages.jpg')" aria-hidden="true"></span>
         <span class="category-tile-label">Beverages</span>
         <span class="category-tile-arrow">→</span>
       </a>
 
       <a href="products.html#coffee" class="category-tile">
-        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/COFFEE.png')" aria-hidden="true"></span>
+        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/web/coffee.jpg')" aria-hidden="true"></span>
         <span class="category-tile-label">Coffee</span>
         <span class="category-tile-arrow">→</span>
       </a>
 
       <a href="products.html#bakery-desserts" class="category-tile">
-        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/BAKERY.jpg')" aria-hidden="true"></span>
+        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/web/bakery.jpg')" aria-hidden="true"></span>
         <span class="category-tile-label">Bakery &amp; Desserts</span>
         <span class="category-tile-arrow">→</span>
       </a>
 
       <a href="products.html#savory-culinary" class="category-tile">
-        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/SAVORY.jpg')" aria-hidden="true"></span>
+        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/web/savory.jpg')" aria-hidden="true"></span>
         <span class="category-tile-label">Savory &amp; Culinary</span>
         <span class="category-tile-arrow">→</span>
       </a>
 
       <a href="products.html#specialty" class="category-tile">
-        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/SPECIALTY%20PRODUCTS.png')" aria-hidden="true"></span>
+        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/web/specialty.jpg')" aria-hidden="true"></span>
         <span class="category-tile-label">Specialty Products</span>
         <span class="category-tile-arrow">→</span>
       </a>
 
       <a href="machines.html" class="category-tile">
-        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/MACHINE%20AND%20EQUIPMENT.png')" aria-hidden="true"></span>
+        <span class="category-tile-bg" style="background-image: url('assets/prod%20highlight%20thumbnails/web/machines.jpg')" aria-hidden="true"></span>
         <span class="category-tile-label">Machines &amp; Equipment</span>
         <span class="category-tile-arrow">→</span>
       </a>
 
     </div>
 
-    <div class="section-explore-cta">
-      <a href="products.html" class="btn btn-dark">View All Products →</a>
-    </div>
   </div>
 </section>
 
-<!-- E + F. Business Packages + Shop Online (merged) -->
-<section class="section-packages-shop">
-  <div class="container packages-shop-inner">
-
-    <div class="packages-col">
-      <span class="eyebrow">Business Packages</span>
+<!-- Business Packages -->
+<section class="section-biz">
+  <div class="container">
+    <div class="biz-head">
       <h2>Start a Food Business Today</h2>
       <p>Ready-made business packages that bundle proven equipment with Miguelitos premixes — everything you need to open, operate, and restock.</p>
-      <a href="business-packages.html" class="btn btn-primary">Explore All Business Packages →</a>
     </div>
 
-    <div class="packages-shop-divider" aria-hidden="true"></div>
-
-    <div class="shop-col">
-      <span class="eyebrow">Shop Online</span>
-      <h2>Shop Online</h2>
-      <p>Order Miguelitos products on your preferred platform.</p>
-
-      <div class="shop-platform-mini-list">
-
-        <a href="https://shopee.ph/shop/277346319" target="_blank" rel="noopener" class="shop-platform-mini shop-platform-mini--shopee">
-          <span>Shopee</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+    <div class="biz-grid">
+        <a href="package-french-fries.html" class="biz-card">
+          <h3>French Fries Package</h3>
+          <p>Crispy, golden fries — a crowd-pleaser that sells itself. Includes the fryer and everything you need to get started.</p>
         </a>
 
-        <a href="https://www.lazada.com.ph/shop/miguelitosproducts/" target="_blank" rel="noopener" class="shop-platform-mini shop-platform-mini--lazada">
-          <span>Lazada</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+        <a href="package-soft-serve.html" class="biz-card">
+          <h3>Soft Serve Ice Cream Package</h3>
+          <p>The Philippines' favourite cold treat. A high-yield soft serve machine paired with Miguelitos' premium premixes.</p>
         </a>
 
-        <a href="https://www.tiktok.com/@miguelitosfoodproducts_" target="_blank" rel="noopener" class="shop-platform-mini shop-platform-mini--tiktok">
-          <span>TikTok Shop</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+        <a href="package-iced-tea.html" class="biz-card">
+          <h3>Iced Tea Package</h3>
+          <p>A reliable, high-volume drink that moves fast. Set up quickly with our dispenser and Miguelitos iced tea premixes.</p>
         </a>
 
-      </div>
+        <a href="package-palamig.html" class="biz-card">
+          <h3>Palamig Package</h3>
+          <p>Colourful, affordable, and always in demand. A classic street beverage concept ready for malls, markets, and events.</p>
+        </a>
     </div>
 
+    <div class="biz-foot">
+      <p>These are not franchise arrangements. You own your equipment, run your own business, and order supplies directly from us whenever you need to restock.</p>
+      <a href="business-packages.html" class="btn btn-primary">Explore All Business Packages</a>
+    </div>
   </div>
 </section>
 
-<!-- G. Final B2B CTA -->
-<section class="section-final-cta">
-  <div class="container">
-    <div class="section-final-cta-inner">
-      <span class="eyebrow eyebrow--light">Let's Work Together</span>
-      <h2>Ready to Do Business with Miguelitos?</h2>
-      <p>Whether you need products in bulk, a private label partner, or an export connection — we're ready to talk.</p>
+<!-- Shop Online -->
+<section class="section-shop-list">
+  <div class="container shop-row">
+    <div>
+      <h2>Shop <span class="script-word">Online</span></h2>
+      <p>Order Miguelitos products on your preferred platform.</p>
+    </div>
+    <div class="shop-list">
+      <a href="https://shopee.ph/shop/277346319" target="_blank" rel="noopener"><span>Shopee</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a href="https://www.lazada.com.ph/shop/miguelitosproducts/" target="_blank" rel="noopener"><span>Lazada</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a href="https://www.tiktok.com/@miguelitosfoodproducts_" target="_blank" rel="noopener"><span>TikTok Shop</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    </div>
+  </div>
+</section>
 
-      <div class="final-cta-actions">
-        <a href="contact.html#inquiry-form" class="final-cta-btn">
-          <span>Toll Manufacturing Inquiry</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
-        </a>
-        <a href="export.html" class="final-cta-btn">
-          <span>Export &amp; Distribution</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
-        </a>
-        <a href="contact.html#inquiry-form" class="final-cta-btn final-cta-btn--primary">
-          <span>Send an Inquiry</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
-        </a>
+<!-- Final B2B CTA -->
+<section class="section-cta">
+  <div class="container cta-row">
+    <h2>Ready to Do Business with Miguelitos?</h2>
+    <div class="cta-side">
+      <p>Whether you need products in bulk, a private label partner, or an export connection — we're ready to talk.</p>
+      <div class="cta-list">
+        <a href="contact.html#inquiry-form"><span>Toll Manufacturing Inquiry</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="export.html"><span>Export &amp; Distribution</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
+      <a href="contact.html#inquiry-form" class="btn btn-primary">Send an Inquiry</a>
     </div>
   </div>
 </section>
@@ -353,10 +348,6 @@
     <div class="footer-grid">
             <div class="footer-brand">
         <img src="img/logo.png" alt="Miguelitos logo" class="footer-logo">
-        <div class="footer-company-name">
-          <div class="company-main">MIGUELITOS</div>
-          <div class="company-sub">INTERNATIONAL CORPORATION</div>  
-        </div>
         <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider. Proudly made in the Philippines.</p>
 
         
@@ -385,10 +376,9 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li>sales.melrose@miguelitoscorp.com</li>
-          <li>sales.lynmel@miguelitoscorp.com</li>
-          <li>+63 8-8225028</li>
-          <li>+63 8-8226801</li>
+          <li>sales@miguelitoscorp.com</li>
+          <li>(02) 8822 5028</li>
+          <li class="footer-label">Facility Address</li>
           <li><a href="https://maps.app.goo.gl/QMJhZ3GogB2usUwUA" class="footer-address">#8888 Marian Road 2, San Martin de Porres Parañaque City, Philippines, 1700</a></li>
         </ul>
       </div>

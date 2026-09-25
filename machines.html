@@ -6,7 +6,7 @@
 <title>Machines &amp; Equipment — Miguelitos International Corporation</title>
 <meta name="description" content="Franchise-grade soft serve machines, dispensers, mixers, and bakery equipment supplied by Miguelitos International Corporation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -57,7 +57,7 @@
     <div class="page-hero-inner">
       <div class="page-hero-text">
         <h1>Franchise-grade machines, built for volume.</h1>
-        <p>Beyond premixes, Miguelitos supplies the soft serve machines, dispensers, mixers, and bakery equipment that hotels, restaurants, food chains, and franchise partners run every day.</p>
+        <p>The right machine makes the product. Miguelitos supplies the commercial equipment your food business needs — from soft serve and slush machines to waffle makers, fryers, beverage dispensers, and kitchen essentials. All matched to our premixes and products for seamless operation.</p>
       </div>
       <div class="page-hero-art" aria-hidden="true">
         <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -89,12 +89,18 @@
 <section>
   <div class="container">
 
-    <div class="filter-tabs">
-      <button class="filter-tab active" data-cat="all">All Equipment</button>
-      <button class="filter-tab" data-cat="softserve">Soft Serve Machines</button>
-      <button class="filter-tab" data-cat="dispenser">Beverage Dispensers</button>
-      <button class="filter-tab" data-cat="mixer">Mixers &amp; Blenders</button>
-      <button class="filter-tab" data-cat="bakery">Bakery Equipment</button>
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-cat="all">All Equipment</button>
+        <button class="filter-tab" data-cat="softserve">Soft Serve Machines</button>
+        <button class="filter-tab" data-cat="dispenser">Beverage Dispensers</button>
+        <button class="filter-tab" data-cat="mixer">Mixers &amp; Blenders</button>
+        <button class="filter-tab" data-cat="bakery">Bakery Equipment</button>
+      </div>
+      <div class="product-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" id="product-search-input" placeholder="Search equipment…" aria-label="Search equipment">
+      </div>
     </div>
 
     <div class="product-grid">
@@ -196,6 +202,8 @@
       </div>
 
     </div>
+
+    <p class="no-results" id="product-no-results" hidden>No equipment matches your search. Try a different term.</p>
   </div>
 </section>
 
@@ -249,10 +257,6 @@
     <div class="footer-grid">
             <div class="footer-brand">
         <img src="img/logo.png" alt="Miguelitos logo" class="footer-logo">
-        <div class="footer-company-name">
-          <div class="company-main">MIGUELITOS</div>
-          <div class="company-sub">INTERNATIONAL CORPORATION</div>  
-        </div>
         <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider. Proudly made in the Philippines.</p>
 
         
@@ -281,10 +285,9 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li>sales.melrose@miguelitoscorp.com</li>
-          <li>sales.lynmel@miguelitoscorp.com</li>
-          <li>+63 8-8225028</li>
-          <li>+63 8-8226801</li>
+          <li>sales@miguelitoscorp.com</li>
+          <li>(02) 8822 5028</li>
+          <li class="footer-label">Facility Address</li>
           <li><a href="https://maps.app.goo.gl/QMJhZ3GogB2usUwUA" class="footer-address">#8888 Marian Road 2, San Martin de Porres Parañaque City, Philippines, 1700</a></li>
         </ul>
       </div>

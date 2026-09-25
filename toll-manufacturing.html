@@ -6,7 +6,7 @@
 <title>Toll Manufacturing — Miguelitos International Corporation</title>
 <meta name="description" content="Toll manufacturing and private-label production of instant food premixes by Miguelitos International Corporation, an FDA-licensed Philippine facility.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -102,10 +102,6 @@
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Savory mixes, seasonings, and culinary blends</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Filling and packing across a range of packaging formats</li>
     </ul>
-    <div class="input-needed-notice">
-      <span class="input-needed-icon">⚠</span>
-      <p><strong>Needs your input:</strong> Review and confirm this capabilities list against actual plant capabilities before publishing. Add specific capacity figures, certifications relevant to toll clients, and any format/pack-size constraints if appropriate to disclose.</p>
-    </div>
   </div>
 </section>
 
@@ -169,6 +165,17 @@
     </div>
 
     <form id="toll-inquiry-form" novalidate>
+      <input type="text" name="_honey" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="toll-contact-name">Contact Person</label>
+          <input type="text" id="toll-contact-name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="toll-email">Email Address</label>
+          <input type="email" id="toll-email" name="email" required>
+        </div>
+      </div>
       <div class="form-row">
         <div class="form-field">
           <label for="toll-company">Company Name</label>
@@ -240,10 +247,6 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit Toll Manufacturing Inquiry →</button>
       <p id="toll-form-status"></p>
-      <div class="input-needed-notice">
-        <span class="input-needed-icon">⚠</span>
-        <p><strong>Needs your input:</strong> Confirm your inquiry response time commitment (e.g., 3–5 business days) so the post-submit confirmation can state a specific turnaround time.</p>
-      </div>
     </form>
   </div>
 </section>
@@ -253,10 +256,6 @@
     <div class="footer-grid">
             <div class="footer-brand">
         <img src="img/logo.png" alt="Miguelitos logo" class="footer-logo">
-        <div class="footer-company-name">
-          <div class="company-main">MIGUELITOS</div>
-          <div class="company-sub">INTERNATIONAL CORPORATION</div>  
-        </div>
         <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider. Proudly made in the Philippines.</p>
 
         
@@ -285,10 +284,9 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li>sales.melrose@miguelitoscorp.com</li>
-          <li>sales.lynmel@miguelitoscorp.com</li>
-          <li>+63 8-8225028</li>
-          <li>+63 8-8226801</li>
+          <li>sales@miguelitoscorp.com</li>
+          <li>(02) 8822 5028</li>
+          <li class="footer-label">Facility Address</li>
           <li><a href="https://maps.app.goo.gl/QMJhZ3GogB2usUwUA" class="footer-address">#8888 Marian Road 2, San Martin de Porres Parañaque City, Philippines, 1700</a></li>
         </ul>
       </div>
