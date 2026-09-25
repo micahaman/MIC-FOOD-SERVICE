@@ -331,7 +331,7 @@ window.addEventListener("load", function () {
   var slider = document.getElementById('hero-stack');
   if (slider) {
     var slides = Array.prototype.slice.call(slider.querySelectorAll('.hero-slide'));
-    var dots = slider.querySelectorAll('.hero-slide-dot');
+    var dots = document.querySelectorAll('.hero-dot');
     var total = slides.length;
     var current = 0;
 
@@ -633,6 +633,8 @@ window.addEventListener("load", function () {
       var info = {
         src: img ? (img.currentSrc || img.src) : '',
         back: '',
+        shelf: '',
+        storage: '',
         svg: (!img && card.querySelector('.product-media svg')) ? card.querySelector('.product-media svg').outerHTML : '',
         alt: img ? img.alt : '',
         name: textOf(card, '.sku-name, h3'),
@@ -652,6 +654,8 @@ window.addEventListener("load", function () {
         info.category = known.category;
         info.alt = known.alt || info.alt;
         info.back = known.back ? new URL(known.back, window.location.href).href : '';
+        info.shelf = known.shelf || '';
+        info.storage = known.storage || '';
       }
       if (card.classList.contains('new-card')) info.category = 'New Product';
       return info;
@@ -677,6 +681,7 @@ window.addEventListener("load", function () {
             '<h3 class="spotlight-title" id="spotlight-title"></h3>' +
             '<p class="spotlight-desc"></p>' +
             '<span class="spotlight-meta"></span>' +
+            '<dl class="spotlight-facts" hidden></dl>' +
           '</div>' +
         '</article>';
       document.body.appendChild(overlay);
@@ -734,6 +739,18 @@ window.addEventListener("load", function () {
       var meta = overlay.querySelector('.spotlight-meta');
       meta.textContent = info.meta;
       meta.hidden = !info.meta;
+      var facts = overlay.querySelector('.spotlight-facts');
+      facts.innerHTML = '';
+      [['Shelf life', info.shelf], ['Storage condition', info.storage]].forEach(function (row) {
+        if (!row[1]) return;
+        var dt = document.createElement('dt');
+        dt.textContent = row[0];
+        var dd = document.createElement('dd');
+        dd.textContent = row[1];
+        facts.appendChild(dt);
+        facts.appendChild(dd);
+      });
+      facts.hidden = !facts.children.length;
 
       lastFocus = card;
       clearTimeout(closeTimer);

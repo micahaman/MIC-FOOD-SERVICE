@@ -45,9 +45,9 @@
         <svg class="chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
       </button>
       <ul class="shop-menu">
-        <li><a href="https://shopee.ph/miguelitosofficial" target="_blank" rel="noopener">Shopee</a></li>
-        <li><a href="https://www.lazada.com.ph/shop/miguelitos" target="_blank" rel="noopener">Lazada</a></li>
-        <li><a href="https://www.tiktok.com/@miguelitos.official" target="_blank" rel="noopener">TikTok Shop</a></li>
+        <li><a href="https://shopee.ph/shop/277346319" target="_blank" rel="noopener">Shopee</a></li>
+        <li><a href="https://www.lazada.com.ph/shop/miguelitosproducts/" target="_blank" rel="noopener">Lazada</a></li>
+        <li><a href="https://www.tiktok.com/@miguelitosfoodproducts_" target="_blank" rel="noopener">TikTok Shop</a></li>
       </ul>
     </div>
     <a href="contact.html#inquiry-form" class="btn btn-primary btn-inquiry">Send an Inquiry</a>
@@ -58,100 +58,61 @@
 </header>
 
 <section class="hero">
-  <div class="hero-slider" id="hero-stack">
+  <div class="hero-split">
 
-    <!-- Slide 1 — main headline + product mockup -->
-    <div class="hero-slide is-active" data-slide="0">
-      <div class="container hero-slide-inner">
-        <div class="hero-slide-text">
-          <h1>The <em>Taste</em> Behind the <em>Business</em></h1>
-          <p class="lede">Premium food and beverage ingredients, business packages, and toll manufacturing — from the Philippines to the world.</p>
-          <div class="hero-actions">
-            <a href="products.html" class="btn btn-primary">Explore Our Products</a>
-            <a href="contact.html" class="btn btn-ghost">Become a Partner</a>
-          </div>
-        </div>
-        <div class="hero-slide-art" aria-hidden="true"></div>
+    <!-- Left: always visible -->
+    <div class="hero-static">
+      <h1>The Taste <span class="hero-script">behind the</span> Business</h1>
+      <p class="lede">Premium food and beverage ingredients, business packages, and toll manufacturing — from the Philippines to the world.</p>
+      <div class="hero-actions">
+        <a href="products.html" class="btn btn-primary">Explore Our Products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="contact.html" class="btn btn-ghost">Become a Partner</a>
+      </div>
+      <div class="hero-dots" id="hero-dots" role="group" aria-label="Choose banner">
+        <button class="hero-dot is-active" type="button" data-goto="0" aria-label="Show banner 1"></button>
+        <button class="hero-dot" type="button" data-goto="1" aria-label="Show banner 2"></button>
       </div>
     </div>
 
-    <!-- Slide 2 — New product highlight -->
-    <div class="hero-slide" data-slide="1">
-      <div class="container hero-slide-inner">
-        <div class="hero-slide-text">
-          <span class="hero-slot-tag">New Arrivals</span>
-          <h1>Three New Mixes</h1>
-          <p class="lede">Kansi Mix, Ube Biko sa Latik Mix, and Ube Bilo-Bilo Mix — Filipino favorites, made easy.</p>
-          <div class="hero-actions">
-            <a href="#whats-new" class="btn btn-primary">See What's New</a>
-          </div>
-          <div class="hero-slot-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
-            <span>Kansi · Ube Biko sa Latik · Ube Bilo-Bilo</span>
-          </div>
-        </div>
+    <!-- Right: the cycling banner (arrows only move this side) -->
+    <div class="hero-slider hero-stage" id="hero-stack">
+
+      <!-- Frame 1 — New product highlight -->
+      <div class="hero-slide is-active" data-slide="0">
         <div class="hero-slide-art hero-new-art">
           <span class="hero-new-word" aria-hidden="true">NEW</span>
           <img class="hero-new-pack hero-new-pack--left" src="assets/products/New%20Products/ube-biko-sa-latik-mix.png" alt="Miguelitos Ube Biko sa Latik Mix pouch">
           <img class="hero-new-pack hero-new-pack--right" src="assets/products/New%20Products/ube-bilo-bilo-mix.png" alt="Miguelitos Ube Bilo-Bilo Mix pouch">
           <img class="hero-new-pack hero-new-pack--center" src="assets/products/New%20Products/kansi-mix.png" alt="Miguelitos Kansi Mix sachet">
         </div>
-      </div>
-    </div>
-
-    <!-- Slide 2 — Award-winning product -->
-    <div class="hero-slide" data-slide="2">
-      <div class="container hero-slide-inner">
-        <div class="hero-slide-text">
-          <span class="hero-slot-tag">Award-Winning</span>
-          <h1>Taho Mix Wins Most Innovative Product</h1>
-          <p class="lede">Our instant soybean curd mix, Taho Mix, was recognized as Most Innovative Product at the 2023 Katha Awards.</p>
-          <div class="hero-actions">
-            <a href="products.html#filipino-favorites" class="btn btn-primary">See Taho Mix</a>
+        <div class="hero-caption hero-caption--feature">
+          <div>
+            <h2>Three Filipino classics, ready for your business.</h2>
+            <p>Kansi Soup Mix, Ube Bilo-Bilo Mix, and Ube Biko sa Latik Mix. Made for retail, food service, toll manufacturing, and export.</p>
           </div>
-          <div class="hero-slot-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
-            <span>Katha Awards 2023 — Most Innovative Award</span>
-          </div>
+          <a href="#whats-new">See What's New →</a>
         </div>
-        <div class="hero-slide-art">
+      </div>
+
+      <!-- Frame 2 — Award-winning product -->
+      <div class="hero-slide" data-slide="1">
+        <div class="hero-slide-art hero-award-art">
           <img src="assets/HomepageBanner/taho-mix-award.png" alt="Taho Mix — winner of the Most Innovative Award at the 2023 Katha Awards">
         </div>
-      </div>
-    </div>
-
-    <!-- Slide 3 — Seasonal Campaign 
-    <div class="hero-slide" data-slide="2">
-      <div class="container hero-slide-inner">
-        <div class="hero-slide-text">
-          <span class="hero-slot-tag hero-slot-tag--alt">Seasonal Campaign</span>
-          <h1>[Campaign Theme]</h1>
-          <p class="lede">[Promotional copy — e.g. "Stock up for the holidays: bundle any 3 premix lines and save on your next order."]</p>
-          <div class="hero-slot-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
-            <span>[Promo period or CTA]</span>
-          </div>
-        </div>
-        <div class="hero-slide-art hero-slide-art--icon">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(215,31,20,0.35)" stroke-width="1.5" stroke-dasharray="4 6"/>
-            <circle cx="100" cy="100" r="70" fill="none" stroke="var(--atsuete)" stroke-width="2"/>
-            <path d="M65 118c8-30 30-46 60-44" fill="none" stroke="var(--rice-cream)" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M118 66l10 10-10 10" fill="none" stroke="var(--rice-cream)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="78" cy="128" r="5" fill="var(--rice-cream)"/>
-          </svg>
+        <div class="hero-caption">
+          <span><strong>Award-Winning</strong>Katha Awards 2023 — Most Innovative Award</span>
+          <a href="products.html#filipino-favorites">See Taho Mix →</a>
         </div>
       </div>
+
+      <button class="hero-slide-btn hero-slide-prev" type="button" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="hero-slide-btn hero-slide-next" type="button" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+
     </div>
-    -->
-
-    <button class="hero-slide-btn hero-slide-prev" type="button" aria-label="Previous slide">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>
-    </button>
-    <button class="hero-slide-btn hero-slide-next" type="button" aria-label="Next slide">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
-    </button>
-
   </div>
 </section>
 
@@ -174,37 +135,37 @@
       <article class="new-card">
         <div class="new-media">
           <span class="new-tag">New</span>
-          <img src="assets/products/New%20Products/kansi-mix.png" alt="Miguelitos Kansi Mix sachet" loading="lazy">
+          <img src="assets/products/web/sav-cheese.jpg" alt="Miguelitos Cheese Seasoning Mix 20g sachet" loading="lazy">
         </div>
         <div class="new-head">
-          <h3>Kansi Mix</h3>
-          <span>50g sachet · 8 servings</span>
+          <h3>Cheese Seasoning Mix</h3>
+          <span>20g</span>
         </div>
-        <p>A Filipino sour soup mix made with real batuan fruit for the tangy, savory flavor of classic kansi.</p>
+        <p>Miguelitos Cheese Seasoning Mix is a rich and flavorful seasoning mix that adds a creamy, tangy, and savory sour cream taste to your favorite snacks and dishes.</p>
       </article>
 
       <article class="new-card">
         <div class="new-media">
           <span class="new-tag">New</span>
-          <img src="assets/products/New%20Products/ube-biko-sa-latik-mix.png" alt="Miguelitos Ube Biko sa Latik Mix pouch" loading="lazy">
+          <img src="assets/products/web/sav-sour-cream-onion.jpg" alt="Miguelitos Sour and Cream Seasoning Mix 20g sachet" loading="lazy">
         </div>
         <div class="new-head">
-          <h3>Ube Biko sa Latik Mix</h3>
-          <span>550g · 10 servings</span>
+          <h3>Sour &amp; Cream Seasoning Mix</h3>
+          <span>20g</span>
         </div>
-        <p>A purple yam sticky rice mix with coconut caramel sauce for a sweet, chewy Filipino biko dessert.</p>
+        <p>Miguelitos Sour Cream Seasoning Mix is a rich and flavorful seasoning mix that adds a creamy, tangy, and savory sour cream flavor to your favorite snacks and dishes.</p>
       </article>
 
       <article class="new-card">
         <div class="new-media">
           <span class="new-tag">New</span>
-          <img src="assets/products/New%20Products/ube-bilo-bilo-mix.png" alt="Miguelitos Ube Bilo-Bilo Mix pouch" loading="lazy">
+          <img src="assets/products/web/sav-barbecue.jpg" alt="Miguelitos Barbecue Seasoning Mix 20g sachet" loading="lazy">
         </div>
         <div class="new-head">
-          <h3>Ube Bilo-Bilo Mix</h3>
-          <span>500g · 9 servings</span>
+          <h3>Barbecue Seasoning Mix</h3>
+          <span>20g</span>
         </div>
-        <p>Purple yam sticky rice balls and tapioca pearls in a creamy coconut milk sauce, made easy.</p>
+        <p>Miguelitos Barbecue Seasoning Mix is a rich and flavorful seasoning mix that adds a smoky, savory, and delicious barbecue taste to your favorite snacks and dishes.</p>
       </article>
 
     </div>
