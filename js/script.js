@@ -274,6 +274,115 @@ window.addEventListener("load", function () {
     else if (pageSizeQuery.addListener) { pageSizeQuery.addListener(onPageSizeChange); }
   }
 
+  // Machines & Equipment (machines.html) — paginated grid, category tabs, and
+  // search, sourced from js/machines-data.js. One row of MACHINES_PAGE_SIZE
+  // cards per page, with arrows to browse the rest — same pattern as the
+  // All Products grid above.
+  var allMachinesGrid = document.getElementById('all-machines-grid');
+  if (allMachinesGrid && typeof MACHINES_DATA !== 'undefined' && MACHINES_DATA.length) {
+    var MACHINES_PAGE_SIZE = 6;
+    var allMachines = MACHINES_DATA;
+    var filteredMachines = allMachines;
+    var machinesPage = 0;
+    var machineActiveCat = 'all';
+
+    var machineSearchInput = document.getElementById('machine-search-input');
+    var machineNoResults = document.getElementById('machine-no-results');
+    var machinesPrevBtn = document.getElementById('machines-prev-btn');
+    var machinesNextBtn = document.getElementById('machines-next-btn');
+    var machinesIndicator = document.getElementById('machines-page-indicator');
+    var machineTabs = document.querySelectorAll('.filter-tab[data-cat]');
+
+    function renderMachinesPage() {
+      allMachinesGrid.innerHTML = '';
+      var total = filteredMachines.length;
+      var totalPages = Math.max(1, Math.ceil(total / MACHINES_PAGE_SIZE));
+      if (machinesPage >= totalPages) machinesPage = 0;
+      var start = machinesPage * MACHINES_PAGE_SIZE;
+      var pageItems = filteredMachines.slice(start, start + MACHINES_PAGE_SIZE);
+
+      pageItems.forEach(function (m) {
+        var card = document.createElement('div');
+        card.className = 'product-card';
+
+        var media = document.createElement('div');
+        media.className = 'product-media';
+        var img = document.createElement('img');
+        img.src = m.src;
+        img.alt = m.alt;
+        img.loading = 'lazy';
+        media.appendChild(img);
+
+        var body = document.createElement('div');
+        body.className = 'product-body';
+
+        var catSpan = document.createElement('span');
+        catSpan.className = 'product-cat';
+        catSpan.textContent = m.category;
+        body.appendChild(catSpan);
+
+        var h3 = document.createElement('h3');
+        h3.textContent = m.name;
+        body.appendChild(h3);
+
+        // Always render the description slot, even empty, so every card
+        // reserves the same height and the pagination arrows never move.
+        var desc = document.createElement('p');
+        desc.textContent = m.desc || '';
+        body.appendChild(desc);
+
+        card.appendChild(media);
+        card.appendChild(body);
+        allMachinesGrid.appendChild(card);
+      });
+
+      if (machineNoResults) machineNoResults.hidden = total !== 0;
+      if (machinesIndicator) {
+        machinesIndicator.textContent = total === 0 ? '0 / 0' : (machinesPage + 1) + ' / ' + totalPages;
+      }
+      if (machinesPrevBtn) machinesPrevBtn.disabled = machinesPage === 0;
+      if (machinesNextBtn) machinesNextBtn.disabled = machinesPage >= totalPages - 1;
+    }
+
+    function applyMachineFilters() {
+      var query = machineSearchInput ? machineSearchInput.value.trim().toLowerCase() : '';
+      filteredMachines = allMachines.filter(function (m) {
+        var matchesCat = machineActiveCat === 'all' || m.catKey === machineActiveCat;
+        var matchesSearch = query === '' ||
+          (m.name + ' ' + m.category + ' ' + (m.desc || '')).toLowerCase().indexOf(query) !== -1;
+        return matchesCat && matchesSearch;
+      });
+      machinesPage = 0;
+      renderMachinesPage();
+    }
+
+    machineTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        machineTabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        machineActiveCat = tab.getAttribute('data-cat');
+        applyMachineFilters();
+      });
+    });
+
+    if (machineSearchInput) {
+      machineSearchInput.addEventListener('input', applyMachineFilters);
+    }
+    if (machinesPrevBtn) {
+      machinesPrevBtn.addEventListener('click', function () {
+        if (machinesPage > 0) { machinesPage--; renderMachinesPage(); }
+      });
+    }
+    if (machinesNextBtn) {
+      machinesNextBtn.addEventListener('click', function () {
+        var totalPages = Math.max(1, Math.ceil(filteredMachines.length / MACHINES_PAGE_SIZE));
+        if (machinesPage < totalPages - 1) { machinesPage++; renderMachinesPage(); }
+      });
+    }
+
+    renderMachinesPage();
+  }
+
   // Featured Products (index.html) — random pick from the shared product
   // catalog (js/products-data.js), reshuffled on every page load.
   var featuredGrid = document.getElementById('featured-products-grid');
@@ -635,6 +744,8 @@ window.addEventListener("load", function () {
         back: '',
         shelf: '',
         storage: '',
+        allergen: '',
+        ingredients: '',
         svg: (!img && card.querySelector('.product-media svg')) ? card.querySelector('.product-media svg').outerHTML : '',
         alt: img ? img.alt : '',
         name: textOf(card, '.sku-name, h3'),
@@ -656,6 +767,8 @@ window.addEventListener("load", function () {
         info.back = known.back ? new URL(known.back, window.location.href).href : '';
         info.shelf = known.shelf || '';
         info.storage = known.storage || '';
+        info.allergen = known.allergen || '';
+        info.ingredients = known.ingredients || '';
       }
       if (card.classList.contains('new-card')) info.category = 'New Product';
       return info;
@@ -682,6 +795,7 @@ window.addEventListener("load", function () {
             '<p class="spotlight-desc"></p>' +
             '<span class="spotlight-meta"></span>' +
             '<dl class="spotlight-facts" hidden></dl>' +
+            '<div class="spotlight-ingredients" hidden><h4>Ingredients</h4><p></p></div>' +
           '</div>' +
         '</article>';
       document.body.appendChild(overlay);
@@ -741,7 +855,7 @@ window.addEventListener("load", function () {
       meta.hidden = !info.meta;
       var facts = overlay.querySelector('.spotlight-facts');
       facts.innerHTML = '';
-      [['Shelf life', info.shelf], ['Storage condition', info.storage]].forEach(function (row) {
+      [['Shelf life', info.shelf], ['Storage condition', info.storage], ['Allergen information', info.allergen]].forEach(function (row) {
         if (!row[1]) return;
         var dt = document.createElement('dt');
         dt.textContent = row[0];
@@ -751,6 +865,9 @@ window.addEventListener("load", function () {
         facts.appendChild(dd);
       });
       facts.hidden = !facts.children.length;
+      var ingredientsBlock = overlay.querySelector('.spotlight-ingredients');
+      ingredientsBlock.querySelector('p').textContent = info.ingredients;
+      ingredientsBlock.hidden = !info.ingredients;
 
       lastFocus = card;
       clearTimeout(closeTimer);

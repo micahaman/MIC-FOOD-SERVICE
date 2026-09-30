@@ -96,118 +96,35 @@
     <div class="filter-bar">
       <div class="filter-tabs">
         <button class="filter-tab active" data-cat="all">All Equipment</button>
-        <button class="filter-tab" data-cat="softserve">Soft Serve Machines</button>
-        <button class="filter-tab" data-cat="dispenser">Beverage Dispensers</button>
-        <button class="filter-tab" data-cat="mixer">Mixers &amp; Blenders</button>
-        <button class="filter-tab" data-cat="bakery">Bakery Equipment</button>
+        <button class="filter-tab" data-cat="softserve">Soft Serve &amp; Ice Cream</button>
+        <button class="filter-tab" data-cat="beverage">Beverage &amp; Coffee</button>
+        <button class="filter-tab" data-cat="waffles">Waffles, Snacks &amp; Desserts</button>
+        <button class="filter-tab" data-cat="fryers">Fryers</button>
+        <button class="filter-tab" data-cat="ovens">Ovens, Mixers &amp; Baking</button>
+        <button class="filter-tab" data-cat="refrigeration">Refrigeration &amp; Ice</button>
+        <button class="filter-tab" data-cat="cooking">Cooking Equipment</button>
+        <button class="filter-tab" data-cat="facility">Water, Air &amp; Facility</button>
       </div>
       <div class="product-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="search" id="product-search-input" placeholder="Search equipment…" aria-label="Search equipment">
+        <input type="search" id="machine-search-input" placeholder="Search equipment…" aria-label="Search equipment">
       </div>
     </div>
 
-    <div class="product-grid">
+    <div class="product-grid machine-grid" id="all-machines-grid"></div>
 
-      <div class="product-card" data-cat="softserve">
-        <div class="product-media">
-          <svg viewBox="0 0 60 60" fill="none" stroke="#2B140D" stroke-width="1.6"><rect x="16" y="14" width="28" height="24" rx="3"/><path d="M24 38l-2 8h16l-2-8"/><circle cx="24" cy="22" r="2"/><circle cx="36" cy="22" r="2"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">Soft Serve Machine</span>
-          <h3>Twin-Flavor Soft Serve Unit</h3>
-          <p>Countertop twin-flavor machine sized for cafes, kiosks, and franchise stalls.</p>
-          <div class="product-meta"><span>220V / Single Phase</span><span>Countertop</span></div>
-        </div>
-      </div>
+    <p class="no-results" id="machine-no-results" hidden>No equipment matches your search. Try a different term.</p>
 
-      <div class="product-card" data-cat="softserve">
-        <div class="product-media">
-          <svg viewBox="0 0 60 60" fill="none" stroke="#2B140D" stroke-width="1.6"><rect x="12" y="12" width="36" height="30" rx="3"/><path d="M22 42l-2 6h20l-2-6"/><path d="M12 24h36" opacity="0.4"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">Soft Serve Machine</span>
-          <h3>Floor-Standing Soft Serve Machine</h3>
-          <p>Higher-output floor unit for full-service restaurants and high-traffic branches.</p>
-          <div class="product-meta"><span>220V / 3 Phase</span><span>Floor-Standing</span></div>
-        </div>
-      </div>
-
-      <div class="product-card" data-cat="dispenser">
-        <div class="product-media">
-          <svg viewBox="0 0 60 60" fill="none" stroke="#2B140D" stroke-width="1.6"><rect x="14" y="10" width="32" height="20" rx="3"/><path d="M22 30v6h16v-6"/><path d="M26 36v6M34 36v6"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">Beverage Dispenser</span>
-          <h3>Milk Tea &amp; Coffee Dispenser</h3>
-          <p>Multi-flavor dispensing unit built for milk tea, coffee, and choco mix service lines.</p>
-          <div class="product-meta"><span>220V</span><span>Countertop</span></div>
-        </div>
-      </div>
-
-      <div class="product-card" data-cat="dispenser">
-        <div class="product-media">
-          <svg viewBox="0 0 60 60" fill="none" stroke="#2B140D" stroke-width="1.6"><path d="M20 12h20l-3 30a3 3 0 01-3 3h-8a3 3 0 01-3-3z"/><path d="M20 22h20" opacity="0.4"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">Beverage Dispenser</span>
-          <h3>Juice &amp; Sago Dispenser</h3>
-          <p>Chilled dispensing unit for juice concentrates and sago't gulaman-style beverages.</p>
-          <div class="product-meta"><span>220V</span><span>Chilled</span></div>
-        </div>
-      </div>
-
-      <div class="product-card" data-cat="mixer">
-        <div class="product-media">
-          <svg viewBox="0 0 60 60" fill="none" stroke="#2B140D" stroke-width="1.6"><circle cx="30" cy="34" r="12"/><path d="M30 22v-8M25 14h10"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">Mixer</span>
-          <h3>Planetary Mixer, 20L</h3>
-          <p>Bakery-grade planetary mixer for batter, dough, and cream mixes at production volume.</p>
-          <div class="product-meta"><span>220V</span><span>20L Bowl</span></div>
-        </div>
-      </div>
-
-      <div class="product-card" data-cat="mixer">
-        <div class="product-media">
-          <svg viewBox="0 0 60 60" fill="none" stroke="#2B140D" stroke-width="1.6"><path d="M20 14h20l-4 16H24z"/><rect x="24" y="30" width="12" height="14" rx="2"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">Blender</span>
-          <h3>Commercial Blender</h3>
-          <p>Heavy-duty blender for milkshakes, smoothies, and blended beverage mixes.</p>
-          <div class="product-meta"><span>220V</span><span>Countertop</span></div>
-        </div>
-      </div>
-
-      <div class="product-card" data-cat="bakery">
-        <div class="product-media">
-          <svg viewBox="0 0 60 60" fill="none" stroke="#2B140D" stroke-width="1.6"><rect x="10" y="16" width="40" height="24" rx="3"/><path d="M10 28h40" opacity="0.4"/><circle cx="18" cy="22" r="1.4"/><circle cx="24" cy="22" r="1.4"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">Bakery Equipment</span>
-          <h3>Deck Oven, Double Layer</h3>
-          <p>Even-heat deck oven sized for kakanin, pastry, and bakery mix production runs.</p>
-          <div class="product-meta"><span>220V / LPG</span><span>Double Deck</span></div>
-        </div>
-      </div>
-
-      <div class="product-card" data-cat="bakery">
-        <div class="product-media">
-          <svg viewBox="0 0 60 60" fill="none" stroke="#2B140D" stroke-width="1.6"><rect x="16" y="10" width="28" height="38" rx="3"/><path d="M16 20h28M16 30h28M16 40h28" opacity="0.4"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-cat">Bakery Equipment</span>
-          <h3>Proofer Cabinet</h3>
-          <p>Humidity-controlled proofing cabinet to keep dough rise consistent across batches.</p>
-          <div class="product-meta"><span>220V</span><span>Multi-Tray</span></div>
-        </div>
-      </div>
-
+    <div class="sku-pagination">
+      <button type="button" class="sku-page-btn sku-page-prev" id="machines-prev-btn" aria-label="Previous equipment">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <span class="sku-page-indicator" id="machines-page-indicator"></span>
+      <button type="button" class="sku-page-btn sku-page-next" id="machines-next-btn" aria-label="Next equipment">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
     </div>
 
-    <p class="no-results" id="product-no-results" hidden>No equipment matches your search. Try a different term.</p>
   </div>
 </section>
 
@@ -320,6 +237,7 @@
   </div>
 </footer>
 
+<script src="js/machines-data.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
