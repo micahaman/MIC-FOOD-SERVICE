@@ -941,4 +941,127 @@ window.addEventListener("load", function () {
     }
   })();
 
+  // ------------------------------------------------------------------
+  // Award lightbox — click any award card to zoom in. Cards with more
+  // than one angle (data-images, comma-separated) get prev/next nav.
+  // ------------------------------------------------------------------
+  (function () {
+    var CARD_SELECTOR = '.award-card[data-zoom]';
+    var overlay, stage, dots, prevBtn, nextBtn, lastFocus, closeTimer;
+    var images = [], index = 0;
+
+    function build() {
+      if (overlay) return;
+      overlay = document.createElement('div');
+      overlay.className = 'award-lightbox';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-labelledby', 'award-lightbox-title');
+      overlay.innerHTML =
+        '<div class="award-lightbox-box">' +
+          '<button class="award-lightbox-close" type="button" aria-label="Close" data-close>&times;</button>' +
+          '<button class="award-lightbox-nav award-lightbox-nav--prev" type="button" aria-label="Previous photo" hidden>&lsaquo;</button>' +
+          '<button class="award-lightbox-nav award-lightbox-nav--next" type="button" aria-label="Next photo" hidden>&rsaquo;</button>' +
+          '<div class="award-lightbox-stage"><div class="award-lightbox-dots"></div></div>' +
+          '<div class="award-lightbox-caption">' +
+            '<h4 id="award-lightbox-title"></h4>' +
+            '<p></p>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(overlay);
+      stage = overlay.querySelector('.award-lightbox-stage');
+      dots = overlay.querySelector('.award-lightbox-dots');
+      prevBtn = overlay.querySelector('.award-lightbox-nav--prev');
+      nextBtn = overlay.querySelector('.award-lightbox-nav--next');
+      overlay.addEventListener('click', function (e) {
+        if (e.target.hasAttribute('data-close') || e.target === overlay) close();
+      });
+      prevBtn.addEventListener('click', function () { show(index - 1); });
+      nextBtn.addEventListener('click', function () { show(index + 1); });
+    }
+
+    function show(i) {
+      index = (i + images.length) % images.length;
+      var existing = stage.querySelector('img');
+      if (existing) existing.remove();
+      var img = document.createElement('img');
+      img.src = images[index];
+      stage.insertBefore(img, dots);
+      dots.querySelectorAll('.award-lightbox-dot').forEach(function (dot, di) {
+        dot.classList.toggle('is-active', di === index);
+      });
+    }
+
+    function open(card) {
+      build();
+      var raw = card.getAttribute('data-images');
+      var fallback = card.querySelector('.award-card-media img');
+      images = raw ? raw.split(',').map(function (s) { return s.trim(); }).filter(Boolean) : (fallback ? [fallback.src] : []);
+      if (!images.length) return;
+      index = 0;
+
+      var multi = images.length > 1;
+      prevBtn.hidden = !multi;
+      nextBtn.hidden = !multi;
+      dots.innerHTML = '';
+      if (multi) {
+        images.forEach(function (_, i) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'award-lightbox-dot';
+          dot.setAttribute('aria-label', 'Show photo ' + (i + 1));
+          dot.addEventListener('click', function () { show(i); });
+          dots.appendChild(dot);
+        });
+      }
+      show(0);
+
+      overlay.querySelector('.award-lightbox-caption h4').textContent = textOf(card, 'h4');
+      overlay.querySelector('.award-lightbox-caption p').textContent = textOf(card, 'figcaption p');
+
+      lastFocus = card;
+      clearTimeout(closeTimer);
+      overlay.classList.add('is-open');
+      overlay.querySelector('.award-lightbox-close').focus({ preventScroll: true });
+    }
+
+    function close() {
+      if (!overlay || !overlay.classList.contains('is-open')) return;
+      overlay.classList.remove('is-open');
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }
+
+    function textOf(el, selector) {
+      var node = el.querySelector(selector);
+      return node ? node.textContent.replace(/\s+/g, ' ').trim() : '';
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest) return;
+      var card = e.target.closest(CARD_SELECTOR);
+      if (!card || e.target.closest('a, button')) return;
+      open(card);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (overlay && overlay.classList.contains('is-open')) {
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft' && !prevBtn.hidden) show(index - 1);
+        else if (e.key === 'ArrowRight' && !nextBtn.hidden) show(index + 1);
+        return;
+      }
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches(CARD_SELECTOR)) {
+        e.preventDefault();
+        open(e.target);
+      }
+    });
+
+    document.querySelectorAll(CARD_SELECTOR).forEach(function (card) {
+      card.tabIndex = 0;
+      card.setAttribute('role', 'button');
+      var name = textOf(card, 'h4');
+      if (name) card.setAttribute('aria-label', 'View ' + name);
+    });
+  })();
+
 });
