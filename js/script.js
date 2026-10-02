@@ -745,7 +745,6 @@ window.addEventListener("load", function () {
         shelf: '',
         storage: '',
         allergen: '',
-        ingredients: '',
         svg: (!img && card.querySelector('.product-media svg')) ? card.querySelector('.product-media svg').outerHTML : '',
         alt: img ? img.alt : '',
         name: textOf(card, '.sku-name, h3'),
@@ -768,13 +767,14 @@ window.addEventListener("load", function () {
         info.shelf = known.shelf || '';
         info.storage = known.storage || '';
         info.allergen = known.allergen || '';
-        info.ingredients = known.ingredients || '';
       }
       if (card.classList.contains('new-card')) info.category = 'New Product';
       return info;
     }
 
-    var overlay, panel, closeBtn, lastFocus, closeTimer;
+    var overlay, panel, closeBtn, media, magnifier, lastFocus, closeTimer;
+    var ZOOM = 2.4;
+    var MAG_SIZE = 170;
 
     function build() {
       if (overlay) return;
@@ -788,21 +788,47 @@ window.addEventListener("load", function () {
         '<div class="spotlight-backdrop" data-close></div>' +
         '<article class="spotlight-panel">' +
           '<button class="spotlight-close" type="button" aria-label="Close" data-close>&times;</button>' +
-          '<div class="spotlight-media"></div>' +
+          '<div class="spotlight-media"><div class="spotlight-magnifier" aria-hidden="true"></div></div>' +
           '<div class="spotlight-body">' +
             '<span class="spotlight-cat"></span>' +
             '<h3 class="spotlight-title" id="spotlight-title"></h3>' +
             '<p class="spotlight-desc"></p>' +
             '<span class="spotlight-meta"></span>' +
             '<dl class="spotlight-facts" hidden></dl>' +
-            '<div class="spotlight-ingredients" hidden><h4>Ingredients</h4><p></p></div>' +
           '</div>' +
         '</article>';
       document.body.appendChild(overlay);
       panel = overlay.querySelector('.spotlight-panel');
       closeBtn = overlay.querySelector('.spotlight-close');
+      media = overlay.querySelector('.spotlight-media');
+      magnifier = overlay.querySelector('.spotlight-magnifier');
       overlay.addEventListener('click', function (e) {
         if (e.target.hasAttribute('data-close')) close();
+      });
+
+      media.addEventListener('mousemove', function (e) {
+        var img = e.target.closest ? e.target.closest('img') : null;
+        if (!img || !media.contains(img)) {
+          magnifier.classList.remove('is-active');
+          return;
+        }
+        var imgRect = img.getBoundingClientRect();
+        var mediaRect = media.getBoundingClientRect();
+        var x = e.clientX - imgRect.left;
+        var y = e.clientY - imgRect.top;
+        if (x < 0 || y < 0 || x > imgRect.width || y > imgRect.height) {
+          magnifier.classList.remove('is-active');
+          return;
+        }
+        magnifier.style.backgroundImage = 'url(' + img.src + ')';
+        magnifier.style.backgroundSize = (imgRect.width * ZOOM) + 'px ' + (imgRect.height * ZOOM) + 'px';
+        magnifier.style.backgroundPosition = (-(x * ZOOM - MAG_SIZE / 2)) + 'px ' + (-(y * ZOOM - MAG_SIZE / 2)) + 'px';
+        magnifier.style.left = (imgRect.left - mediaRect.left + x - MAG_SIZE / 2) + 'px';
+        magnifier.style.top = (imgRect.top - mediaRect.top + y - MAG_SIZE / 2) + 'px';
+        magnifier.classList.add('is-active');
+      });
+      media.addEventListener('mouseleave', function () {
+        magnifier.classList.remove('is-active');
       });
     }
 
@@ -819,13 +845,15 @@ window.addEventListener("load", function () {
     function open(card) {
       build();
       var info = readCard(card);
-      var media = overlay.querySelector('.spotlight-media');
       media.innerHTML = '';
+      media.appendChild(magnifier);
+      magnifier.classList.remove('is-active');
       panel.classList.remove('has-back');
       if (info.src) {
         var frontImg = document.createElement('img');
         frontImg.src = info.src;
         frontImg.alt = info.alt || info.name;
+        frontImg.className = 'is-zoomable';
         if (info.back) {
           // Products with a back image show front and back together
           panel.classList.add('has-back');
@@ -833,6 +861,7 @@ window.addEventListener("load", function () {
           var backImg = document.createElement('img');
           backImg.src = info.back;
           backImg.alt = (info.name || 'Product') + ' — back';
+          backImg.className = 'is-zoomable';
           var backShot = shot(backImg, 'Back');
           backImg.addEventListener('error', function () {
             if (backShot.parentNode) backShot.parentNode.removeChild(backShot);
@@ -843,7 +872,7 @@ window.addEventListener("load", function () {
           media.appendChild(frontImg);
         }
       } else if (info.svg) {
-        media.innerHTML = info.svg;
+        media.insertAdjacentHTML('beforeend', info.svg);
       }
       overlay.querySelector('.spotlight-cat').textContent = info.category;
       overlay.querySelector('.spotlight-title').textContent = info.name;
@@ -865,9 +894,6 @@ window.addEventListener("load", function () {
         facts.appendChild(dd);
       });
       facts.hidden = !facts.children.length;
-      var ingredientsBlock = overlay.querySelector('.spotlight-ingredients');
-      ingredientsBlock.querySelector('p').textContent = info.ingredients;
-      ingredientsBlock.hidden = !info.ingredients;
 
       lastFocus = card;
       clearTimeout(closeTimer);

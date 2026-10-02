@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
-<link rel="stylesheet" href="css/styles.css?v=22">
+<link rel="stylesheet" href="css/styles.css?v=45">
 </head>
 <body>
 
@@ -65,28 +65,7 @@
         <p class="hero-subhead">Miguelitos products are available in markets around the world — served through a network of trusted importers, distributors, and retail partners.</p>
         <p>From our manufacturing facility in the Philippines, we supply food and beverage products to markets across Asia, the Middle East, and beyond. Our export portfolio covers the same product range available domestically — formulated, packed, and certified for international trade.</p>
       </div>
-      <div class="page-hero-art" aria-hidden="true">
-        <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-          <circle cx="190" cy="150" r="86" fill="none" stroke="var(--atsuete)" stroke-width="1" stroke-dasharray="3 5" opacity="0.35"/>
-          <circle cx="340" cy="150" r="86" fill="none" stroke="var(--turmeric)" stroke-width="1" stroke-dasharray="3 5" opacity="0.45"/>
-          <circle cx="490" cy="150" r="86" fill="none" stroke="var(--atsuete)" stroke-width="1" stroke-dasharray="3 5" opacity="0.35"/>
-          <g stroke="var(--rice-cream)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="190" cy="150" r="32"/>
-            <path d="M158 150 h64"/>
-            <path d="M190 118 a16 32 0 0 1 0 64"/>
-            <path d="M190 118 a16 32 0 0 0 0 64"/>
-          </g>
-          <path d="M225 118 a12 12 0 1 0 -24 0c0 9 12 24 12 24s12-15 12-24z" fill="var(--turmeric)" stroke="none"/>
-          <g stroke="var(--rice-cream)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M305 130 h70 v50 h-70 z"/>
-            <path d="M305 130 l10 -10 h50 l10 10"/>
-            <path d="M340 130 v50 M305 155 h70"/>
-          </g>
-          <g stroke="var(--rice-cream)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M460 160 l60 -10 -10 -8 -20 4 -18 -18 -8 2 10 20 -18 4 -6 -6 -4 2 6 10z"/>
-          </g>
-        </svg>
-      </div>
+      <div class="page-hero-art export-globe" id="export-globe" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -105,7 +84,9 @@
       <li class="market-chip"><span class="flag fi fi-ca" aria-hidden="true"></span>Canada</li>
       <li class="market-chip"><span class="flag fi fi-no" aria-hidden="true"></span>Norway</li>
       <li class="market-chip"><span class="flag fi fi-it" aria-hidden="true"></span>Italy</li>
-      <li class="market-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.1 7-12a7 7 0 10-14 0c0 4.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Middle East</li>
+      <li class="market-chip"><span class="flag fi fi-ae" aria-hidden="true"></span>United Arab Emirates</li>
+      <li class="market-chip"><span class="flag fi fi-qa" aria-hidden="true"></span>Qatar</li>
+      <li class="market-chip"><span class="flag fi fi-sa" aria-hidden="true"></span>Kingdom of Saudi Arabia</li>
       <li class="market-chip"><span class="flag fi fi-sg" aria-hidden="true"></span>Singapore</li>
       <li class="market-chip"><span class="flag fi fi-jp" aria-hidden="true"></span>Japan</li>
     </ul>
@@ -150,7 +131,7 @@
         </ul>
       </div>
       <div class="where-country">
-        <h3>Middle East</h3>
+        <h3><span class="flag fi fi-ae" aria-hidden="true"></span><span class="flag fi fi-qa" aria-hidden="true"></span><span class="flag fi fi-sa" aria-hidden="true"></span>Middle East</h3>
         <ul class="where-list">
           <li><div class="where-entry"><div class="where-entry-head"><strong>North Ridge Foods Company Inc. / North Ridge Food Int'l.</strong><span class="where-role">Distributor</span></div><div class="where-address">27 21st Avenue, Cubao, Quezon City / 18819 Pilario St.</div></div></li>
           <li><div class="where-entry"><div class="where-entry-head"><strong>May Exports Phil. Inc.</strong><span class="where-role">Distributor</span></div><div class="where-address">Warehouse No. 1, Calamba Premiere Park, Brgy. Batino, Calamba, Laguna</div></div></li>
@@ -199,8 +180,8 @@
     <div class="footer-grid">
             <div class="footer-brand">
         <img src="img/logo.png" alt="Miguelitos logo" class="footer-logo">
-        <p class="footer-company-name">Miguelitos International Corporation</p>
-        <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider. Proudly made in the Philippines.</p>
+        <p class="footer-company-name">Miguelitos<br>International<br>Corporation</p>
+        <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider.<br>Proudly made in the Philippines.</p>
       </div>
       <div class="footer-col">
         <h4>Site</h4>
@@ -248,6 +229,9 @@
           <a href="https://www.youtube.com/@miguelitosfoodproducts" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.4 9.4l5 2.6-5 2.6z" fill="currentColor" stroke="none"/></svg>
           </a>
+          <a href="https://www.indeed.com/cmp/Miguelitos-International-Corporation-3" target="_blank" rel="noopener" aria-label="Indeed" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><text x="12" y="14.1" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="7" letter-spacing="-0.2" fill="currentColor" stroke="none">indeed</text></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -258,6 +242,10 @@
   </div>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-geo@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script src="js/globe.js?v=3"></script>
+<script src="js/script.js?v=3"></script>
 </body>
 </html>
