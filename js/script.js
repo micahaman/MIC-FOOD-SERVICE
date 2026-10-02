@@ -476,7 +476,7 @@ window.addEventListener("load", function () {
   // To change where inquiries go, edit FORM_RECIPIENT. The very first
   // submission makes FormSubmit email that address once to confirm it.
   // ------------------------------------------------------------------
-  var FORM_RECIPIENT = 'it@miguelitoscorp.com';
+  var FORM_RECIPIENT = 'sales@miguelitoscorp.com';
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + FORM_RECIPIENT;
   var MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024;
 
