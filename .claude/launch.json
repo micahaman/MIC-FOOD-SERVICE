@@ -4,7 +4,7 @@
     {
       "name": "static-site",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8090"],
+      "runtimeArgs": [".claude/dev-server.py", "8090"],
       "port": 8090
     }
   ]

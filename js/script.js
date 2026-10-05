@@ -50,11 +50,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Highlight the current page in the main menu
-  var currentPage = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // Works with clean URLs (/about), legacy ones (/about.html) and the home page (./ or /)
+  function pageName(path) {
+    var name = path.split('#')[0].split('?')[0].split('/').pop().toLowerCase().replace(/\.html$/, '');
+    return name === '' || name === '.' ? 'index' : name;
+  }
+  var currentPage = pageName(location.pathname);
   document.querySelectorAll('.nav-links a').forEach(function (link) {
-    var target = (link.getAttribute('href') || '').split('#')[0].toLowerCase();
-    var isCurrent = target === currentPage || (target === 'index.html' && currentPage === '') ||
-      (currentPage.indexOf('package-') === 0 && target === 'business-packages.html');
+    var target = pageName(link.getAttribute('href') || '');
+    var isCurrent = target === currentPage ||
+      (currentPage.indexOf('package-') === 0 && target === 'business-packages');
     if (isCurrent) {
       link.classList.add('active');
       link.setAttribute('aria-current', 'page');
@@ -476,7 +481,7 @@ window.addEventListener("load", function () {
   // To change where inquiries go, edit FORM_RECIPIENT. The very first
   // submission makes FormSubmit email that address once to confirm it.
   // ------------------------------------------------------------------
-  var FORM_RECIPIENT = 'it@miguelitoscorp.com';
+  var FORM_RECIPIENT = 'sales@miguelitoscorp.com';
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + FORM_RECIPIENT;
   var MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024;
 
@@ -501,7 +506,22 @@ window.addEventListener("load", function () {
 
       if (!form.reportValidity()) return;
 
+      // reCAPTCHA v2 checkbox — one per page (site key is in the form's data-sitekey)
+      var captcha = form.querySelector('.g-recaptcha');
+      if (captcha) {
+        var token = '';
+        try { token = grecaptcha.getResponse(); } catch (err) {
+          show('The security check is still loading. Please wait a moment and try again.', 'error');
+          return;
+        }
+        if (!token) {
+          show('Please tick the "I\'m not a robot" box before sending.', 'error');
+          return;
+        }
+      }
+
       var data = new FormData(form);
+      data.delete('g-recaptcha-response');
       var fileInput = form.querySelector('input[type="file"]');
       if (fileInput) {
         var file = fileInput.files && fileInput.files[0];
@@ -537,6 +557,7 @@ window.addEventListener("load", function () {
         })
         .then(function () {
           if (button) { button.disabled = false; button.textContent = idleLabel; }
+          if (captcha) grecaptcha.reset();
         });
     });
   }
@@ -745,7 +766,6 @@ window.addEventListener("load", function () {
         shelf: '',
         storage: '',
         allergen: '',
-        ingredients: '',
         svg: (!img && card.querySelector('.product-media svg')) ? card.querySelector('.product-media svg').outerHTML : '',
         alt: img ? img.alt : '',
         name: textOf(card, '.sku-name, h3'),
@@ -768,13 +788,15 @@ window.addEventListener("load", function () {
         info.shelf = known.shelf || '';
         info.storage = known.storage || '';
         info.allergen = known.allergen || '';
-        info.ingredients = known.ingredients || '';
       }
       if (card.classList.contains('new-card')) info.category = 'New Product';
       return info;
     }
 
-    var overlay, panel, closeBtn, lastFocus, closeTimer;
+    var overlay, panel, closeBtn, media, magnifier, lastFocus, closeTimer;
+    var ZOOM = 2.4;
+    var TOUCH_ZOOM = 3;
+    var touchImg = null;
 
     function build() {
       if (overlay) return;
@@ -788,22 +810,76 @@ window.addEventListener("load", function () {
         '<div class="spotlight-backdrop" data-close></div>' +
         '<article class="spotlight-panel">' +
           '<button class="spotlight-close" type="button" aria-label="Close" data-close>&times;</button>' +
-          '<div class="spotlight-media"></div>' +
+          '<div class="spotlight-media"><div class="spotlight-magnifier" aria-hidden="true"></div></div>' +
           '<div class="spotlight-body">' +
             '<span class="spotlight-cat"></span>' +
             '<h3 class="spotlight-title" id="spotlight-title"></h3>' +
             '<p class="spotlight-desc"></p>' +
             '<span class="spotlight-meta"></span>' +
             '<dl class="spotlight-facts" hidden></dl>' +
-            '<div class="spotlight-ingredients" hidden><h4>Ingredients</h4><p></p></div>' +
           '</div>' +
         '</article>';
       document.body.appendChild(overlay);
       panel = overlay.querySelector('.spotlight-panel');
       closeBtn = overlay.querySelector('.spotlight-close');
+      media = overlay.querySelector('.spotlight-media');
+      magnifier = overlay.querySelector('.spotlight-magnifier');
       overlay.addEventListener('click', function (e) {
         if (e.target.hasAttribute('data-close')) close();
       });
+
+      // Magnifier: follows the mouse on desktop; on phones and tablets it
+      // appears while a finger is pressed and dragged over the photo.
+      function hideLens() {
+        touchImg = null;
+        magnifier.classList.remove('is-active');
+      }
+
+      function placeLens(img, e, isTouch) {
+        var imgRect = img.getBoundingClientRect();
+        var mediaRect = media.getBoundingClientRect();
+        var x = e.clientX - imgRect.left;
+        var y = e.clientY - imgRect.top;
+        if (x < 0 || y < 0 || x > imgRect.width || y > imgRect.height) {
+          magnifier.classList.remove('is-active');
+          return;
+        }
+        var size = magnifier.offsetWidth;
+        var zoom = isTouch ? TOUCH_ZOOM : ZOOM;
+        var left = imgRect.left - mediaRect.left + x - size / 2;
+        var top = imgRect.top - mediaRect.top + y - size / 2;
+        if (isTouch) {
+          // Lift the lens above the fingertip; drop it below if there's no room
+          top = imgRect.top - mediaRect.top + y - size * 1.15;
+          if (top < 0) top = imgRect.top - mediaRect.top + y + size * 0.15;
+        }
+        magnifier.style.backgroundImage = 'url(' + img.src + ')';
+        magnifier.style.backgroundSize = (imgRect.width * zoom) + 'px ' + (imgRect.height * zoom) + 'px';
+        magnifier.style.backgroundPosition = (-(x * zoom - size / 2)) + 'px ' + (-(y * zoom - size / 2)) + 'px';
+        magnifier.style.left = left + 'px';
+        magnifier.style.top = top + 'px';
+        magnifier.classList.add('is-active');
+      }
+
+      media.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'mouse') return;
+        var img = e.target.closest ? e.target.closest('img.is-zoomable') : null;
+        if (!img) return;
+        touchImg = img;
+        placeLens(img, e, true);
+      });
+      media.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'mouse') {
+          var img = e.target.closest ? e.target.closest('img.is-zoomable') : null;
+          if (img) placeLens(img, e, false);
+          else magnifier.classList.remove('is-active');
+        } else if (touchImg) {
+          placeLens(touchImg, e, true);
+        }
+      });
+      media.addEventListener('pointerup', function (e) { if (e.pointerType !== 'mouse') hideLens(); });
+      media.addEventListener('pointercancel', hideLens);
+      media.addEventListener('pointerleave', hideLens);
     }
 
     function shot(img, label) {
@@ -819,13 +895,15 @@ window.addEventListener("load", function () {
     function open(card) {
       build();
       var info = readCard(card);
-      var media = overlay.querySelector('.spotlight-media');
       media.innerHTML = '';
+      media.appendChild(magnifier);
+      magnifier.classList.remove('is-active');
       panel.classList.remove('has-back');
       if (info.src) {
         var frontImg = document.createElement('img');
         frontImg.src = info.src;
         frontImg.alt = info.alt || info.name;
+        frontImg.className = 'is-zoomable';
         if (info.back) {
           // Products with a back image show front and back together
           panel.classList.add('has-back');
@@ -833,6 +911,7 @@ window.addEventListener("load", function () {
           var backImg = document.createElement('img');
           backImg.src = info.back;
           backImg.alt = (info.name || 'Product') + ' — back';
+          backImg.className = 'is-zoomable';
           var backShot = shot(backImg, 'Back');
           backImg.addEventListener('error', function () {
             if (backShot.parentNode) backShot.parentNode.removeChild(backShot);
@@ -843,7 +922,7 @@ window.addEventListener("load", function () {
           media.appendChild(frontImg);
         }
       } else if (info.svg) {
-        media.innerHTML = info.svg;
+        media.insertAdjacentHTML('beforeend', info.svg);
       }
       overlay.querySelector('.spotlight-cat').textContent = info.category;
       overlay.querySelector('.spotlight-title').textContent = info.name;
@@ -865,9 +944,6 @@ window.addEventListener("load", function () {
         facts.appendChild(dd);
       });
       facts.hidden = !facts.children.length;
-      var ingredientsBlock = overlay.querySelector('.spotlight-ingredients');
-      ingredientsBlock.querySelector('p').textContent = info.ingredients;
-      ingredientsBlock.hidden = !info.ingredients;
 
       lastFocus = card;
       clearTimeout(closeTimer);
@@ -992,13 +1068,21 @@ window.addEventListener("load", function () {
       });
     }
 
+    function splitList(raw) {
+      return (raw || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+    }
+
     function open(card) {
-      build();
-      var raw = card.getAttribute('data-images');
       var fallback = card.querySelector('.award-card-media img');
-      images = raw ? raw.split(',').map(function (s) { return s.trim(); }).filter(Boolean) : (fallback ? [fallback.src] : []);
+      var list = splitList(card.getAttribute('data-images'));
+      if (!list.length && fallback) list = [fallback.src];
+      openGallery(list, 0, textOf(card, 'h4'), textOf(card, 'figcaption p'), card);
+    }
+
+    function openGallery(list, startAt, title, text, from) {
+      build();
+      images = list;
       if (!images.length) return;
-      index = 0;
 
       var multi = images.length > 1;
       prevBtn.hidden = !multi;
@@ -1014,12 +1098,14 @@ window.addEventListener("load", function () {
           dots.appendChild(dot);
         });
       }
-      show(0);
+      show(startAt || 0);
 
-      overlay.querySelector('.award-lightbox-caption h4').textContent = textOf(card, 'h4');
-      overlay.querySelector('.award-lightbox-caption p').textContent = textOf(card, 'figcaption p');
+      var caption = overlay.querySelector('.award-lightbox-caption p');
+      overlay.querySelector('.award-lightbox-caption h4').textContent = title;
+      caption.textContent = text;
+      caption.hidden = !text;
 
-      lastFocus = card;
+      lastFocus = from;
       clearTimeout(closeTimer);
       overlay.classList.add('is-open');
       overlay.querySelector('.award-lightbox-close').focus({ preventScroll: true });
@@ -1061,6 +1147,47 @@ window.addEventListener("load", function () {
       card.setAttribute('role', 'button');
       var name = textOf(card, 'h4');
       if (name) card.setAttribute('aria-label', 'View ' + name);
+    });
+
+    // Life at Miguelitos (about.html) — each tile browses its own category
+    // with prev/next, and opens the current photo enlarged in this lightbox.
+    document.querySelectorAll('.life-tile').forEach(function (tile) {
+      var list = splitList(tile.getAttribute('data-images'));
+      var title = tile.getAttribute('data-title') || '';
+      var img = tile.querySelector('img');
+      var count = tile.querySelector('.life-tile-count');
+      var current = 0;
+      var swapTimer;
+      if (!list.length || !img) return;
+
+      tile.tabIndex = 0;
+      tile.setAttribute('role', 'button');
+      tile.setAttribute('aria-label', 'View ' + title + ' photos');
+
+      function go(step) {
+        current = (current + step + list.length) % list.length;
+        if (count) count.textContent = (current + 1) + ' / ' + list.length;
+        clearTimeout(swapTimer);
+        img.classList.add('is-swapping');
+        swapTimer = setTimeout(function () {
+          img.onload = function () { img.classList.remove('is-swapping'); };
+          img.src = list[current];
+          img.alt = title + ' — photo ' + (current + 1) + ' of ' + list.length;
+        }, 180);
+      }
+
+      tile.querySelector('.life-tile-nav--prev').addEventListener('click', function () { go(-1); });
+      tile.querySelector('.life-tile-nav--next').addEventListener('click', function () { go(1); });
+      tile.addEventListener('click', function (e) {
+        if (e.target.closest('button')) return;
+        openGallery(list, current, title, '', tile);
+      });
+      tile.addEventListener('keydown', function (e) {
+        if (e.target !== tile) return;
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGallery(list, current, title, '', tile); }
+        else if (e.key === 'ArrowLeft') go(-1);
+        else if (e.key === 'ArrowRight') go(1);
+      });
     });
   })();
 
