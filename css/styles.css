@@ -1690,6 +1690,33 @@ section { padding: 84px 0; }
 .info-item h4 { font-family: var(--font-body); font-weight: 600; font-size: 15px; }
 .info-item p { font-size: 14.5px; color: var(--char-soft); margin-top: 4px; }
 
+/* Regional branches (contact page) */
+#branches { scroll-margin-top: 120px; } /* clear the sticky header on footer-link jumps */
+.branch-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.branch-card {
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  padding: 28px 30px;
+  border-top: 4px solid var(--atsuete);
+}
+.branch-tag {
+  display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--atsuete);
+}
+.branch-card h3 { font-family: var(--font-body); font-weight: 700; font-size: 20px; margin: 6px 0 16px; }
+.branch-list { list-style: none; margin: 0; padding: 0; }
+.branch-list li { display: flex; gap: 14px; padding: 12px 0; border-top: 1px dashed rgba(36,27,20,0.2); font-size: 14.5px; }
+.branch-list li:first-child { border-top: none; }
+.branch-list svg { width: 20px; height: 20px; color: var(--atsuete); flex-shrink: 0; margin-top: 2px; }
+.branch-list a { color: var(--char-soft); text-decoration: none; overflow-wrap: anywhere; }
+.branch-list a:hover { color: var(--atsuete); }
+.branch-list span { display: flex; flex-direction: column; gap: 4px; }
+@media (max-width: 760px) {
+  .branch-grid { grid-template-columns: 1fr; }
+  .branch-card { padding: 24px 20px; }
+}
+
 .form-field { margin-bottom: 20px; }
 .form-field label {
   display: block;
@@ -1929,6 +1956,8 @@ section { padding: 84px 0; }
   margin-top: 14px;
 }
 .page-hero-art { width: 100%; max-width: 920px; }
+.page-hero-art--photo { max-width: 460px; margin-left: auto; }
+.page-hero-art--photo img { display: block; width: 100%; height: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.35)); }
 .export-globe { max-width: 400px; aspect-ratio: 1 / 1; margin-left: auto; }
 .export-globe canvas { display: block; cursor: grab; touch-action: none; }
 .export-globe.is-dragging canvas { cursor: grabbing; }
@@ -1945,6 +1974,7 @@ section { padding: 84px 0; }
   .page-hero-inner { grid-template-columns: 1fr; }
   .page-hero-art { max-width: 520px; margin: 0 auto; order: -1; }
   .export-globe { max-width: 320px; }
+  .page-hero-art--photo { max-width: 340px; }
 }
 
 /* ==========================================================================
@@ -2749,6 +2779,7 @@ body.spotlight-open { overflow: hidden; }
    Footer label + tablet & phone product sizing (2-3 cards per row)
    ========================================================================== */
 .footer-col ul li.footer-label { margin: 16px 0 4px; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; color: #fff; }
+.footer-col a.footer-branches { color: #fff; }
 
 @media (max-width: 900px) {
   /* three across on tablets */
