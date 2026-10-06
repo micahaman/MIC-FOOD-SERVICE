@@ -2779,8 +2779,6 @@ body.spotlight-open { overflow: hidden; }
    Footer label + tablet & phone product sizing (2-3 cards per row)
    ========================================================================== */
 .footer-col ul li.footer-label { margin: 16px 0 4px; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; color: #fff; }
-.footer-col a.footer-branches { color: #fff; }
-
 @media (max-width: 900px) {
   /* three across on tablets */
   .product-grid, .new-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
