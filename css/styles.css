@@ -2024,28 +2024,33 @@ section { padding: 84px 0; }
 .hero-fan-item:hover { scale: 1.08; z-index: 5; filter: drop-shadow(0 22px 30px rgba(0,0,0,0.55)); }
 
 /* Business Packages hero — scattered photo prints */
-.hero-stack { position: relative; max-width: 480px; aspect-ratio: 1 / 1; margin-left: auto; }
+.hero-stack { position: relative; max-width: 500px; aspect-ratio: 1 / 1.1; margin-left: auto; }
 .hero-stack-item {
-  position: absolute; width: 50%; margin: 0;
-  padding: 8px 8px 0; background: #FBF6EC; border-radius: 4px;
+  position: absolute; width: 31%; margin: 0;
+  padding: 6px 6px 0; background: #FBF6EC; border-radius: 4px;
   box-shadow: 0 18px 34px rgba(0,0,0,0.45);
   transition: rotate 0.4s cubic-bezier(.2,.8,.2,1), scale 0.3s ease, box-shadow 0.3s ease;
   animation: heroFloat 6s ease-in-out infinite;
 }
 .hero-stack-item::before { /* strip of tape */
-  content: ""; position: absolute; top: -10px; left: 50%; width: 38%; height: 20px;
+  content: ""; position: absolute; top: -8px; left: 50%; width: 40%; height: 16px;
   translate: -50% 0; rotate: -3deg;
   background: rgba(242,166,35,0.55); box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 .hero-stack-item img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 2px; }
 .hero-stack-item figcaption {
-  padding: 7px 2px 9px; text-align: center;
-  font: 700 12px var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--char);
+  padding: 5px 2px 7px; text-align: center; white-space: nowrap;
+  font: 700 10.5px var(--font-body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--char);
 }
-.hero-stack-item:nth-child(1) { left: 2%;  top: 4%;  rotate: -8deg; z-index: 2; animation-delay: -1s; }
-.hero-stack-item:nth-child(2) { right: 2%; top: 0;   rotate: 6deg;  z-index: 1; animation-delay: -3s; }
-.hero-stack-item:nth-child(3) { left: 8%;  bottom: 0; rotate: 4deg;  z-index: 3; animation-delay: -2s; }
-.hero-stack-item:nth-child(4) { right: 0;  bottom: 6%; rotate: -10deg; z-index: 4; animation-delay: -4s; }
+/* 3-2-3 staggered layout; rows overlap only at the corners so captions stay readable */
+.hero-stack-item:nth-child(1) { left: 0;     top: 1%;  rotate: -7deg; z-index: 1; animation-delay: -1s; }
+.hero-stack-item:nth-child(2) { left: 34.5%; top: 0;   rotate: 4deg;  z-index: 1; animation-delay: -3s; }
+.hero-stack-item:nth-child(3) { left: 69%;   top: 2%;  rotate: -3deg; z-index: 1; animation-delay: -2s; }
+.hero-stack-item:nth-child(4) { left: 15%;   top: 32%; rotate: 5deg;  z-index: 2; animation-delay: -4s; }
+.hero-stack-item:nth-child(5) { left: 53%;   top: 31%; rotate: -6deg; z-index: 2; animation-delay: -0.5s; }
+.hero-stack-item:nth-child(6) { left: 1%;    top: 63%; rotate: 3deg;  z-index: 3; animation-delay: -2.5s; }
+.hero-stack-item:nth-child(7) { left: 35%;   top: 64%; rotate: -4deg; z-index: 3; animation-delay: -1.5s; }
+.hero-stack-item:nth-child(8) { left: 68%;   top: 62%; rotate: 7deg;  z-index: 3; animation-delay: -3.5s; }
 .hero-stack-item:hover { rotate: 0deg; scale: 1.06; z-index: 6; box-shadow: 0 26px 44px rgba(0,0,0,0.55); }
 
 /* Machines hero — tilted wall of machine tiles; columns scroll in opposite directions */
@@ -2099,7 +2104,7 @@ section { padding: 84px 0; }
   .export-globe { max-width: 320px; }
   .page-hero-art--photo { max-width: 340px; }
   .hero-fan { max-width: 380px; }
-  .hero-stack { max-width: 340px; }
+  .hero-stack { max-width: 380px; }
   .hero-wall { max-width: 420px; height: 260px; }
 }
 
@@ -3182,3 +3187,34 @@ body.spotlight-open { overflow: hidden; }
 .notfound .btn-ghost { border: 1px solid rgba(255,247,234,0.6); color: var(--rice-cream); }
 @keyframes notfoundWobble { 0%, 100% { rotate: -12deg; translate: 0 0; } 50% { rotate: 8deg; translate: 0 -10px; } }
 @media (prefers-reduced-motion: reduce) { .notfound-pack { animation: none; } }
+
+/* ==========================================================================
+   Uniform banner height — every page banner with artwork matches the
+   landing page hero (640px on desktop), and each artwork is sized to fit.
+   ========================================================================== */
+@media (min-width: 901px) {
+  .page-hero:has(.page-hero-art) {
+    min-height: 640px; padding: 0;
+    display: flex; align-items: center;
+  }
+  .page-hero:has(.page-hero-art) > .container { width: 100%; padding-top: 40px; padding-bottom: 40px; }
+  .page-hero-inner { align-items: center; }
+
+  .page-hero-art.hero-fan            { width: min(100%, 470px); max-width: none; }
+  .page-hero-art.hero-stack          { width: min(100%, 430px); max-width: none; }
+  .page-hero-art.hero-wall           { width: min(100%, 480px); max-width: none; height: 470px; }
+  .page-hero-art.export-globe        { width: min(100%, 470px); max-width: none; }
+  .page-hero-art.toll-hero           { width: min(100%, 540px); max-width: none; }
+  .page-hero-art.contact-map         { width: min(100%, 405px); max-width: none; }
+  .page-hero-art:not([class*=" "])   { max-width: 560px; margin-left: auto; } /* line-art icon banners */
+}
+
+@media (max-width: 900px) {
+  /* stacked layout: artwork above the text, all about the same height */
+  .page-hero-art.hero-fan     { max-width: 300px; }
+  .page-hero-art.hero-stack   { max-width: 275px; }
+  .page-hero-art.hero-wall    { max-width: 420px; height: 280px; }
+  .page-hero-art.export-globe { max-width: 300px; }
+  .page-hero-art.toll-hero    { max-width: 380px; }
+  .page-hero-art.contact-map  { max-width: 260px; }
+}
