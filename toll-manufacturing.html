@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Consent defaults: analytics stays off until the visitor accepts cookies -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+try{if(localStorage.getItem('mic-cookie-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -16,9 +22,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
 <meta name="description" content="Toll manufacturing and private-label production of instant food premixes by Miguelitos International Corporation, an FDA-licensed Philippine facility.">
+<link rel="canonical" href="https://www.miguelitoscorp.com/toll-manufacturing">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Miguelitos International Corporation">
+<meta property="og:title" content="Toll Manufacturing — Miguelitos International Corporation">
+<meta property="og:description" content="Toll manufacturing and private-label production of instant food premixes by Miguelitos International Corporation, an FDA-licensed Philippine facility.">
+<meta property="og:url" content="https://www.miguelitoscorp.com/toll-manufacturing">
+<meta property="og:image" content="https://www.miguelitoscorp.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Miguelitos — Food Manufacturer, Exporter &amp; Business Solutions Provider">
+<meta property="og:locale" content="en_PH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Toll Manufacturing — Miguelitos International Corporation">
+<meta name="twitter:description" content="Toll manufacturing and private-label production of instant food premixes by Miguelitos International Corporation, an FDA-licensed Philippine facility.">
+<meta name="twitter:image" content="https://www.miguelitoscorp.com/img/og-image.jpg">
+<meta name="theme-color" content="#3D140C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=55">
+<link rel="stylesheet" href="css/styles.css?v=62">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -76,8 +99,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Miguelitos International Corporation offers toll manufacturing services for food and beverage brands, retailers, restaurants, and institutional buyers who need a reliable, experienced production partner in the Philippines.</p>
         <p>We work with established brands looking to outsource production, emerging brands that need a manufacturing partner to scale, and businesses that want to develop a new product under their own label. Our facility handles formulation, blending, production, and packaging — from concept through to finished, shelf-ready product.</p>
       </div>
-      <div class="page-hero-art page-hero-art--photo">
-        <img src="assets/PageBanners/web/toll-banner.webp?v=1" width="900" height="672" alt="Blank sachet and stand-up pouch labelled Your Product">
+      <div class="page-hero-art page-hero-art--photo toll-hero">
+        <span class="toll-hero-ring" aria-hidden="true"></span>
+        <div class="toll-hero-float">
+          <img src="assets/PageBanners/web/toll-banner.webp?v=1" width="900" height="672" alt="Blank sachet and stand-up pouch labelled Your Product">
+          <span class="toll-hero-shine" aria-hidden="true"></span>
+        </div>
+        <span class="toll-sparkle" style="--x:8%;--y:18%;--d:0s" aria-hidden="true"></span>
+        <span class="toll-sparkle" style="--x:88%;--y:10%;--d:1.1s" aria-hidden="true"></span>
+        <span class="toll-sparkle" style="--x:94%;--y:62%;--d:2.3s" aria-hidden="true"></span>
+        <span class="toll-sparkle" style="--x:4%;--y:72%;--d:1.7s" aria-hidden="true"></span>
+        <span class="toll-sparkle" style="--x:52%;--y:2%;--d:0.6s" aria-hidden="true"></span>
       </div>
     </div>
   </div>
@@ -163,21 +195,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="form-row">
         <div class="form-field">
           <label for="toll-contact-name">Contact Person</label>
-          <input type="text" id="toll-contact-name" name="name" required>
+          <input type="text" id="toll-contact-name" name="name" required maxlength="100" autocomplete="name">
         </div>
         <div class="form-field">
           <label for="toll-email">Email Address</label>
-          <input type="email" id="toll-email" name="email" required>
+          <input type="email" id="toll-email" name="email" required maxlength="150" autocomplete="email">
         </div>
       </div>
       <div class="form-row">
         <div class="form-field">
           <label for="toll-company">Company Name</label>
-          <input type="text" id="toll-company" name="company" required>
+          <input type="text" id="toll-company" name="company" required maxlength="150" autocomplete="organization">
         </div>
         <div class="form-field">
           <label for="toll-concept">Product Concept / Category</label>
-          <input type="text" id="toll-concept" name="concept" required>
+          <input type="text" id="toll-concept" name="concept" required maxlength="200">
         </div>
       </div>
       <div class="form-row">
@@ -191,7 +223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="form-field">
           <label for="toll-benchmark">Benchmark Product (if any)</label>
-          <input type="text" id="toll-benchmark" name="benchmark">
+          <input type="text" id="toll-benchmark" name="benchmark" maxlength="200">
         </div>
       </div>
       <div class="form-row">
@@ -205,23 +237,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="form-field">
           <label for="toll-pack-size">Pack Size</label>
-          <input type="text" id="toll-pack-size" name="pack_size" placeholder="e.g. 250g, 1L">
+          <input type="text" id="toll-pack-size" name="pack_size" placeholder="e.g. 250g, 1L" maxlength="100">
         </div>
       </div>
       <div class="form-row">
         <div class="form-field">
           <label for="toll-volume">Estimated Monthly Volume</label>
-          <input type="text" id="toll-volume" name="volume" placeholder="e.g. 500kg / month">
+          <input type="text" id="toll-volume" name="volume" placeholder="e.g. 500kg / month" maxlength="100">
         </div>
         <div class="form-field">
           <label for="toll-market">Target Market</label>
-          <input type="text" id="toll-market" name="market" placeholder="e.g. Domestic, or export country">
+          <input type="text" id="toll-market" name="market" placeholder="e.g. Domestic, or export country" maxlength="150">
         </div>
       </div>
       <div class="form-row">
         <div class="form-field">
           <label for="toll-certs">Required Certifications</label>
-          <input type="text" id="toll-certs" name="certifications" placeholder="e.g. Halal, FDA, ISO">
+          <input type="text" id="toll-certs" name="certifications" placeholder="e.g. Halal, FDA, ISO" maxlength="150">
         </div>
         <div class="form-field">
           <label for="toll-launch-date">Target Launch Date</label>
@@ -230,11 +262,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="form-field">
         <label for="toll-requirements">Additional Requirements</label>
-        <textarea id="toll-requirements" name="requirements"></textarea>
+        <textarea id="toll-requirements" name="requirements" maxlength="3000"></textarea>
       </div>
       <div class="form-field">
         <label for="toll-file">File Upload (product brief or spec sheet)</label>
-        <input type="file" id="toll-file" name="file">
+        <input type="file" id="toll-file" name="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp">
       </div>
       <button type="submit" class="btn btn-primary">Submit Toll Manufacturing Inquiry →</button>
       <p id="toll-form-status"></p>
@@ -246,7 +278,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="footer-grid">
             <div class="footer-brand">
-        <img src="img/mic-logo.png?v=1" alt="Miguelitos International Corporation logo" class="footer-logo">
+        <img src="img/mic-logo.png?v=1" alt="Miguelitos International Corporation logo" class="footer-logo" loading="lazy" decoding="async">
         <p class="footer-company-name">Miguelitos<br>International<br>Corporation</p>
         <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider.<br>Proudly made in the Philippines.</p>
       </div>
@@ -303,12 +335,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Miguelitos International Corporation. All rights reserved.</span>
-      <span>Privacy Policy  |  Terms of Use</span>
+      <span>© 2026 Miguelitos International Corporation. All rights reserved.</span>
+      <span class="footer-legal"><a href="privacy-policy">Privacy Policy</a>  |  <a href="#" data-cookie-settings>Cookie Settings</a></span>
     </div>
   </div>
 </footer>
 
-<script src="js/script.js?v=5"></script>
+<script src="js/script.js?v=7"></script>
 </body>
 </html>

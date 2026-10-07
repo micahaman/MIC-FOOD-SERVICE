@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Consent defaults: analytics stays off until the visitor accepts cookies -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+try{if(localStorage.getItem('mic-cookie-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -16,9 +22,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
 <meta name="description" content="Start an ice scramble business with the Miguelitos Ice Scramble Package — equipment, premixes, and ongoing supply in one package.">
+<link rel="canonical" href="https://www.miguelitoscorp.com/package-ice-scramble">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Miguelitos International Corporation">
+<meta property="og:title" content="Ice Scramble Package — Miguelitos International Corporation">
+<meta property="og:description" content="Start an ice scramble business with the Miguelitos Ice Scramble Package — equipment, premixes, and ongoing supply in one package.">
+<meta property="og:url" content="https://www.miguelitoscorp.com/package-ice-scramble">
+<meta property="og:image" content="https://www.miguelitoscorp.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Miguelitos — Food Manufacturer, Exporter &amp; Business Solutions Provider">
+<meta property="og:locale" content="en_PH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ice Scramble Package — Miguelitos International Corporation">
+<meta name="twitter:description" content="Start an ice scramble business with the Miguelitos Ice Scramble Package — equipment, premixes, and ongoing supply in one package.">
+<meta name="twitter:image" content="https://www.miguelitoscorp.com/img/og-image.jpg">
+<meta name="theme-color" content="#3D140C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=55">
+<link rel="stylesheet" href="css/styles.css?v=62">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -76,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section>
   <div class="container package-detail">
     <div class="package-detail-media">
-      <img src="assets/BusinessPackages/web/ice-scramble-package.jpg?v=1" alt="Miguelitos Ice Scramble Package — ice crusher and Scramble Magic mix" class="package-hero-photo" loading="lazy">
+      <img src="assets/BusinessPackages/web/ice-scramble-package.webp?v=1" alt="Miguelitos Ice Scramble Package — ice crusher and Scramble Magic mix" class="package-hero-photo" loading="lazy">
     </div>
     <div class="package-detail-body">
       <div class="section-head">
@@ -112,7 +135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="footer-grid">
             <div class="footer-brand">
-        <img src="img/mic-logo.png?v=1" alt="Miguelitos International Corporation logo" class="footer-logo">
+        <img src="img/mic-logo.png?v=1" alt="Miguelitos International Corporation logo" class="footer-logo" loading="lazy" decoding="async">
         <p class="footer-company-name">Miguelitos<br>International<br>Corporation</p>
         <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider.<br>Proudly made in the Philippines.</p>
       </div>
@@ -169,12 +192,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Miguelitos International Corporation. All rights reserved.</span>
-      <span>Privacy Policy  |  Terms of Use</span>
+      <span>© 2026 Miguelitos International Corporation. All rights reserved.</span>
+      <span class="footer-legal"><a href="privacy-policy">Privacy Policy</a>  |  <a href="#" data-cookie-settings>Cookie Settings</a></span>
     </div>
   </div>
 </footer>
 
-<script src="js/script.js?v=5"></script>
+<script src="js/script.js?v=7"></script>
 </body>
 </html>

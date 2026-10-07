@@ -484,11 +484,18 @@ window.addEventListener("load", function () {
   var FORM_RECIPIENT = 'sales@miguelitoscorp.com';
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + FORM_RECIPIENT;
   var MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024;
+  // Spam protection (no CAPTCHA): honeypot field, a minimum fill time,
+  // a cap on links in free-text fields, and a cooldown between sends.
+  var MIN_FILL_MS = 3000;
+  var MAX_LINKS = 3;
+  var COOLDOWN_MS = 60 * 1000;
+  var COOLDOWN_KEY = 'mic-last-inquiry';
 
   function wireForm(form, statusEl, options) {
     if (!form || !statusEl) return;
     var button = form.querySelector('button[type="submit"]');
     var idleLabel = button ? button.textContent : '';
+    var shownAt = Date.now();
     statusEl.setAttribute('role', 'status');
     statusEl.setAttribute('aria-live', 'polite');
 
@@ -497,6 +504,12 @@ window.addEventListener("load", function () {
       statusEl.className = kind || '';
     }
 
+    // Mark fields invalid only after the visitor has touched them
+    form.addEventListener('blur', function (e) {
+      var el = e.target;
+      if (el.matches && el.matches('input, select, textarea')) el.classList.add('is-touched');
+    }, true);
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -504,24 +517,34 @@ window.addEventListener("load", function () {
       var trap = form.querySelector('[name="_honey"]');
       if (trap && trap.value) { form.reset(); return; }
 
+      // Required fields must contain more than whitespace
+      form.querySelectorAll('[required]').forEach(function (el) {
+        if (el.type !== 'file' && typeof el.value === 'string' && el.value.trim() === '') el.value = '';
+      });
+      form.querySelectorAll('input, select, textarea').forEach(function (el) { el.classList.add('is-touched'); });
       if (!form.reportValidity()) return;
 
-      // reCAPTCHA v2 checkbox — one per page (site key is in the form's data-sitekey)
-      var captcha = form.querySelector('.g-recaptcha');
-      if (captcha) {
-        var token = '';
-        try { token = grecaptcha.getResponse(); } catch (err) {
-          show('The security check is still loading. Please wait a moment and try again.', 'error');
-          return;
-        }
-        if (!token) {
-          show('Please tick the "I\'m not a robot" box before sending.', 'error');
-          return;
-        }
+      // Bots submit instantly; people take at least a few seconds
+      if (Date.now() - shownAt < MIN_FILL_MS) {
+        show('Please take a moment to review your details, then send again.', 'error');
+        return;
+      }
+      var linkCount = 0;
+      form.querySelectorAll('textarea, input[type="text"]').forEach(function (el) {
+        linkCount += (el.value.match(/https?:\/\/|www\./gi) || []).length;
+      });
+      if (linkCount > MAX_LINKS) {
+        show('Your message contains too many links. Please remove some and try again.', 'error');
+        return;
+      }
+      var last = 0;
+      try { last = parseInt(localStorage.getItem(COOLDOWN_KEY), 10) || 0; } catch (err) {}
+      if (Date.now() - last < COOLDOWN_MS) {
+        show('Thanks — we just received an inquiry from you. Please wait a minute before sending another.', 'error');
+        return;
       }
 
       var data = new FormData(form);
-      data.delete('g-recaptcha-response');
       var fileInput = form.querySelector('input[type="file"]');
       if (fileInput) {
         var file = fileInput.files && fileInput.files[0];
@@ -549,7 +572,11 @@ window.addEventListener("load", function () {
           var accepted = result.ok && (result.body.success === true || result.body.success === 'true');
           if (!accepted) throw new Error(result.body.message || 'Request failed');
           show(options.success, 'success');
+          try { localStorage.setItem(COOLDOWN_KEY, String(Date.now())); } catch (err) {}
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'generate_lead', form_id: form.id });
           form.reset();
+          form.querySelectorAll('.is-touched').forEach(function (el) { el.classList.remove('is-touched'); });
           if (options.afterReset) options.afterReset();
         })
         .catch(function () {
@@ -557,7 +584,6 @@ window.addEventListener("load", function () {
         })
         .then(function () {
           if (button) { button.disabled = false; button.textContent = idleLabel; }
-          if (captcha) grecaptcha.reset();
         });
     });
   }
@@ -1191,4 +1217,79 @@ window.addEventListener("load", function () {
     });
   })();
 
+});
+
+// --------------------------------------------------------------------
+// Cookie consent — works with the Consent Mode defaults in each page's
+// <head>. Analytics stays off until the visitor clicks Accept; the choice
+// is remembered and can be changed from the footer's "Cookie Settings".
+// --------------------------------------------------------------------
+(function () {
+  var KEY = 'mic-cookie-consent';
+  var GRANTED = { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' };
+  var DENIED = { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' };
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+
+  function buildBanner() {
+    var el = document.createElement('div');
+    el.className = 'cookie-banner';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-live', 'polite');
+    el.setAttribute('aria-label', 'Cookie consent');
+    el.innerHTML =
+      '<p class="cookie-banner-text">We use cookies to understand how visitors use our site and to improve it. ' +
+      'Analytics cookies are only set if you accept. <a href="privacy-policy">Privacy Policy</a></p>' +
+      '<div class="cookie-banner-actions">' +
+        '<button type="button" class="btn cookie-btn cookie-btn--decline" data-consent="denied">Decline</button>' +
+        '<button type="button" class="btn btn-primary cookie-btn" data-consent="granted">Accept</button>' +
+      '</div>';
+    el.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-consent]');
+      if (!btn) return;
+      var choice = btn.getAttribute('data-consent');
+      try { localStorage.setItem(KEY, choice); } catch (err) {}
+      gtag('consent', 'update', choice === 'granted' ? GRANTED : DENIED);
+      window.dataLayer.push({ event: 'cookie_consent_' + choice });
+      el.classList.remove('is-visible');
+      setTimeout(function () { el.remove(); }, 300);
+    });
+    document.body.appendChild(el);
+    requestAnimationFrame(function () { el.classList.add('is-visible'); });
+    return el;
+  }
+
+  function init() {
+    if (!stored()) buildBanner();
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('[data-cookie-settings]');
+      if (!link) return;
+      e.preventDefault();
+      if (!document.querySelector('.cookie-banner')) buildBanner().querySelector('button').focus();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+// --------------------------------------------------------------------
+// Analytics events for Google Tag Manager (only recorded once the
+// visitor has accepted cookies): brochure downloads, shop links,
+// phone/email taps, and outbound social links.
+// --------------------------------------------------------------------
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var href = a.getAttribute('href');
+  var ev = null;
+  if (/\.pdf($|\?)/i.test(href)) ev = { event: 'file_download', file_name: href.split('/').pop(), link_text: a.textContent.trim() };
+  else if (/^tel:/i.test(href)) ev = { event: 'contact_click', method: 'phone', link_url: href };
+  else if (/^mailto:/i.test(href)) ev = { event: 'contact_click', method: 'email', link_url: href };
+  else if (/shopee|lazada|tiktok\.com\/@.*shop|tiktok/i.test(href)) ev = { event: 'shop_click', link_url: href, link_text: a.textContent.trim() };
+  else if (/^https?:/i.test(href) && a.hostname !== location.hostname) ev = { event: 'outbound_click', link_url: href };
+  if (ev) { window.dataLayer = window.dataLayer || []; window.dataLayer.push(ev); }
 });

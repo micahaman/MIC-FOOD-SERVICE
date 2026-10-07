@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Consent defaults: analytics stays off until the visitor accepts cookies -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+try{if(localStorage.getItem('mic-cookie-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -16,9 +22,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
 <meta name="description" content="Browse premix product lines manufactured by Miguelito's International Corporation: savory, dessert, beverage, and foodservice bulk formats.">
+<link rel="canonical" href="https://www.miguelitoscorp.com/products">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Miguelitos International Corporation">
+<meta property="og:title" content="Products — Miguelitos International Corporation">
+<meta property="og:description" content="Browse premix product lines manufactured by Miguelito&#x27;s International Corporation: savory, dessert, beverage, and foodservice bulk formats.">
+<meta property="og:url" content="https://www.miguelitoscorp.com/products">
+<meta property="og:image" content="https://www.miguelitoscorp.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Miguelitos — Food Manufacturer, Exporter &amp; Business Solutions Provider">
+<meta property="og:locale" content="en_PH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Products — Miguelitos International Corporation">
+<meta name="twitter:description" content="Browse premix product lines manufactured by Miguelito&#x27;s International Corporation: savory, dessert, beverage, and foodservice bulk formats.">
+<meta name="twitter:image" content="https://www.miguelitoscorp.com/img/og-image.jpg">
+<meta name="theme-color" content="#3D140C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=55">
+<link rel="stylesheet" href="css/styles.css?v=62">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -76,11 +99,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="page-hero-note">Products are available in single-serve, retail, foodservice, and institutional/bulk formats. Pack size availability varies by product — see individual product pages for details.</p>
       </div>
       <div class="page-hero-art hero-fan" aria-hidden="true">
-        <img src="assets/products/web/softserve-ube.png" alt="" class="hero-fan-item">
-        <img src="assets/products/web/bev-milktea-okinawa.png" alt="" class="hero-fan-item">
-        <img src="assets/products/web/bake-belgian-waffle-mix.png" alt="" class="hero-fan-item">
-        <img src="assets/products/web/bev-slush-strawberry.png" alt="" class="hero-fan-item">
-        <img src="assets/products/web/spec-cc-bubble-gum.png" alt="" class="hero-fan-item">
+        <div class="hero-fan-row">
+          <img src="assets/products/web/softserve-mango.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/bev-milkshake-strawberry.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/fil-ube-halaya-mix.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/bev-milktea-matcha-green-tea.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/spec-scramble-ube.webp" alt="" class="hero-fan-item">
+        </div>
+        <div class="hero-fan-row">
+          <img src="assets/products/web/softserve-chocolate.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/bev-shakyshake-mango.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/bake-hotcake-mix.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/bev-slush-melon.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/spec-cc-strawberry.webp" alt="" class="hero-fan-item">
+        </div>
+        <div class="hero-fan-row">
+          <img src="assets/products/web/softserve-ube.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/bev-milktea-okinawa.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/bake-belgian-waffle-mix.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/bev-slush-strawberry.webp" alt="" class="hero-fan-item">
+          <img src="assets/products/web/spec-cc-bubble-gum.webp" alt="" class="hero-fan-item">
+        </div>
       </div>
     </div>
   </div>
@@ -114,35 +153,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>Miguelitos soft serve premixes deliver consistent texture, rich flavour, and reliable performance across a full range of machines. Available in classic vanilla, chocolate, and seasonal or specialty variants, our premixes are trusted by kiosks, food parks, mall concessions, and foodservice operators across the Philippines and beyond.</p>
             <div class="sku-gallery">
               <figure class="sku-card">
-                <img src="assets/products/web/softserve-vanilla.png" alt="Ice Cream Boy Premix Vanilla pouch" loading="lazy">
+                <img src="assets/products/web/softserve-vanilla.webp" alt="Ice Cream Boy Premix Vanilla pouch" loading="lazy">
                 <figcaption><span class="sku-name">Vanilla</span><span class="sku-sub">Ice Cream Boy Premix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/softserve-chocolate.png" alt="Ice Cream Boy Premix Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/softserve-chocolate.webp" alt="Ice Cream Boy Premix Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">Chocolate</span><span class="sku-sub">Ice Cream Boy Premix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/softserve-ube.png" alt="Ice Cream Boy Premix Ube pouch" loading="lazy">
+                <img src="assets/products/web/softserve-ube.webp" alt="Ice Cream Boy Premix Ube pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube</span><span class="sku-sub">Ice Cream Boy Premix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/softserve-mango.png" alt="Ice Cream Boy Premix Mango pouch" loading="lazy">
+                <img src="assets/products/web/softserve-mango.webp" alt="Ice Cream Boy Premix Mango pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mango</span><span class="sku-sub">Ice Cream Boy Premix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/softserve-buko-pandan.png" alt="Ice Cream Boy Premix Buko Pandan pouch" loading="lazy">
+                <img src="assets/products/web/softserve-buko-pandan.webp" alt="Ice Cream Boy Premix Buko Pandan pouch" loading="lazy">
                 <figcaption><span class="sku-name">Buko Pandan</span><span class="sku-sub">Ice Cream Boy Premix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/softserve-black-forest.png" alt="Ice Cream Boy Premix Black Forest pouch" loading="lazy">
+                <img src="assets/products/web/softserve-black-forest.webp" alt="Ice Cream Boy Premix Black Forest pouch" loading="lazy">
                 <figcaption><span class="sku-name">Black Forest</span><span class="sku-sub">Ice Cream Boy Premix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/softserve-cookies-cream.png" alt="Ice Cream Boy Premix Cookies &amp; Cream pouch" loading="lazy">
+                <img src="assets/products/web/softserve-cookies-cream.webp" alt="Ice Cream Boy Premix Cookies &amp; Cream pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cookies &amp; Cream</span><span class="sku-sub">Ice Cream Boy Premix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/softserve-avocado.png" alt="Ice Cream Boy Premix Avocado pouch" loading="lazy">
+                <img src="assets/products/web/softserve-avocado.webp" alt="Ice Cream Boy Premix Avocado pouch" loading="lazy">
                 <figcaption><span class="sku-name">Avocado</span><span class="sku-sub">Ice Cream Boy Premix · 1kg</span></figcaption>
               </figure>
             </div>
@@ -168,75 +207,75 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>Bringing classic Filipino flavours to kitchens, food stalls, and dining tables — our Filipino Favorites line covers the country's most-loved traditional food and beverage products. Designed for consistent, easy preparation at any scale.</p>
             <div class="sku-gallery">
               <figure class="sku-card">
-                <img src="assets/products/web/fil-bibingka-mix.png" alt="Miguelitos Bibingka Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-bibingka-mix.webp" alt="Miguelitos Bibingka Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Bibingka Mix</span><span class="sku-sub">Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-original-puto-mix.png" alt="Miguelitos Original Puto Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-original-puto-mix.webp" alt="Miguelitos Original Puto Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Original Puto Mix</span><span class="sku-sub">Steamed Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-ube-puto-mix.png" alt="Miguelitos Ube Puto Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-ube-puto-mix.webp" alt="Miguelitos Ube Puto Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Puto Mix</span><span class="sku-sub">Purple Yam Steamed Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-cheese-puto-mix.png" alt="Miguelitos Cheese Puto Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-cheese-puto-mix.webp" alt="Miguelitos Cheese Puto Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cheese Puto Mix</span><span class="sku-sub">Cheese Steamed Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-pandan-puto-mix.png" alt="Miguelitos Pandan Puto Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-pandan-puto-mix.webp" alt="Miguelitos Pandan Puto Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Pandan Puto Mix</span><span class="sku-sub">Screwpine Steamed Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-original-kutsinta-mix.png" alt="Miguelitos Original Kutsinta Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-original-kutsinta-mix.webp" alt="Miguelitos Original Kutsinta Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Original Kutsinta Mix</span><span class="sku-sub">Steamed Sticky Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-ube-kutsinta-mix.png" alt="Miguelitos Ube Kutsinta Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-ube-kutsinta-mix.webp" alt="Miguelitos Ube Kutsinta Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Kutsinta Mix</span><span class="sku-sub">Purple Yam Sticky Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-black-kutsinta-mix.png" alt="Miguelitos Black Kutsinta Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-black-kutsinta-mix.webp" alt="Miguelitos Black Kutsinta Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Black Kutsinta Mix</span><span class="sku-sub">Steamed Sticky Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-pichi-pichi-mix.png" alt="Miguelitos Pichi Pichi Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-pichi-pichi-mix.webp" alt="Miguelitos Pichi Pichi Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Pichi Pichi Mix</span><span class="sku-sub">Cassava Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-palitaw-mix.png" alt="Miguelitos Palitaw Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-palitaw-mix.webp" alt="Miguelitos Palitaw Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Palitaw Mix</span><span class="sku-sub">Sweet Flat Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-ube-buchi-mix.png" alt="Miguelitos Ube Buchi Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-ube-buchi-mix.webp" alt="Miguelitos Ube Buchi Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Buchi Mix</span><span class="sku-sub">Chewy Rice Cake Balls · 550g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-puto-bumbong-mix.png" alt="Miguelitos Puto Bumbong Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-puto-bumbong-mix.webp" alt="Miguelitos Puto Bumbong Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Puto Bumbong Mix</span><span class="sku-sub">Steamed Bamboo Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-inutak-mix.png" alt="Miguelitos Inutak Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-inutak-mix.webp" alt="Miguelitos Inutak Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Inutak Mix</span><span class="sku-sub">Gooey Rice Cake Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-nilupak-mix.png" alt="Miguelitos Nilupak Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-nilupak-mix.webp" alt="Miguelitos Nilupak Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Nilupak Mix</span><span class="sku-sub">Mashed Cassava Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-ube-nilupak-mix.png" alt="Miguelitos Ube Nilupak Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-ube-nilupak-mix.webp" alt="Miguelitos Ube Nilupak Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Nilupak Mix</span><span class="sku-sub">Mashed Purple Yam Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-ube-halaya-mix.png" alt="Miguelitos Ube Halaya Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-ube-halaya-mix.webp" alt="Miguelitos Ube Halaya Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Halaya Mix</span><span class="sku-sub">Purple Yam Jam Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-maja-blanca-mix.png" alt="Miguelitos Maja Blanca Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-maja-blanca-mix.webp" alt="Miguelitos Maja Blanca Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Maja Blanca Mix</span><span class="sku-sub">Pudding Mix · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/fil-taho-mix.png" alt="Miguelitos Taho Mix pouch" loading="lazy">
+                <img src="assets/products/web/fil-taho-mix.webp" alt="Miguelitos Taho Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Taho Mix</span><span class="sku-sub">Instant Soybean Curd · 485g</span></figcaption>
               </figure>
               <figure class="sku-card">
@@ -260,11 +299,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <figcaption><span class="sku-name">Arroz Caldo Mix</span><span class="sku-sub">Instant Rice Porridge · 35g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/New%20Products/ube-biko-sa-latik-mix.png" alt="Miguelitos Ube Biko sa Latik Mix pouch" loading="lazy">
+                <img src="assets/products/New%20Products/ube-biko-sa-latik-mix.webp" alt="Miguelitos Ube Biko sa Latik Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Biko sa Latik Mix</span><span class="sku-sub">Purple Yam Sticky Rice Mix · 550g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/New%20Products/ube-bilo-bilo-mix.png" alt="Miguelitos Ube Bilo-Bilo Mix pouch" loading="lazy">
+                <img src="assets/products/New%20Products/ube-bilo-bilo-mix.webp" alt="Miguelitos Ube Bilo-Bilo Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Bilo-Bilo Mix</span><span class="sku-sub">Purple Yam Sticky Rice Balls · 500g</span></figcaption>
               </figure>
             </div>
@@ -290,59 +329,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>From refreshing iced teas and lemonades to milk teas and slush, our beverage line covers the full menu of today's most in-demand drinks. All formulated for consistent taste and quick preparation — ideal for food stalls, cafés, restaurants, and beverage kiosks.</p>
             <div class="sku-gallery">
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-apple-iced-tea-250g.png" alt="Apple Iced Tea Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-apple-iced-tea-250g.webp" alt="Apple Iced Tea Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Apple Iced Tea</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-black-gulaman-250g.png" alt="Black Gulaman Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-black-gulaman-250g.webp" alt="Black Gulaman Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Black Gulaman</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-blue-lemonade-250g.png" alt="Blue Lemonade Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-blue-lemonade-250g.webp" alt="Blue Lemonade Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Blue Lemonade</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-cucumber-lemonade-250g.png" alt="Cucumber Lemonade Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-cucumber-lemonade-250g.webp" alt="Cucumber Lemonade Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cucumber Lemonade</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-grapes-250g.png" alt="Grapes Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-grapes-250g.webp" alt="Grapes Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Grapes</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-japanese-matcha-250g.png" alt="Japanese Matcha Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-japanese-matcha-250g.webp" alt="Japanese Matcha Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Japanese Matcha</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-lemon-iced-tea-250g.png" alt="Lemon Iced Tea Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-lemon-iced-tea-250g.webp" alt="Lemon Iced Tea Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Lemon Iced Tea</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-lemonade-250g.png" alt="Lemonade Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-lemonade-250g.webp" alt="Lemonade Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Lemonade</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-lychee-lemonade-250g.png" alt="Lychee Lemonade Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-lychee-lemonade-250g.webp" alt="Lychee Lemonade Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Lychee Lemonade</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-mango-250g.png" alt="Mango Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-mango-250g.webp" alt="Mango Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mango</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-orange-250g.png" alt="Orange Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-orange-250g.webp" alt="Orange Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Orange</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-pink-guava-lemonade-250g.png" alt="Pink Guava Lemonade Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-pink-guava-lemonade-250g.webp" alt="Pink Guava Lemonade Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Pink Guava Lemonade</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-red-iced-tea-250g.png" alt="Red Iced Tea Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-red-iced-tea-250g.webp" alt="Red Iced Tea Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Red Iced Tea</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-sagot-gulaman-250g.png" alt="Sago&#x27;t Gulaman Drink Mix 250g pouch" loading="lazy">
+                <img src="assets/products/web/bev-drink-sagot-gulaman-250g.webp" alt="Sago&#x27;t Gulaman Drink Mix 250g pouch" loading="lazy">
                 <figcaption><span class="sku-name">Sago&#x27;t Gulaman</span><span class="sku-sub">Drink Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
@@ -358,7 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <figcaption><span class="sku-name">Lemonade</span><span class="sku-sub">Drink Mix · 25g sachet</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-drink-lychee-lemonade-25g.png" alt="Lychee Lemonade Drink Mix 25g sachet" loading="lazy">
+                <img src="assets/products/web/bev-drink-lychee-lemonade-25g.webp" alt="Lychee Lemonade Drink Mix 25g sachet" loading="lazy">
                 <figcaption><span class="sku-name">Lychee Lemonade</span><span class="sku-sub">Drink Mix · 25g sachet</span></figcaption>
               </figure>
               <figure class="sku-card">
@@ -370,207 +409,207 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <figcaption><span class="sku-name">Sago&#x27;t Gulaman</span><span class="sku-sub">Drink Mix · 25g sachet</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-thai.png" alt="Milk Tea Thai pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-thai.webp" alt="Milk Tea Thai pouch" loading="lazy">
                 <figcaption><span class="sku-name">Thai</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-original-assam.png" alt="Milk Tea Original Assam pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-original-assam.webp" alt="Milk Tea Original Assam pouch" loading="lazy">
                 <figcaption><span class="sku-name">Original Assam</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-okinawa.png" alt="Milk Tea Okinawa pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-okinawa.webp" alt="Milk Tea Okinawa pouch" loading="lazy">
                 <figcaption><span class="sku-name">Okinawa</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-hokkaido.png" alt="Milk Tea Hokkaido pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-hokkaido.webp" alt="Milk Tea Hokkaido pouch" loading="lazy">
                 <figcaption><span class="sku-name">Hokkaido</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-wintermelon.png" alt="Milk Tea Wintermelon pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-wintermelon.webp" alt="Milk Tea Wintermelon pouch" loading="lazy">
                 <figcaption><span class="sku-name">Wintermelon</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-honeydew.png" alt="Milk Tea Honeydew pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-honeydew.webp" alt="Milk Tea Honeydew pouch" loading="lazy">
                 <figcaption><span class="sku-name">Honeydew</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-taro-ube.png" alt="Milk Tea Taro Ube pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-taro-ube.webp" alt="Milk Tea Taro Ube pouch" loading="lazy">
                 <figcaption><span class="sku-name">Taro Ube</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-matcha-green-tea.png" alt="Milk Tea Matcha Green Tea pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-matcha-green-tea.webp" alt="Milk Tea Matcha Green Tea pouch" loading="lazy">
                 <figcaption><span class="sku-name">Matcha Green Tea</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-cheesecake.png" alt="Milk Tea Cheesecake pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-cheesecake.webp" alt="Milk Tea Cheesecake pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cheesecake</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-red-velvet.png" alt="Milk Tea Red Velvet pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-red-velvet.webp" alt="Milk Tea Red Velvet pouch" loading="lazy">
                 <figcaption><span class="sku-name">Red Velvet</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-salted-caramel.png" alt="Milk Tea Salted Caramel pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-salted-caramel.webp" alt="Milk Tea Salted Caramel pouch" loading="lazy">
                 <figcaption><span class="sku-name">Salted Caramel</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-toffee-caramel.png" alt="Milk Tea Toffee Caramel pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-toffee-caramel.webp" alt="Milk Tea Toffee Caramel pouch" loading="lazy">
                 <figcaption><span class="sku-name">Toffee Caramel</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-white-chocolate.png" alt="Milk Tea White Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-white-chocolate.webp" alt="Milk Tea White Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">White Chocolate</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-chocolate.png" alt="Milk Tea Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-chocolate.webp" alt="Milk Tea Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">Chocolate</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-choco-hazelnut.png" alt="Milk Tea Choco Hazelnut pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-choco-hazelnut.webp" alt="Milk Tea Choco Hazelnut pouch" loading="lazy">
                 <figcaption><span class="sku-name">Choco Hazelnut</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-cookies-and-cream.png" alt="Milk Tea Cookies and Cream pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-cookies-and-cream.webp" alt="Milk Tea Cookies and Cream pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cookies and Cream</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milktea-strawberry.png" alt="Milk Tea Strawberry pouch" loading="lazy">
+                <img src="assets/products/web/bev-milktea-strawberry.webp" alt="Milk Tea Strawberry pouch" loading="lazy">
                 <figcaption><span class="sku-name">Strawberry</span><span class="sku-sub">Milk Tea · 500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-avocado.png" alt="Slush Mix Avocado pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-avocado.webp" alt="Slush Mix Avocado pouch" loading="lazy">
                 <figcaption><span class="sku-name">Avocado</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-cafe-latte.png" alt="Slush Mix Cafe Latte pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-cafe-latte.webp" alt="Slush Mix Cafe Latte pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cafe Latte</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-dark-chocolate.png" alt="Slush Mix Dark Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-dark-chocolate.webp" alt="Slush Mix Dark Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">Dark Chocolate</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-double-dutch.png" alt="Slush Mix Double Dutch pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-double-dutch.webp" alt="Slush Mix Double Dutch pouch" loading="lazy">
                 <figcaption><span class="sku-name">Double Dutch</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-mango.png" alt="Slush Mix Mango pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-mango.webp" alt="Slush Mix Mango pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mango</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-melon.png" alt="Slush Mix Melon pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-melon.webp" alt="Slush Mix Melon pouch" loading="lazy">
                 <figcaption><span class="sku-name">Melon</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-premium-hersheys.png" alt="Slush Mix Premium Hershey&#x27;s pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-premium-hersheys.webp" alt="Slush Mix Premium Hershey&#x27;s pouch" loading="lazy">
                 <figcaption><span class="sku-name">Premium Hershey&#x27;s</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-strawberry.png" alt="Slush Mix Strawberry pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-strawberry.webp" alt="Slush Mix Strawberry pouch" loading="lazy">
                 <figcaption><span class="sku-name">Strawberry</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-slush-taro-ube.png" alt="Slush Mix Taro Ube pouch" loading="lazy">
+                <img src="assets/products/web/bev-slush-taro-ube.webp" alt="Slush Mix Taro Ube pouch" loading="lazy">
                 <figcaption><span class="sku-name">Taro Ube</span><span class="sku-sub">Slush Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-avocado.png" alt="Premium Milkshake Mix Avocado pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-avocado.webp" alt="Premium Milkshake Mix Avocado pouch" loading="lazy">
                 <figcaption><span class="sku-name">Avocado</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-black-forest.png" alt="Premium Milkshake Mix Black Forest pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-black-forest.webp" alt="Premium Milkshake Mix Black Forest pouch" loading="lazy">
                 <figcaption><span class="sku-name">Black Forest</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-buko-pandan.png" alt="Premium Milkshake Mix Buko Pandan pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-buko-pandan.webp" alt="Premium Milkshake Mix Buko Pandan pouch" loading="lazy">
                 <figcaption><span class="sku-name">Buko Pandan</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-choco-fudge.png" alt="Premium Milkshake Mix Choco Fudge pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-choco-fudge.webp" alt="Premium Milkshake Mix Choco Fudge pouch" loading="lazy">
                 <figcaption><span class="sku-name">Choco Fudge</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-choco-truffle.png" alt="Premium Milkshake Mix Choco Truffle pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-choco-truffle.webp" alt="Premium Milkshake Mix Choco Truffle pouch" loading="lazy">
                 <figcaption><span class="sku-name">Choco Truffle</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-chocolate.png" alt="Premium Milkshake Mix Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-chocolate.webp" alt="Premium Milkshake Mix Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">Chocolate</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-cookies-cream.png" alt="Premium Milkshake Mix Cookies &amp; Cream pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-cookies-cream.webp" alt="Premium Milkshake Mix Cookies &amp; Cream pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cookies &amp; Cream</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-mango.png" alt="Premium Milkshake Mix Mango pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-mango.webp" alt="Premium Milkshake Mix Mango pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mango</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-rocky-road.png" alt="Premium Milkshake Mix Rocky Road pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-rocky-road.webp" alt="Premium Milkshake Mix Rocky Road pouch" loading="lazy">
                 <figcaption><span class="sku-name">Rocky Road</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-strawberry.png" alt="Premium Milkshake Mix Strawberry pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-strawberry.webp" alt="Premium Milkshake Mix Strawberry pouch" loading="lazy">
                 <figcaption><span class="sku-name">Strawberry</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-ube.png" alt="Premium Milkshake Mix Ube pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-ube.webp" alt="Premium Milkshake Mix Ube pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-milkshake-vanilla.png" alt="Premium Milkshake Mix Vanilla pouch" loading="lazy">
+                <img src="assets/products/web/bev-milkshake-vanilla.webp" alt="Premium Milkshake Mix Vanilla pouch" loading="lazy">
                 <figcaption><span class="sku-name">Vanilla</span><span class="sku-sub">Premium Milkshake Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-avocado.png" alt="Shaky Shake Powder Mix Avocado pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-avocado.webp" alt="Shaky Shake Powder Mix Avocado pouch" loading="lazy">
                 <figcaption><span class="sku-name">Avocado</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-black-forest.png" alt="Shaky Shake Powder Mix Black Forest pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-black-forest.webp" alt="Shaky Shake Powder Mix Black Forest pouch" loading="lazy">
                 <figcaption><span class="sku-name">Black Forest</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-buko-pandan.png" alt="Shaky Shake Powder Mix Buko Pandan pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-buko-pandan.webp" alt="Shaky Shake Powder Mix Buko Pandan pouch" loading="lazy">
                 <figcaption><span class="sku-name">Buko Pandan</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-choco-truffle.png" alt="Shaky Shake Powder Mix Choco Truffle pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-choco-truffle.webp" alt="Shaky Shake Powder Mix Choco Truffle pouch" loading="lazy">
                 <figcaption><span class="sku-name">Choco Truffle</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-chocolate.png" alt="Shaky Shake Powder Mix Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-chocolate.webp" alt="Shaky Shake Powder Mix Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">Chocolate</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-cookies-cream.png" alt="Shaky Shake Powder Mix Cookies &amp; Cream pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-cookies-cream.webp" alt="Shaky Shake Powder Mix Cookies &amp; Cream pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cookies &amp; Cream</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-double-dutch.png" alt="Shaky Shake Powder Mix Double Dutch pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-double-dutch.webp" alt="Shaky Shake Powder Mix Double Dutch pouch" loading="lazy">
                 <figcaption><span class="sku-name">Double Dutch</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-mango.png" alt="Shaky Shake Powder Mix Mango pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-mango.webp" alt="Shaky Shake Powder Mix Mango pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mango</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-melon.png" alt="Shaky Shake Powder Mix Melon pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-melon.webp" alt="Shaky Shake Powder Mix Melon pouch" loading="lazy">
                 <figcaption><span class="sku-name">Melon</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-rocky-road.png" alt="Shaky Shake Powder Mix Rocky Road pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-rocky-road.webp" alt="Shaky Shake Powder Mix Rocky Road pouch" loading="lazy">
                 <figcaption><span class="sku-name">Rocky Road</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-strawberry.png" alt="Shaky Shake Powder Mix Strawberry pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-strawberry.webp" alt="Shaky Shake Powder Mix Strawberry pouch" loading="lazy">
                 <figcaption><span class="sku-name">Strawberry</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-taro-ube.png" alt="Shaky Shake Powder Mix Taro Ube pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-taro-ube.webp" alt="Shaky Shake Powder Mix Taro Ube pouch" loading="lazy">
                 <figcaption><span class="sku-name">Taro Ube</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bev-shakyshake-vanilla.png" alt="Shaky Shake Powder Mix Vanilla pouch" loading="lazy">
+                <img src="assets/products/web/bev-shakyshake-vanilla.webp" alt="Shaky Shake Powder Mix Vanilla pouch" loading="lazy">
                 <figcaption><span class="sku-name">Vanilla</span><span class="sku-sub">Shaky Shake Powder Mix · 250g</span></figcaption>
               </figure>
             </div>
@@ -604,55 +643,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <figcaption><span class="sku-name">Hot Chocolate Mix</span><span class="sku-sub">Micafe · 20g sachet</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-spanish-latte.png" alt="Micafe Spanish Latte Coffee Mix sachet" loading="lazy">
+                <img src="assets/products/web/coffee-spanish-latte.webp" alt="Micafe Spanish Latte Coffee Mix sachet" loading="lazy">
                 <figcaption><span class="sku-name">Spanish Latte Coffee Mix</span><span class="sku-sub">Micafe · 25g sachet</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-caramel-macchiato.png" alt="Micafe Caramel Macchiato Coffee Mix sachet" loading="lazy">
+                <img src="assets/products/web/coffee-caramel-macchiato.webp" alt="Micafe Caramel Macchiato Coffee Mix sachet" loading="lazy">
                 <figcaption><span class="sku-name">Caramel Macchiato Coffee Mix</span><span class="sku-sub">Micafe · 25g sachet</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-cappuccino.png" alt="Starblends Ice Blended Mix Cappuccino pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-cappuccino.webp" alt="Starblends Ice Blended Mix Cappuccino pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cappuccino Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-cafe-latte.png" alt="Starblends Ice Blended Mix Cafe Latte pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-cafe-latte.webp" alt="Starblends Ice Blended Mix Cafe Latte pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cafe Latte Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-mocha.png" alt="Starblends Ice Blended Mix Mocha pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-mocha.webp" alt="Starblends Ice Blended Mix Mocha pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mocha Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-double-dutch.png" alt="Starblends Ice Blended Mix Double Dutch pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-double-dutch.webp" alt="Starblends Ice Blended Mix Double Dutch pouch" loading="lazy">
                 <figcaption><span class="sku-name">Double Dutch Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-choco-fudge.png" alt="Starblends Ice Blended Mix Choco Fudge pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-choco-fudge.webp" alt="Starblends Ice Blended Mix Choco Fudge pouch" loading="lazy">
                 <figcaption><span class="sku-name">Choco Fudge Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-choco-hazelnut.png" alt="Starblends Ice Blended Mix Choco Hazelnut pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-choco-hazelnut.webp" alt="Starblends Ice Blended Mix Choco Hazelnut pouch" loading="lazy">
                 <figcaption><span class="sku-name">Choco Hazelnut Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-choco-truffle.png" alt="Starblends Ice Blended Mix Choco Truffle pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-choco-truffle.webp" alt="Starblends Ice Blended Mix Choco Truffle pouch" loading="lazy">
                 <figcaption><span class="sku-name">Choco Truffle Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-milk-chocolate.png" alt="Starblends Ice Blended Mix Milk Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-milk-chocolate.webp" alt="Starblends Ice Blended Mix Milk Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">Milk Chocolate Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-matcha-green-tea.png" alt="Starblends Ice Blended Mix Matcha Green Tea pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-matcha-green-tea.webp" alt="Starblends Ice Blended Mix Matcha Green Tea pouch" loading="lazy">
                 <figcaption><span class="sku-name">Matcha Green Tea Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-white-choco.png" alt="Starblends Ice Blended Mix White Choco pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-white-choco.webp" alt="Starblends Ice Blended Mix White Choco pouch" loading="lazy">
                 <figcaption><span class="sku-name">White Choco Ice Blended Mix</span><span class="sku-sub">Starblends · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/coffee-starblends-premium-chocolate.png" alt="Starblends Premium Chocolate Ice Blended Mix pouch" loading="lazy">
+                <img src="assets/products/web/coffee-starblends-premium-chocolate.webp" alt="Starblends Premium Chocolate Ice Blended Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Premium Chocolate Ice Blended Mix</span><span class="sku-sub">Starblends · Made with Hershey&#x27;s · 1kg</span></figcaption>
               </figure>
             </div>
@@ -678,83 +717,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>Professional-grade baking solutions for bakeries, cafés, and foodservice kitchens. Our mixes and premixes deliver reliable results batch after batch — from light chiffon cakes and fudgy brownies to fluffy pancakes, bread, mochi, and more.</p>
             <div class="sku-gallery">
               <figure class="sku-card">
-                <img src="assets/products/web/bake-original-chiffon.png" alt="Original Chiffon Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-original-chiffon.webp" alt="Original Chiffon Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Original Chiffon Cake Mix</span><span class="sku-sub">470g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-chocolate-chiffon.png" alt="Chocolate Chiffon Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-chocolate-chiffon.webp" alt="Chocolate Chiffon Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Chocolate Chiffon Cake Mix</span><span class="sku-sub">470g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-vanilla-chiffon.png" alt="Vanilla Chiffon Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-vanilla-chiffon.webp" alt="Vanilla Chiffon Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Vanilla Chiffon Cake Mix</span><span class="sku-sub">470g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-ube-chiffon.png" alt="Ube Chiffon Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-ube-chiffon.webp" alt="Ube Chiffon Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Chiffon Cake Mix</span><span class="sku-sub">470g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-mocha-chiffon.png" alt="Mocha Chiffon Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-mocha-chiffon.webp" alt="Mocha Chiffon Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mocha Chiffon Cake Mix</span><span class="sku-sub">470g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-mango-chiffon.png" alt="Mango Chiffon Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-mango-chiffon.webp" alt="Mango Chiffon Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mango Chiffon Cake Mix</span><span class="sku-sub">470g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-red-velvet-chiffon.png" alt="Red Velvet Chiffon Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-red-velvet-chiffon.webp" alt="Red Velvet Chiffon Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Red Velvet Chiffon Cake Mix</span><span class="sku-sub">470g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-brownie-mix.png" alt="Brownie Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-brownie-mix.webp" alt="Brownie Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Brownie Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-cookie-mix.png" alt="Cookie Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-cookie-mix.webp" alt="Cookie Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Cookie Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-banana-cake-mix.png" alt="Banana Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-banana-cake-mix.webp" alt="Banana Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Banana Cake Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-chocolate-moist-cake-mix.png" alt="Chocolate Moist Cake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-chocolate-moist-cake-mix.webp" alt="Chocolate Moist Cake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Chocolate Moist Cake Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-hotcake-mix.png" alt="Hotcake Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-hotcake-mix.webp" alt="Hotcake Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Hotcake Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-original-waffle-mix.png" alt="Original Waffle Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-original-waffle-mix.webp" alt="Original Waffle Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Original Waffle Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-belgian-waffle-mix.png" alt="Belgian Waffle Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-belgian-waffle-mix.webp" alt="Belgian Waffle Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Belgian Waffle Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-bubble-waffle-mix-classic.png" alt="Bubble Waffle Mix (Classic) pouch" loading="lazy">
+                <img src="assets/products/web/bake-bubble-waffle-mix-classic.webp" alt="Bubble Waffle Mix (Classic) pouch" loading="lazy">
                 <figcaption><span class="sku-name">Bubble Waffle Mix (Classic)</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-bubble-waffle-mix-chocolate.png" alt="Bubble Waffle Mix (Chocolate) pouch" loading="lazy">
+                <img src="assets/products/web/bake-bubble-waffle-mix-chocolate.webp" alt="Bubble Waffle Mix (Chocolate) pouch" loading="lazy">
                 <figcaption><span class="sku-name">Bubble Waffle Mix (Chocolate)</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-ube-pancake-waffle-mix.png" alt="Ube Pancake &amp; Waffle Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-ube-pancake-waffle-mix.webp" alt="Ube Pancake &amp; Waffle Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Pancake &amp; Waffle Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-doughnut-mix.png" alt="Doughnut Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-doughnut-mix.webp" alt="Doughnut Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Doughnut Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-pandesal-mix-original.png" alt="Pandesal Mix (Original) pouch" loading="lazy">
+                <img src="assets/products/web/bake-pandesal-mix-original.webp" alt="Pandesal Mix (Original) pouch" loading="lazy">
                 <figcaption><span class="sku-name">Pandesal Mix (Original)</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-ube-pandesal-mix.png" alt="Ube Pandesal Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-ube-pandesal-mix.webp" alt="Ube Pandesal Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube Pandesal Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
@@ -762,19 +801,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <figcaption><span class="sku-name">Malunggay Pandesal Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-tempura-batter-mix.png" alt="Tempura Batter Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-tempura-batter-mix.webp" alt="Tempura Batter Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Tempura Batter Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-k-corndog-mix.png" alt="K-Corndog Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-k-corndog-mix.webp" alt="K-Corndog Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">K-Corndog Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-takoyaki-mix.png" alt="Takoyaki Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-takoyaki-mix.webp" alt="Takoyaki Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Takoyaki Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/bake-kwek-kwek-mix.png" alt="Kwek-Kwek Mix pouch" loading="lazy">
+                <img src="assets/products/web/bake-kwek-kwek-mix.webp" alt="Kwek-Kwek Mix pouch" loading="lazy">
                 <figcaption><span class="sku-name">Kwek-Kwek Mix</span><span class="sku-sub">500g</span></figcaption>
               </figure>
               <figure class="sku-card">
@@ -820,7 +859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <figcaption><span class="sku-name">Palabok Sauce Mix</span><span class="sku-sub">Oriental Gravy Mix · 60g</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/New%20Products/kansi-mix.png" alt="Miguelitos Kansi Mix sachet" loading="lazy">
+                <img src="assets/products/New%20Products/kansi-mix.webp" alt="Miguelitos Kansi Mix sachet" loading="lazy">
                 <figcaption><span class="sku-name">Kansi Mix</span><span class="sku-sub">Filipino Sour Soup Mix · 50g</span></figcaption>
               </figure>
             </div>
@@ -846,55 +885,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>Products that sit outside our core categories but are just as much a part of who we are. From Ice Scramble and Cotton Candy to novelty formats and new product concepts, our Specialty line reflects our commitment to keeping up with what's next in food and beverage.</p>
             <div class="sku-gallery">
               <figure class="sku-card">
-                <img src="assets/products/web/spec-cc-vanilla.png" alt="Cotton Candy Mix Vanilla pouch" loading="lazy">
+                <img src="assets/products/web/spec-cc-vanilla.webp" alt="Cotton Candy Mix Vanilla pouch" loading="lazy">
                 <figcaption><span class="sku-name">Vanilla</span><span class="sku-sub">Cotton Candy Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-cc-chocolate.png" alt="Cotton Candy Mix Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/spec-cc-chocolate.webp" alt="Cotton Candy Mix Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">Chocolate</span><span class="sku-sub">Cotton Candy Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-cc-ube.png" alt="Cotton Candy Mix Ube pouch" loading="lazy">
+                <img src="assets/products/web/spec-cc-ube.webp" alt="Cotton Candy Mix Ube pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube</span><span class="sku-sub">Cotton Candy Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-cc-mango.png" alt="Cotton Candy Mix Mango pouch" loading="lazy">
+                <img src="assets/products/web/spec-cc-mango.webp" alt="Cotton Candy Mix Mango pouch" loading="lazy">
                 <figcaption><span class="sku-name">Mango</span><span class="sku-sub">Cotton Candy Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-cc-melon.png" alt="Cotton Candy Mix Melon pouch" loading="lazy">
+                <img src="assets/products/web/spec-cc-melon.webp" alt="Cotton Candy Mix Melon pouch" loading="lazy">
                 <figcaption><span class="sku-name">Melon</span><span class="sku-sub">Cotton Candy Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-cc-strawberry.png" alt="Cotton Candy Mix Strawberry pouch" loading="lazy">
+                <img src="assets/products/web/spec-cc-strawberry.webp" alt="Cotton Candy Mix Strawberry pouch" loading="lazy">
                 <figcaption><span class="sku-name">Strawberry</span><span class="sku-sub">Cotton Candy Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-cc-buko-pandan.png" alt="Cotton Candy Mix Buko Pandan pouch" loading="lazy">
+                <img src="assets/products/web/spec-cc-buko-pandan.webp" alt="Cotton Candy Mix Buko Pandan pouch" loading="lazy">
                 <figcaption><span class="sku-name">Buko Pandan</span><span class="sku-sub">Cotton Candy Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-cc-bubble-gum.png" alt="Cotton Candy Mix Bubble Gum pouch" loading="lazy">
+                <img src="assets/products/web/spec-cc-bubble-gum.webp" alt="Cotton Candy Mix Bubble Gum pouch" loading="lazy">
                 <figcaption><span class="sku-name">Bubble Gum</span><span class="sku-sub">Cotton Candy Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-scramble-original.png" alt="Scramble Magic Powder Mix Original pouch" loading="lazy">
+                <img src="assets/products/web/spec-scramble-original.webp" alt="Scramble Magic Powder Mix Original pouch" loading="lazy">
                 <figcaption><span class="sku-name">Original</span><span class="sku-sub">Scramble Magic Powder Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-scramble-chocolate.png" alt="Scramble Magic Powder Mix Chocolate pouch" loading="lazy">
+                <img src="assets/products/web/spec-scramble-chocolate.webp" alt="Scramble Magic Powder Mix Chocolate pouch" loading="lazy">
                 <figcaption><span class="sku-name">Chocolate</span><span class="sku-sub">Scramble Magic Powder Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-scramble-ube.png" alt="Scramble Magic Powder Mix Ube pouch" loading="lazy">
+                <img src="assets/products/web/spec-scramble-ube.webp" alt="Scramble Magic Powder Mix Ube pouch" loading="lazy">
                 <figcaption><span class="sku-name">Ube</span><span class="sku-sub">Scramble Magic Powder Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-scramble-melon.png" alt="Scramble Magic Powder Mix Melon pouch" loading="lazy">
+                <img src="assets/products/web/spec-scramble-melon.webp" alt="Scramble Magic Powder Mix Melon pouch" loading="lazy">
                 <figcaption><span class="sku-name">Melon</span><span class="sku-sub">Scramble Magic Powder Mix · 1kg</span></figcaption>
               </figure>
               <figure class="sku-card">
-                <img src="assets/products/web/spec-scramble-buko-pandan.png" alt="Scramble Magic Powder Mix Buko Pandan pouch" loading="lazy">
+                <img src="assets/products/web/spec-scramble-buko-pandan.webp" alt="Scramble Magic Powder Mix Buko Pandan pouch" loading="lazy">
                 <figcaption><span class="sku-name">Buko Pandan</span><span class="sku-sub">Scramble Magic Powder Mix · 1kg</span></figcaption>
               </figure>
             </div>
@@ -977,7 +1016,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="footer-grid">
             <div class="footer-brand">
-        <img src="img/mic-logo.png?v=1" alt="Miguelitos International Corporation logo" class="footer-logo">
+        <img src="img/mic-logo.png?v=1" alt="Miguelitos International Corporation logo" class="footer-logo" loading="lazy" decoding="async">
         <p class="footer-company-name">Miguelitos<br>International<br>Corporation</p>
         <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider.<br>Proudly made in the Philippines.</p>
       </div>
@@ -1034,13 +1073,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Miguelitos International Corporation. All rights reserved.</span>
-      <span>Privacy Policy  |  Terms of Use</span>
+      <span>© 2026 Miguelitos International Corporation. All rights reserved.</span>
+      <span class="footer-legal"><a href="privacy-policy">Privacy Policy</a>  |  <a href="#" data-cookie-settings>Cookie Settings</a></span>
     </div>
   </div>
 </footer>
 
 <script src="js/products-data.js?v=1"></script>
-<script src="js/script.js?v=5"></script>
+<script src="js/script.js?v=7"></script>
 </body>
 </html>

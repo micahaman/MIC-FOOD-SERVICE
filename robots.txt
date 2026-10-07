@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /.claude/
+
+Sitemap: https://www.miguelitoscorp.com/sitemap.xml

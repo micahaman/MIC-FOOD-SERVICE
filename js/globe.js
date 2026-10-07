@@ -43,7 +43,8 @@
     canvas.style.width = size + 'px';
     canvas.style.height = size + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    projection.scale(size / 2 - 6).translate([size / 2, size / 2]);
+    // leave a margin around the sphere for the raised shipping routes
+    projection.scale(size / 2 * 0.86).translate([size / 2, size / 2]);
   }
 
   function drawPin(x, y, alpha) {
@@ -99,20 +100,85 @@
     }
 
     var center = projection.invert([c, c]);
+    drawRoutes(t, center, c);
     MARKETS.forEach(function (m, i) {
       var dist = d3.geoDistance(m.coords, center);
       if (dist > Math.PI / 2) return;
       var p = projection(m.coords);
       var fade = Math.min(1, (Math.PI / 2 - dist) / 0.35);
-      var pulse = (t / 1800 + i * 0.13) % 1;
-      ctx.beginPath();
-      ctx.arc(p[0], p[1], 3 + pulse * 13, 0, Math.PI * 2);
-      ctx.lineWidth = 1.5;
-      ctx.strokeStyle = 'rgba(255,201,60,' + (0.7 * (1 - pulse) * fade) + ')';
-      ctx.stroke();
+      var rings = i === 0 ? 3 : 1;   // the Philippines, where every route starts, pulses strongest
+      for (var k = 0; k < rings; k++) {
+        var pulse = (t / 1800 + i * 0.13 + k / rings) % 1;
+        ctx.beginPath();
+        ctx.arc(p[0], p[1], 3 + pulse * (i === 0 ? 22 : 13), 0, Math.PI * 2);
+        ctx.lineWidth = i === 0 ? 2 : 1.5;
+        ctx.strokeStyle = 'rgba(255,201,60,' + (0.7 * (1 - pulse) * fade) + ')';
+        ctx.stroke();
+      }
       drawPin(p[0], p[1], fade);
       drawLabel(m.name, p[0], p[1] + (m.dy || 0), m.side, fade);
     });
+  }
+
+  // Shipping routes: arcs lifted off the surface from the Philippines to each
+  // market, each with a glowing "shipment" travelling along it.
+  var ORIGIN = MARKETS[0].coords;
+  var ROUTE_STEPS = 48;
+  var routes = MARKETS.slice(1).map(function (m) {
+    var interp = d3.geoInterpolate(ORIGIN, m.coords);
+    var span = d3.geoDistance(ORIGIN, m.coords);
+    var pts = [];
+    for (var s = 0; s <= ROUTE_STEPS; s++) pts.push(interp(s / ROUTE_STEPS));
+    return { pts: pts, lift: Math.min(0.15, 0.04 + span * 0.05) };
+  });
+
+  // Project a lon/lat point raised `h` (fraction of the radius) above the surface
+  function lifted(pt, h, c, center) {
+    if (d3.geoDistance(pt, center) > Math.PI / 2 + h * 0.6) return null;
+    var p = projection(pt);
+    return [c + (p[0] - c) * (1 + h), c + (p[1] - c) * (1 + h)];
+  }
+
+  function drawRoutes(t, center, c) {
+    routes.forEach(function (route, i) {
+      var n = route.pts.length - 1;
+      ctx.beginPath();
+      var pen = false;
+      for (var s = 0; s <= n; s++) {
+        var q = lifted(route.pts[s], route.lift * Math.sin(Math.PI * s / n), c, center);
+        if (!q) { pen = false; continue; }
+        if (pen) ctx.lineTo(q[0], q[1]); else ctx.moveTo(q[0], q[1]);
+        pen = true;
+      }
+      ctx.setLineDash([3, 4]);
+      ctx.lineWidth = 1.1;
+      ctx.strokeStyle = 'rgba(255,201,60,0.38)';
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      if (!t) return;
+      // the shipment: a bright dot with a short fading tail
+      var head = ((t / 2600) + i * 0.137) % 1;
+      for (var k = 0; k < 7; k++) {
+        var f = head - k * 0.025;
+        if (f < 0) break;
+        var q2 = lifted(interpAt(route.pts, f), route.lift * Math.sin(Math.PI * f), c, center);
+        if (!q2) continue;
+        var a = (1 - k / 7) * Math.sin(Math.PI * f);
+        ctx.beginPath();
+        ctx.arc(q2[0], q2[1], k === 0 ? 2.6 : 2 - k * 0.2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,224,140,' + a + ')';
+        if (k === 0) { ctx.shadowColor = 'rgba(255,201,60,0.9)'; ctx.shadowBlur = 10; }
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    });
+  }
+
+  function interpAt(pts, f) {
+    var x = f * (pts.length - 1), i = Math.floor(x), r = x - i;
+    if (i >= pts.length - 1) return pts[pts.length - 1];
+    return d3.geoInterpolate(pts[i], pts[i + 1])(r); // stays correct across the date line
   }
 
   function drawLabel(text, x, y, side, alpha) {

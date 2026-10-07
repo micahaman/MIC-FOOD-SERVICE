@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Consent defaults: analytics stays off until the visitor accepts cookies -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+try{if(localStorage.getItem('mic-cookie-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -16,9 +22,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
 <meta name="description" content="About Miguelitos International Corporation — a Philippine food and beverage manufacturer and exporter specializing in premixes, culinary solutions, and commercial foodservice equipment.">
+<link rel="canonical" href="https://www.miguelitoscorp.com/about">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Miguelitos International Corporation">
+<meta property="og:title" content="About — Miguelitos International Corporation">
+<meta property="og:description" content="About Miguelitos International Corporation — a Philippine food and beverage manufacturer and exporter specializing in premixes, culinary solutions, and commercial foodservice equipment.">
+<meta property="og:url" content="https://www.miguelitoscorp.com/about">
+<meta property="og:image" content="https://www.miguelitoscorp.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Miguelitos — Food Manufacturer, Exporter &amp; Business Solutions Provider">
+<meta property="og:locale" content="en_PH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About — Miguelitos International Corporation">
+<meta name="twitter:description" content="About Miguelitos International Corporation — a Philippine food and beverage manufacturer and exporter specializing in premixes, culinary solutions, and commercial foodservice equipment.">
+<meta name="twitter:image" content="https://www.miguelitoscorp.com/img/og-image.jpg">
+<meta name="theme-color" content="#3D140C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=55">
+<link rel="stylesheet" href="css/styles.css?v=62">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -131,10 +154,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="founders-photos">
         <div class="founders-glow" aria-hidden="true"></div>
         <div class="founder-portrait">
-          <img src="assets/Founders/web/michelle-aman.png" alt="Michelle Aman, President of Miguelitos International Corporation">
+          <img src="assets/Founders/web/michelle-aman.webp" alt="Michelle Aman, President of Miguelitos International Corporation">
         </div>
         <div class="founder-portrait founder-portrait--overlap">
-          <img src="assets/Founders/web/marlon-aman.png" alt="Marlon Aman, Chief Executive Officer of Miguelitos International Corporation">
+          <img src="assets/Founders/web/marlon-aman.webp" alt="Marlon Aman, Chief Executive Officer of Miguelitos International Corporation">
         </div>
       </div>
       <div class="founders-text-card">
@@ -176,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p style="max-width:900px;">Our manufacturing facility is equipped for powder blending, dry premix production, filling, and packing across a range of product categories. The facility operates under strict quality assurance protocols to meet both domestic food safety standards and the requirements of our export markets.</p>
     <p style="max-width:900px; margin-top:16px;">Key areas include production and blending, a dedicated research and development unit, quality assurance, and warehousing for finished goods and raw materials.</p>
     <div class="facility-grid">
-      <img src="assets/Facility/facility-exterior.png" alt="Miguelitos International Corporation manufacturing facility exterior" class="about-photo" loading="lazy">
+      <img src="assets/Facility/facility-exterior.webp" alt="Miguelitos International Corporation manufacturing facility exterior" class="about-photo" loading="lazy">
       <iframe class="facility-map" src="https://www.google.com/maps?q=Miguelitos+International+Corporation,14.4953791,121.0427811&z=17&output=embed" title="Map showing the Miguelitos International Corporation facility location in Parañaque City, Philippines" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
   </div>
@@ -212,6 +235,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="compliance-row">
+        <span class="compliance-row-icon"><img src="assets/Certs/web/iso-22000.png?v=1" alt="ISO 22000 Prime Certified logo" loading="lazy"></span>
+        <div class="compliance-row-body">
+          <h4>ISO 22000 Certified</h4>
+          <p>Miguelitos is ISO 22000 Certified, meeting the international standard for food safety management systems. This certification reflects our commitment to safe, consistent, and quality products at every stage of production.</p>
+        </div>
+      </div>
+      <div class="compliance-row">
         <span class="compliance-row-icon"><img src="assets/Certs/web/usfda.jpg" alt="U.S. Food and Drug Administration (USFDA) logo" loading="lazy"></span>
         <div class="compliance-row-body">
           <h4>USFDA</h4>
@@ -233,7 +263,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="compliance-row">
-        <span class="compliance-row-icon"><img src="assets/Certs/web/uae-2055-1-2015.png" alt="UAE 2055-1:2015 certification logo" loading="lazy"></span>
+        <span class="compliance-row-icon"><img src="assets/Certs/web/uae-2055-1-2015.webp" alt="UAE 2055-1:2015 certification logo" loading="lazy"></span>
         <div class="compliance-row-body">
           <h4>UAE 2055-1:2015</h4>
           <p>Miguelitos complies with UAE 2055-1:2015, a standard for Halal food products in the United Arab Emirates. This reflects our commitment to meeting recognized Halal requirements and maintaining quality and safety in our products.</p>
@@ -265,36 +295,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Honors earned for product innovation, Halal industry leadership, and business excellence.</p>
     </div>
     <div class="awards-grid">
-      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/katha-puto-bumbong-2022-angle-1.png,assets/products/web/fil-puto-bumbong-mix.png,assets/Certs/Awards/web/katha-puto-bumbong-2022-certificate.jpg">
-        <div class="award-card-media"><img src="assets/Certs/Awards/web/katha-puto-bumbong-2022-angle-1.png" alt="KATHA Award trophy, New Product Category, for Instant Puto Bumbong Mix" loading="lazy"></div>
+      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/katha-puto-bumbong-2022-angle-1.webp,assets/products/web/fil-puto-bumbong-mix.webp,assets/Certs/Awards/web/katha-puto-bumbong-2022-certificate.jpg">
+        <div class="award-card-media"><img src="assets/Certs/Awards/web/katha-puto-bumbong-2022-angle-1.webp" alt="KATHA Award trophy, New Product Category, for Instant Puto Bumbong Mix" loading="lazy"></div>
         <figcaption>
           <h4>KATHA Award &mdash; New Product Category</h4>
           <p>Instant Puto Bumbong Mix, IFEX Philippines 2022 &middot; September 22, 2022</p>
         </figcaption>
       </figure>
-      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/katha-taho-2023-angle-1.png,assets/products/web/fil-taho-mix.png,assets/Certs/Awards/web/katha-taho-2023-certificate.jpg">
-        <div class="award-card-media"><img src="assets/Certs/Awards/web/katha-taho-2023-angle-1.png" alt="KATHA Award trophy, Fine Food and Specialties Category, for Instant Soybean Curd (Taho) Mix" loading="lazy"></div>
+      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/katha-taho-2023-angle-1.webp,assets/products/web/fil-taho-mix.webp,assets/Certs/Awards/web/katha-taho-2023-certificate.jpg">
+        <div class="award-card-media"><img src="assets/Certs/Awards/web/katha-taho-2023-angle-1.webp" alt="KATHA Award trophy, Fine Food and Specialties Category, for Instant Soybean Curd (Taho) Mix" loading="lazy"></div>
         <figcaption>
           <h4>KATHA Award &mdash; Fine Food &amp; Specialties</h4>
           <p>Instant Soybean Curd Mix (Taho Mix), IFEX Philippines 2023 &middot; May 26, 2023</p>
         </figcaption>
       </figure>
-      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/global-iconic-woman-leader-2023-trophy.png,assets/Certs/Awards/web/global-iconic-woman-leader-2023.jpg">
-        <div class="award-card-media"><img src="assets/Certs/Awards/web/global-iconic-woman-leader-2023-trophy.png" alt="Global Iconic Inspirational Woman Business Leader Award trophy presented to Michelle Aman" loading="lazy"></div>
+      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/global-iconic-woman-leader-2023-trophy.webp,assets/Certs/Awards/web/global-iconic-woman-leader-2023.jpg">
+        <div class="award-card-media"><img src="assets/Certs/Awards/web/global-iconic-woman-leader-2023-trophy.webp" alt="Global Iconic Inspirational Woman Business Leader Award trophy presented to Michelle Aman" loading="lazy"></div>
         <figcaption>
           <h4>Global Iconic Inspirational Woman Business Leader Award</h4>
           <p>Presented to Michelle Aman, President &middot; 2nd Global Iconic Aces Awards, Okada Manila &middot; August 28, 2023</p>
         </figcaption>
       </figure>
-      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/halal-champion-2024.png">
-        <div class="award-card-media"><img src="assets/Certs/Awards/web/halal-champion-2024.png" alt="2024 Halal Champion award plaque" loading="lazy"></div>
+      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/halal-champion-2024.webp">
+        <div class="award-card-media"><img src="assets/Certs/Awards/web/halal-champion-2024.webp" alt="2024 Halal Champion award plaque" loading="lazy"></div>
         <figcaption>
           <h4>2024 Halal Champion</h4>
           <p>DTI Halal Development &amp; Trade Office, Vista Mall, Taguig City &middot; December 19, 2024</p>
         </figcaption>
       </figure>
-      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/halal-business-of-the-year-2025.png">
-        <div class="award-card-media"><img src="assets/Certs/Awards/web/halal-business-of-the-year-2025.png" alt="Halal Business of the Year 2025 Excellence Award" loading="lazy"></div>
+      <figure class="award-card" data-zoom="1" data-images="assets/Certs/Awards/web/halal-business-of-the-year-2025.webp">
+        <div class="award-card-media"><img src="assets/Certs/Awards/web/halal-business-of-the-year-2025.webp" alt="Halal Business of the Year 2025 Excellence Award" loading="lazy"></div>
         <figcaption>
           <h4>Halal Business of the Year</h4>
           <p>Halal Expo Philippines Excellence Award 2025, World Trade Center Metro Manila &middot; November 13&ndash;15, 2025</p>
@@ -441,7 +471,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="footer-grid">
             <div class="footer-brand">
-        <img src="img/mic-logo.png?v=1" alt="Miguelitos International Corporation logo" class="footer-logo">
+        <img src="img/mic-logo.png?v=1" alt="Miguelitos International Corporation logo" class="footer-logo" loading="lazy" decoding="async">
         <p class="footer-company-name">Miguelitos<br>International<br>Corporation</p>
         <p class="footer-tagline">Food Manufacturer, Exporter &amp; Business Solutions Provider.<br>Proudly made in the Philippines.</p>
       </div>
@@ -498,12 +528,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Miguelitos International Corporation. All rights reserved.</span>
-      <span>Privacy Policy  |  Terms of Use</span>
+      <span>© 2026 Miguelitos International Corporation. All rights reserved.</span>
+      <span class="footer-legal"><a href="privacy-policy">Privacy Policy</a>  |  <a href="#" data-cookie-settings>Cookie Settings</a></span>
     </div>
   </div>
 </footer>
 
-<script src="js/script.js?v=5"></script>
+<script src="js/script.js?v=7"></script>
 </body>
 </html>

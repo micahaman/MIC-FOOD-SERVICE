@@ -391,7 +391,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* About — In the News press cards */
-.press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px; margin-top: 30px; }
+.press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 24px; margin-top: 30px; }
 .press-card {
   display: flex; border: var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -1980,39 +1980,47 @@ section { padding: 84px 0; }
 .page-hero-art--photo img { display: block; width: 100%; height: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.35)); }
 .export-globe { max-width: 400px; aspect-ratio: 1 / 1; margin-left: auto; }
 
-/* Products hero — fanned spread of product packs over a glowing disc */
-.hero-fan { position: relative; max-width: 500px; aspect-ratio: 5 / 4; margin-left: auto; }
+/* Products hero — three stacked fans of product packs over a glowing disc;
+   back rows sit higher, smaller and dimmer for depth */
+.hero-fan { position: relative; max-width: 500px; aspect-ratio: 1 / 1; margin-left: auto; }
 .hero-fan::before, .hero-fan::after {
   content: ""; position: absolute; left: 50%; top: 50%; border-radius: 50%; pointer-events: none;
   translate: -50% -50%;
 }
 .hero-fan::before {
-  width: 78%; aspect-ratio: 1;
+  width: 92%; aspect-ratio: 1;
   background: radial-gradient(circle, rgba(242,166,35,0.32) 0%, rgba(215,31,20,0.18) 45%, transparent 70%);
 }
 .hero-fan::after {
-  width: 70%; aspect-ratio: 1;
+  width: 82%; aspect-ratio: 1;
   border: 1px dashed rgba(242,232,214,0.3);
   animation: heroSpin 60s linear infinite;
 }
+.hero-fan-row { position: absolute; inset: 0; pointer-events: none; --w: 28%; --b: 4%; }
+.hero-fan-row:nth-child(1) { --w: 21%; --b: 58%; z-index: 1; filter: brightness(0.78) saturate(0.9); }
+.hero-fan-row:nth-child(2) { --w: 24.5%; --b: 32%; z-index: 2; filter: brightness(0.9); }
+.hero-fan-row:nth-child(3) { z-index: 3; }
 .hero-fan-item {
-  position: absolute; bottom: 14%; left: 50%;
-  width: 30%; height: auto;
-  margin-left: -15%;
+  position: absolute; bottom: var(--b); left: 50%;
+  width: var(--w); height: auto;
+  margin-left: calc(var(--w) / -2);
   transform-origin: 50% 230%;
-  filter: drop-shadow(0 16px 22px rgba(0,0,0,0.45));
+  pointer-events: auto;
+  filter: drop-shadow(0 14px 20px rgba(0,0,0,0.45));
   transition: rotate 0.45s cubic-bezier(.2,.8,.2,1), scale 0.3s ease, filter 0.3s ease;
   animation: heroFloat 5s ease-in-out infinite;
 }
 .hero-fan-item:nth-child(1) { rotate: -24deg; z-index: 1; animation-delay: -1s; }
 .hero-fan-item:nth-child(2) { rotate: -12deg; z-index: 2; animation-delay: -2.2s; }
-.hero-fan-item:nth-child(3) { rotate: 0deg;   z-index: 3; animation-delay: -0.4s; width: 34%; margin-left: -17%; }
+.hero-fan-item:nth-child(3) { rotate: 0deg;   z-index: 3; animation-delay: -0.4s; width: calc(var(--w) * 1.12); margin-left: calc(var(--w) * -0.56); }
 .hero-fan-item:nth-child(4) { rotate: 12deg;  z-index: 2; animation-delay: -3s; }
 .hero-fan-item:nth-child(5) { rotate: 24deg;  z-index: 1; animation-delay: -1.6s; }
-.hero-fan:hover .hero-fan-item:nth-child(1) { rotate: -28deg; }
-.hero-fan:hover .hero-fan-item:nth-child(2) { rotate: -14deg; }
-.hero-fan:hover .hero-fan-item:nth-child(4) { rotate: 14deg; }
-.hero-fan:hover .hero-fan-item:nth-child(5) { rotate: 28deg; }
+.hero-fan-row:nth-child(2) .hero-fan-item { animation-duration: 5.8s; }
+.hero-fan-row:nth-child(1) .hero-fan-item { animation-duration: 6.6s; }
+.hero-fan-row:hover .hero-fan-item:nth-child(1) { rotate: -28deg; }
+.hero-fan-row:hover .hero-fan-item:nth-child(2) { rotate: -14deg; }
+.hero-fan-row:hover .hero-fan-item:nth-child(4) { rotate: 14deg; }
+.hero-fan-row:hover .hero-fan-item:nth-child(5) { rotate: 28deg; }
 .hero-fan-item:hover { scale: 1.08; z-index: 5; filter: drop-shadow(0 22px 30px rgba(0,0,0,0.55)); }
 
 /* Business Packages hero — scattered photo prints */
@@ -3001,3 +3009,176 @@ body.spotlight-open { overflow: hidden; }
 @media (max-width: 560px) {
   .machine-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ==========================================================================
+   Cookie consent banner
+   ========================================================================== */
+.cookie-banner {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1000;
+  max-width: 760px; margin: 0 auto;
+  display: flex; align-items: center; gap: 18px 24px; flex-wrap: wrap;
+  padding: 18px 22px;
+  background: var(--char); color: var(--rice-cream);
+  border: 1px solid rgba(255,247,234,0.18);
+  border-radius: var(--radius); box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  opacity: 0; translate: 0 20px; transition: opacity 0.3s ease, translate 0.3s ease;
+}
+.cookie-banner.is-visible { opacity: 1; translate: 0 0; }
+.cookie-banner-text { flex: 1 1 320px; margin: 0; font-size: 14px; line-height: 1.55; color: #EFE6D8; }
+.cookie-banner-text a { color: var(--turmeric); text-decoration: underline; text-underline-offset: 2px; }
+.cookie-banner-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-btn { padding: 10px 20px; font-size: 14px; }
+.cookie-btn--decline { background: transparent; color: var(--rice-cream); border: 1px solid rgba(255,247,234,0.5); }
+.cookie-btn--decline:hover { border-color: var(--rice-cream); background: rgba(255,255,255,0.06); }
+@media (max-width: 560px) {
+  .cookie-banner-actions { width: 100%; }
+  .cookie-btn { flex: 1; }
+}
+
+.footer-legal a { color: inherit; text-decoration: none; }
+.footer-legal a:hover { color: #fff; text-decoration: underline; }
+
+/* ==========================================================================
+   Privacy policy / legal pages
+   ========================================================================== */
+.page-hero--compact { padding: 48px 0 40px; }
+.legal-copy { max-width: 760px; }
+.legal-copy h2 { font-size: clamp(22px, 2.4vw, 28px); margin: 38px 0 12px; }
+.legal-copy p, .legal-copy li { font-size: 16px; line-height: 1.7; color: var(--char-soft); }
+.legal-copy p + p { margin-top: 12px; }
+.legal-copy ul { margin: 10px 0 0; padding-left: 20px; }
+.legal-copy li + li { margin-top: 8px; }
+.legal-copy a { color: var(--atsuete); }
+
+/* Form fields: flag invalid entries once the visitor has touched them */
+.form-field .is-touched:invalid { border-color: var(--atsuete); box-shadow: 0 0 0 3px rgba(215,31,20,0.12); }
+
+/* ==========================================================================
+   Contrast: small red text needs a deeper red on light backgrounds and a
+   lighter coral on the dark banners to stay readable (WCAG AA 4.5:1)
+   ========================================================================== */
+:root { --atsuete-text: #B51F15; --atsuete-on-dark: #FF7A66; }
+.eyebrow, .where-role, .press-card-source { color: var(--atsuete-text); }
+.eyebrow::before { background: var(--atsuete-text); }
+.page-hero .eyebrow, .section-dark .eyebrow, .site-footer .eyebrow { color: var(--atsuete-on-dark); }
+.page-hero .eyebrow::before, .section-dark .eyebrow::before, .site-footer .eyebrow::before { background: var(--atsuete-on-dark); }
+.eyebrow.eyebrow--light { color: var(--turmeric); }
+.eyebrow.eyebrow--light::before { background: var(--turmeric); }
+
+/* ==========================================================================
+   Export hero globe — atmosphere glow
+   ========================================================================== */
+/* decorative motion in the banners must never widen the page */
+.page-hero { overflow-x: clip; }
+.export-globe { position: relative; }
+.export-globe canvas { position: relative; z-index: 1; }
+.export-globe::before {
+  content: ""; position: absolute; inset: 9%; border-radius: 50%; pointer-events: none;
+  box-shadow: 0 0 60px 14px rgba(255,140,60,0.28), inset 0 0 40px rgba(255,201,60,0.18);
+  animation: globeBreathe 4.5s ease-in-out infinite;
+}
+@keyframes globeBreathe { 0%, 100% { opacity: 0.65; scale: 0.98; } 50% { opacity: 1; scale: 1.03; } }
+
+/* ==========================================================================
+   Toll Manufacturing hero — floating pouches with glow, sheen and sparkles
+   ========================================================================== */
+.toll-hero { position: relative; isolation: isolate; }
+.toll-hero::before { /* warm glow that breathes behind the pouches */
+  content: ""; position: absolute; inset: 6% 4%; z-index: -1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255,150,60,0.42), rgba(215,31,20,0.18) 55%, transparent);
+  animation: globeBreathe 5s ease-in-out infinite;
+}
+.toll-hero-ring {
+  position: absolute; left: 50%; top: 50%; width: 92%; aspect-ratio: 1; z-index: -1;
+  translate: -50% -50%; border-radius: 50%;
+  border: 1px dashed rgba(255,247,234,0.22);
+  animation: heroSpin 50s linear infinite;
+}
+.toll-hero-float { position: relative; animation: tollFloat 6s ease-in-out infinite; }
+.toll-hero-float img { filter: drop-shadow(0 24px 34px rgba(0,0,0,0.45)); }
+.toll-hero-shine { /* a light sweep clipped to the pouch shapes */
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.55) 48%, transparent 60%) no-repeat;
+  background-size: 250% 100%;
+  -webkit-mask: url("../assets/PageBanners/web/toll-banner.webp?v=1") center / contain no-repeat;
+          mask: url("../assets/PageBanners/web/toll-banner.webp?v=1") center / contain no-repeat;
+  animation: tollShine 5.5s ease-in-out infinite;
+}
+.toll-sparkle {
+  position: absolute; left: var(--x); top: var(--y); width: 16px; height: 16px; pointer-events: none;
+  background: #FFE7A8;
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  filter: drop-shadow(0 0 6px rgba(255,201,60,0.9));
+  opacity: 0; animation: tollTwinkle 3.2s ease-in-out infinite; animation-delay: var(--d);
+}
+@keyframes tollFloat { 0%, 100% { translate: 0 0; rotate: -1deg; } 50% { translate: 0 -12px; rotate: 1deg; } }
+@keyframes tollShine { 0%, 15% { background-position: 120% 0; } 65%, 100% { background-position: -20% 0; } }
+@keyframes tollTwinkle { 0%, 100% { opacity: 0; scale: 0.3; rotate: 0deg; } 50% { opacity: 1; scale: 1; rotate: 45deg; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .export-globe::before, .toll-hero::before, .toll-hero-ring,
+  .toll-hero-float, .toll-hero-shine, .toll-sparkle { animation: none; }
+  .toll-sparkle { opacity: 0.8; }
+}
+
+/* ==========================================================================
+   Contact hero — Philippines map with the head office and branches
+   ========================================================================== */
+.contact-map { position: relative; max-width: 380px; aspect-ratio: 38 / 44; margin-left: auto; }
+.contact-map::before {
+  content: ""; position: absolute; right: 2%; top: 10%; width: 64%; aspect-ratio: 1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(255,150,60,0.32), rgba(215,31,20,0.12) 60%, transparent);
+  animation: globeBreathe 5s ease-in-out infinite;
+}
+.contact-map-box { position: absolute; right: 4%; top: 0; height: 100%; aspect-ratio: 360 / 620; }
+.contact-map-land, .contact-map-routes { position: absolute; inset: 0; width: 100%; height: 100%; }
+.contact-map-land { filter: drop-shadow(0 12px 24px rgba(0,0,0,0.35)); }
+.contact-map-routes path {
+  fill: none; stroke: rgba(255,201,60,0.6); stroke-width: 1.6; stroke-dasharray: 5 6;
+  vector-effect: non-scaling-stroke;
+  animation: routeFlow 1.6s linear infinite;
+}
+.contact-map-ship { fill: #FFE08C; filter: drop-shadow(0 0 4px rgba(255,201,60,0.95)); }
+@keyframes routeFlow { to { stroke-dashoffset: -22; } }
+.map-pin {
+  position: absolute; left: var(--x); top: var(--y); width: 12px; height: 12px; margin: -6px 0 0 -6px;
+  border-radius: 50%; background: var(--atsuete); border: 2px solid #FFF7EA;
+  box-shadow: 0 0 0 0 rgba(255,201,60,0.7); animation: pinPulse 2.2s ease-out infinite;
+}
+.map-pin--hq { width: 16px; height: 16px; margin: -8px 0 0 -8px; background: var(--turmeric); border-color: var(--atsuete); }
+.map-pin-label {
+  position: absolute; right: calc(100% + 10px); top: 50%; translate: 0 -50%;
+  white-space: nowrap; padding: 6px 10px; border-radius: 8px;
+  background: rgba(255,247,234,0.95); color: var(--char);
+  font: 500 11px/1.25 var(--font-body); text-align: right;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+.map-pin-label b { display: block; font-weight: 700; font-size: 12px; color: var(--atsuete-text); }
+@keyframes pinPulse { 0% { box-shadow: 0 0 0 0 rgba(255,201,60,0.7); } 100% { box-shadow: 0 0 0 16px rgba(255,201,60,0); } }
+
+@media (max-width: 900px) {
+  .contact-map { max-width: 330px; }
+}
+@media (max-width: 480px) {
+  .map-pin-label { font-size: 10px; padding: 5px 8px; }
+  .map-pin-label b { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-map::before, .contact-map-routes path, .map-pin { animation: none; }
+  .contact-map-ship { display: none; }
+}
+
+/* ==========================================================================
+   404 page
+   ========================================================================== */
+.notfound { padding: 70px 0 90px; text-align: center; }
+.notfound-inner { display: flex; flex-direction: column; align-items: center; }
+.notfound-inner p { margin-left: auto; margin-right: auto; }
+.notfound-art { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 18px; }
+.notfound-digit { font-family: 'Anton', sans-serif; font-size: clamp(110px, 18vw, 190px); line-height: 1; color: var(--rice-cream); text-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+.notfound-pack { width: clamp(80px, 12vw, 128px); height: auto; rotate: -12deg; filter: drop-shadow(0 14px 22px rgba(0,0,0,0.45)); animation: notfoundWobble 3.2s ease-in-out infinite; }
+.notfound .eyebrow { margin-bottom: 4px; }
+.notfound-actions { justify-content: center; margin-top: 26px; }
+.notfound .btn-ghost { border: 1px solid rgba(255,247,234,0.6); color: var(--rice-cream); }
+@keyframes notfoundWobble { 0%, 100% { rotate: -12deg; translate: 0 0; } 50% { rotate: 8deg; translate: 0 -10px; } }
+@media (prefers-reduced-motion: reduce) { .notfound-pack { animation: none; } }
