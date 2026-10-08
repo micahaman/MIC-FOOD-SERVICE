@@ -3233,3 +3233,61 @@ body.spotlight-open { overflow: hidden; }
   .page-hero-art.toll-hero    { max-width: 380px; }
   .page-hero-art.contact-map  { max-width: 260px; }
 }
+
+/* ==========================================================================
+   About hero — heritage → recognition → global reach, animated line icons
+   ========================================================================== */
+.about-icons svg { overflow: visible; }
+/* icons draw themselves in, one after another */
+.ai-icon [pathLength] { stroke-dasharray: 1; stroke-dashoffset: 1; animation: aiDraw 1.4s ease forwards; }
+.ai-icon--2 [pathLength] { animation-delay: 0.5s; }
+.ai-icon--3 [pathLength] { animation-delay: 1s; }
+.ai-icon--1 { animation: aiBob 5s ease-in-out 1.6s infinite; }
+.ai-icon--2 { animation: aiBob 5s ease-in-out 2.4s infinite; }
+.ai-icon--3 { animation: aiBob 5s ease-in-out 3.2s infinite; }
+.ai-icon, .ai-ring, .ai-star, .ai-flag, .ai-twinkle, .ai-glow { transform-box: fill-box; }
+/* glow travels from one milestone to the next */
+.ai-glow { transform-origin: center; opacity: 0; animation: aiGlow 6s ease-in-out infinite; }
+.ai-glow--2 { animation-delay: 2s; }
+.ai-glow--3 { animation-delay: 4s; }
+/* rings turn, alternating direction */
+.ai-ring { transform-origin: center; animation: heroSpin 24s linear infinite; }
+.ai-ring--2 { animation-direction: reverse; animation-duration: 30s; }
+.ai-ring--3 { animation-duration: 20s; }
+.ai-link { fill: none; stroke: rgba(255,247,234,0.28); stroke-width: 1.2; stroke-dasharray: 2 6; }
+.ai-spark { fill: #FFE08C; filter: drop-shadow(0 0 4px rgba(255,201,60,0.9)); }
+/* building: waving flag, windows lighting up */
+.ai-flag { transform-origin: 0 50%; animation: aiFlag 1.6s ease-in-out infinite; }
+.ai-icon .ai-window { animation: aiDraw 1.4s ease forwards, aiWindow 4s ease-in-out 1.6s infinite; }
+.ai-icon .ai-window--2 { animation-delay: 0s, 3.6s; }
+/* award: star pulse and sparkles */
+.ai-icon .ai-star { transform-origin: center; animation: aiDraw 1.4s ease 0.5s forwards, aiStar 2.6s ease-in-out 2s infinite; }
+.ai-twinkle { transform-origin: center; opacity: 0; animation: aiTwinkle 2.4s ease-in-out infinite; }
+.ai-twinkle--2 { animation-delay: 0.8s; }
+.ai-twinkle--3 { animation-delay: 1.6s; }
+.ai-labels text {
+  fill: rgba(255,247,234,0.82); font: 600 13px var(--font-body); letter-spacing: 0.16em; text-anchor: middle;
+  opacity: 0; animation: aiFade 0.8s ease forwards;
+}
+.ai-labels text:nth-child(1) { animation-delay: 1.2s; }
+.ai-labels text:nth-child(2) { animation-delay: 1.7s; }
+.ai-labels text:nth-child(3) { animation-delay: 2.2s; }
+
+@keyframes aiDraw { to { stroke-dashoffset: 0; } }
+@keyframes aiBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes aiGlow { 0%, 100% { opacity: 0; transform: scale(0.85); } 25% { opacity: 1; transform: scale(1.05); } 50% { opacity: 0; } }
+@keyframes aiFlag { 0%, 100% { transform: skewY(0deg) scaleX(1); } 50% { transform: skewY(8deg) scaleX(0.85); } }
+@keyframes aiWindow { 0%, 100% { fill: transparent; } 40%, 60% { fill: rgba(255,201,60,0.85); } }
+@keyframes aiStar { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.18) rotate(12deg); } }
+@keyframes aiTwinkle { 0%, 100% { opacity: 0; transform: scale(0.4); } 50% { opacity: 1; transform: scale(1.1); } }
+@keyframes aiFade { to { opacity: 1; } }
+
+@media (min-width: 901px) {
+  .page-hero-art.about-icons { width: min(100%, 600px); max-width: none; margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-icon, .ai-icon [pathLength], .ai-glow, .ai-ring, .ai-flag, .ai-window, .ai-star, .ai-twinkle, .ai-labels text { animation: none; }
+  .ai-icon [pathLength] { stroke-dashoffset: 0; }
+  .ai-labels text { opacity: 1; }
+  .ai-spark { display: none; }
+}

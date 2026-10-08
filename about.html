@@ -41,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=66">
+<link rel="stylesheet" href="css/styles.css?v=67">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -98,29 +98,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Miguelitos International Corporation is a Philippine food manufacturer and exporter specializing in food and beverage premixes, culinary solutions, and commercial foodservice equipment. From our manufacturing facility in the Philippines, we supply products to domestic and international markets across retail, foodservice, institutional, and business-to-business channels.</p>
         <p>We manufacture under the Miguelitos brand and provide toll manufacturing services for brands that need a reliable Philippine production partner.</p>
       </div>
-      <div class="page-hero-art" aria-hidden="true">
-        <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-          <circle cx="190" cy="150" r="86" fill="none" stroke="var(--atsuete)" stroke-width="1" stroke-dasharray="3 5" opacity="0.35"/>
-          <circle cx="340" cy="150" r="86" fill="none" stroke="var(--turmeric)" stroke-width="1" stroke-dasharray="3 5" opacity="0.45"/>
-          <circle cx="490" cy="150" r="86" fill="none" stroke="var(--atsuete)" stroke-width="1" stroke-dasharray="3 5" opacity="0.35"/>
-          <g stroke="var(--rice-cream)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M150 140 L190 110 L230 140"/>
-            <path d="M155 140 h70 v50 h-70 z"/>
-            <path d="M178 190 v-26 h24 v26"/>
-            <path d="M164 150 h10 v10 h-10 z M206 150 h10 v10 h-10 z"/>
-            <path d="M190 110 v-16" stroke="var(--turmeric)" stroke-width="1.2"/>
-            <path d="M190 94 l14 5 -14 5z" fill="var(--turmeric)" stroke="none"/>
+      <div class="page-hero-art about-icons" aria-hidden="true">
+        <svg viewBox="88 16 504 284" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="ai-glow"><stop offset="0" stop-color="#FFC93C" stop-opacity=".5"/><stop offset=".55" stop-color="#D71F14" stop-opacity=".18"/><stop offset="1" stop-color="#D71F14" stop-opacity="0"/></radialGradient>
+            <path id="ai-link" d="M104 150 Q190 30 265 64 Q340 20 415 64 Q490 30 576 150"/>
+          </defs>
+
+          <!-- glows that pass from one milestone to the next -->
+          <circle class="ai-glow ai-glow--1" cx="190" cy="150" r="96" fill="url(#ai-glow)"/>
+          <circle class="ai-glow ai-glow--2" cx="340" cy="150" r="96" fill="url(#ai-glow)"/>
+          <circle class="ai-glow ai-glow--3" cx="490" cy="150" r="96" fill="url(#ai-glow)"/>
+
+          <!-- dotted link with travelling lights -->
+          <use href="#ai-link" class="ai-link"/>
+          <circle r="3.2" class="ai-spark"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#ai-link"/></animateMotion></circle>
+          <circle r="2.4" class="ai-spark"><animateMotion dur="5s" begin="-2.5s" repeatCount="indefinite"><mpath href="#ai-link"/></animateMotion></circle>
+
+          <!-- turning rings, each with an orbiting dot -->
+          <g class="ai-ring ai-ring--1"><circle cx="190" cy="150" r="86" fill="none" stroke="var(--atsuete)" stroke-width="1.2" stroke-dasharray="3 5" opacity=".8"/><circle cx="190" cy="64" r="3.5" fill="var(--atsuete)"/></g>
+          <g class="ai-ring ai-ring--2"><circle cx="340" cy="150" r="86" fill="none" stroke="var(--turmeric)" stroke-width="1.2" stroke-dasharray="3 5" opacity=".85"/><circle cx="340" cy="236" r="3.5" fill="var(--turmeric)"/></g>
+          <g class="ai-ring ai-ring--3"><circle cx="490" cy="150" r="86" fill="none" stroke="var(--atsuete)" stroke-width="1.2" stroke-dasharray="3 5" opacity=".8"/><circle cx="576" cy="150" r="3.5" fill="var(--atsuete)"/></g>
+
+          <!-- 1. heritage: the facility -->
+          <g class="ai-icon ai-icon--1" stroke="var(--rice-cream)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path pathLength="1" d="M150 140 L190 110 L230 140"/>
+            <path pathLength="1" d="M155 140 h70 v50 h-70 z"/>
+            <path pathLength="1" d="M178 190 v-26 h24 v26"/>
+            <rect class="ai-window" pathLength="1" x="164" y="150" width="10" height="10"/>
+            <rect class="ai-window ai-window--2" pathLength="1" x="206" y="150" width="10" height="10"/>
+            <path pathLength="1" d="M190 110 v-16" stroke="var(--turmeric)" stroke-width="1.4"/>
+            <path class="ai-flag" d="M190 94 l14 5 -14 5z" fill="var(--turmeric)" stroke="none"/>
           </g>
-          <g stroke="var(--rice-cream)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="340" cy="140" r="30"/>
-            <path d="M340 122 l6 12 13 2 -9 9 2 13 -12 -6 -12 6 2 -13 -9 -9 13 -2 z" stroke-width="1.3"/>
-            <path d="M326 166 l-10 30 14 -6 8 12 8 -12 14 6 -10 -30"/>
+
+          <!-- 2. recognition: the award -->
+          <g class="ai-icon ai-icon--2" stroke="var(--rice-cream)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle pathLength="1" cx="340" cy="140" r="30"/>
+            <path class="ai-star" pathLength="1" d="M340 122 l6 12 13 2 -9 9 2 13 -12 -6 -12 6 2 -13 -9 -9 13 -2 z" stroke="var(--turmeric)" stroke-width="1.5"/>
+            <path pathLength="1" d="M326 166 l-10 30 14 -6 8 12 8 -12 14 6 -10 -30"/>
           </g>
-          <g stroke="var(--rice-cream)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="490" cy="150" r="32"/>
-            <path d="M458 150 h64"/>
-            <path d="M490 118 a16 32 0 0 1 0 64"/>
-            <path d="M490 118 a16 32 0 0 0 0 64"/>
+          <g class="ai-twinkles" fill="var(--turmeric)">
+            <path class="ai-twinkle" d="M298 104 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2z"/>
+            <path class="ai-twinkle ai-twinkle--2" d="M384 112 l1.6 4.4 4.4 1.6 -4.4 1.6 -1.6 4.4 -1.6 -4.4 -4.4 -1.6 4.4 -1.6z"/>
+            <path class="ai-twinkle ai-twinkle--3" d="M378 178 l1.4 3.6 3.6 1.4 -3.6 1.4 -1.4 3.6 -1.4 -3.6 -3.6 -1.4 3.6 -1.4z"/>
+          </g>
+
+          <!-- 3. global reach: a spinning globe -->
+          <g class="ai-icon ai-icon--3" stroke="var(--rice-cream)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle pathLength="1" cx="490" cy="150" r="32"/>
+            <path pathLength="1" d="M458 150 h64"/>
+            <path pathLength="1" d="M462 134 h56 M462 166 h56" stroke-width="1.1" opacity=".6"/>
+            <ellipse cx="490" cy="150" rx="16" ry="32"><animate attributeName="rx" values="32;0.5;32" dur="6s" repeatCount="indefinite"/></ellipse>
+            <ellipse cx="490" cy="150" rx="16" ry="32" opacity=".7"><animate attributeName="rx" values="0.5;32;0.5" dur="6s" repeatCount="indefinite"/></ellipse>
+          </g>
+
+          <!-- milestones -->
+          <g class="ai-labels">
+            <text x="190" y="280">SINCE 2002</text>
+            <text x="340" y="280">AWARD-WINNING</text>
+            <text x="490" y="280">GLOBAL REACH</text>
           </g>
         </svg>
       </div>
