@@ -1296,9 +1296,10 @@ document.addEventListener('click', function (e) {
 
 // --------------------------------------------------------------------
 // Banner marquee (products.html / machines.html): every product or
-// machine from the catalog data, in two rows sliding in opposite
-// directions. Items are listed twice so the loop is seamless; images
-// load lazily as they come into view.
+// machine from the catalog data, in one row of large image cards that
+// slides on its own. Visitors can drag (mouse) or swipe (touch) it either
+// way; on release it keeps the swipe's momentum, then eases back to the
+// normal auto-scroll. Items are listed twice so the loop is seamless.
 // --------------------------------------------------------------------
 (function () {
   var host = document.querySelector('.hero-marquee[data-marquee]');
@@ -1308,7 +1309,7 @@ document.addEventListener('click', function (e) {
   if (!data || !data.length) return;
 
   // The catalog is ordered by category; deal one item from each category in
-  // turn so the rows show a varied mix instead of long runs of one line.
+  // turn so the row shows a varied mix instead of long runs of one line.
   var groups = {};
   var order = [];
   data.forEach(function (item) {
@@ -1321,33 +1322,94 @@ document.addEventListener('click', function (e) {
     order.forEach(function (key) { if (groups[key][round]) mixed.push(groups[key][round]); });
   }
 
-  var rows = [[], []];
-  mixed.forEach(function (item, i) { rows[i % 2].push(item); });
-  var SECONDS_PER_ITEM = kind === 'products' ? 3.2 : 4.5;
+  var row = document.createElement('div');
+  row.className = 'marquee-row';
+  var track = document.createElement('div');
+  track.className = 'marquee-track';
+  for (var copy = 0; copy < 2; copy++) {
+    mixed.forEach(function (item) {
+      var card = document.createElement('figure');
+      card.className = 'marquee-card';
+      var img = document.createElement('img');
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.alt = '';
+      img.draggable = false;
+      img.src = item.src;
+      card.appendChild(img);
+      track.appendChild(card);
+    });
+  }
+  row.appendChild(track);
+  host.appendChild(row);
 
-  rows.forEach(function (items, r) {
-    var row = document.createElement('div');
-    row.className = 'marquee-row' + (r % 2 ? ' marquee-row--reverse' : '');
-    var track = document.createElement('div');
-    track.className = 'marquee-track';
-    track.style.animationDuration = (items.length * SECONDS_PER_ITEM) + 's';
-    for (var copy = 0; copy < 2; copy++) {
-      items.forEach(function (item) {
-        var card = document.createElement('figure');
-        card.className = 'marquee-card';
-        var img = document.createElement('img');
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.alt = '';
-        img.src = item.src;
-        var caption = document.createElement('figcaption');
-        caption.textContent = item.name;
-        card.appendChild(img);
-        card.appendChild(caption);
-        track.appendChild(card);
-      });
+  var SECONDS_PER_CARD = 4.5;      // auto-scroll pace
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var offset = 0;                  // how far the track has moved left, in px
+  var loopWidth = 1;               // width of one copy of the items
+  var autoSpeed = 0;               // px per second
+  var speed = 0;                   // current speed (eases back to autoSpeed)
+  var drag = null;
+
+  function measure() {
+    var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    loopWidth = (track.scrollWidth + gap) / 2;
+    var card = track.firstElementChild;
+    autoSpeed = reduceMotion ? 0 : (card.offsetWidth + gap) / SECONDS_PER_CARD;
+    if (!drag) speed = autoSpeed;
+  }
+
+  function render() {
+    offset = ((offset % loopWidth) + loopWidth) % loopWidth;   // wrap both ways
+    track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
+  }
+
+  var last = null;
+  function frame(t) {
+    var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.05);
+    last = t;
+    if (!drag) {
+      speed += (autoSpeed - speed) * Math.min(1, dt * 1.6);   // ease swipe momentum back to normal
+      offset += speed * dt;
+      render();
     }
-    row.appendChild(track);
-    host.appendChild(row);
+    requestAnimationFrame(frame);
+  }
+
+  host.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    drag = { x: e.clientX, y: e.clientY, offset: offset, lastX: e.clientX, lastT: e.timeStamp, v: 0, horizontal: e.pointerType === 'mouse' };
+    if (drag.horizontal) { host.setPointerCapture(e.pointerId); host.classList.add('is-dragging'); }
   });
+  host.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    if (!drag.horizontal) {
+      // touch: only take over once the gesture is clearly sideways, so vertical page scrolling still works
+      var dx = Math.abs(e.clientX - drag.x), dy = Math.abs(e.clientY - drag.y);
+      if (dx < 6 && dy < 6) return;
+      if (dy > dx) { drag = null; return; }
+      drag.horizontal = true;
+      host.setPointerCapture(e.pointerId);
+      host.classList.add('is-dragging');
+    }
+    offset = drag.offset - (e.clientX - drag.x);
+    var dtMs = e.timeStamp - drag.lastT;
+    if (dtMs > 0) drag.v = 0.8 * drag.v + 0.2 * (-(e.clientX - drag.lastX) / dtMs * 1000);
+    drag.lastX = e.clientX; drag.lastT = e.timeStamp;
+    render();
+  });
+  function release() {
+    if (!drag) return;
+    if (drag.horizontal) speed = Math.max(-2500, Math.min(2500, drag.v));   // fling, then ease back to auto
+    drag = null;
+    host.classList.remove('is-dragging');
+  }
+  host.addEventListener('pointerup', release);
+  host.addEventListener('pointercancel', release);
+  host.addEventListener('lostpointercapture', release);
+
+  measure();
+  render();
+  window.addEventListener('resize', measure);
+  requestAnimationFrame(frame);
 })();
