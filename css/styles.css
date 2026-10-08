@@ -2997,8 +2997,8 @@ body.spotlight-open { overflow: hidden; }
   position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.55) 48%, transparent 60%) no-repeat;
   background-size: 250% 100%;
-  -webkit-mask: url("../assets/PageBanners/web/toll-banner.webp?v=1") center / contain no-repeat;
-          mask: url("../assets/PageBanners/web/toll-banner.webp?v=1") center / contain no-repeat;
+  -webkit-mask: url("../assets/PageBanners/web/toll-banner-own-brand.webp?v=1") center / contain no-repeat;
+          mask: url("../assets/PageBanners/web/toll-banner-own-brand.webp?v=1") center / contain no-repeat;
   animation: tollShine 5.5s ease-in-out infinite;
 }
 .toll-sparkle {
