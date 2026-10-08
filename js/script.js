@@ -1293,3 +1293,61 @@ document.addEventListener('click', function (e) {
   else if (/^https?:/i.test(href) && a.hostname !== location.hostname) ev = { event: 'outbound_click', link_url: href };
   if (ev) { window.dataLayer = window.dataLayer || []; window.dataLayer.push(ev); }
 });
+
+// --------------------------------------------------------------------
+// Banner marquee (products.html / machines.html): every product or
+// machine from the catalog data, in two rows sliding in opposite
+// directions. Items are listed twice so the loop is seamless; images
+// load lazily as they come into view.
+// --------------------------------------------------------------------
+(function () {
+  var host = document.querySelector('.hero-marquee[data-marquee]');
+  if (!host) return;
+  var kind = host.getAttribute('data-marquee');
+  var data = kind === 'products' ? window.PRODUCTS_DATA : window.MACHINES_DATA;
+  if (!data || !data.length) return;
+
+  // The catalog is ordered by category; deal one item from each category in
+  // turn so the rows show a varied mix instead of long runs of one line.
+  var groups = {};
+  var order = [];
+  data.forEach(function (item) {
+    var key = item.category || '';
+    if (!groups[key]) { groups[key] = []; order.push(key); }
+    groups[key].push(item);
+  });
+  var mixed = [];
+  for (var round = 0; mixed.length < data.length; round++) {
+    order.forEach(function (key) { if (groups[key][round]) mixed.push(groups[key][round]); });
+  }
+
+  var rows = [[], []];
+  mixed.forEach(function (item, i) { rows[i % 2].push(item); });
+  var SECONDS_PER_ITEM = kind === 'products' ? 3.2 : 4.5;
+
+  rows.forEach(function (items, r) {
+    var row = document.createElement('div');
+    row.className = 'marquee-row' + (r % 2 ? ' marquee-row--reverse' : '');
+    var track = document.createElement('div');
+    track.className = 'marquee-track';
+    track.style.animationDuration = (items.length * SECONDS_PER_ITEM) + 's';
+    for (var copy = 0; copy < 2; copy++) {
+      items.forEach(function (item) {
+        var card = document.createElement('figure');
+        card.className = 'marquee-card';
+        var img = document.createElement('img');
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = '';
+        img.src = item.src;
+        var caption = document.createElement('figcaption');
+        caption.textContent = item.name;
+        card.appendChild(img);
+        card.appendChild(caption);
+        track.appendChild(card);
+      });
+    }
+    row.appendChild(track);
+    host.appendChild(row);
+  });
+})();
