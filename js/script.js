@@ -1413,3 +1413,127 @@ document.addEventListener('click', function (e) {
   window.addEventListener('resize', measure);
   requestAnimationFrame(frame);
 })();
+
+// --------------------------------------------------------------------
+// Site-wide polish: more elements fade up as they scroll into view (cards
+// in a row appear one after another), the header gains a shadow and a
+// reading-progress bar on scroll, and a back-to-top button appears.
+// --------------------------------------------------------------------
+(function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // extra scroll-reveal targets (the original set is handled earlier)
+  var extra = document.querySelectorAll(
+    '.package-card, .biz-card, .award-card, .press-card, .compliance-row, .mv-card, ' +
+    '.branch-card, .where-country, .new-card, .package-detail, .section-machines-text, .legal-copy'
+  );
+  if (!reduceMotion && extra.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add('is-visible');
+        io.unobserve(el);
+        // once it has faded in, drop the slow reveal transition so hover effects respond instantly
+        setTimeout(function () {
+          el.classList.remove('reveal', 'is-visible');
+          el.style.transitionDelay = '';
+        }, 1100);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    extra.forEach(function (el) {
+      if (el.classList.contains('reveal')) return;
+      var index = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.classList.add('reveal');
+      el.style.transitionDelay = (index % 4) * 80 + 'ms';   // stagger cards in the same row
+      io.observe(el);
+    });
+  }
+
+  // header shadow + reading progress
+  var header = document.querySelector('.site-header');
+  var progress = null;
+  if (header) {
+    progress = document.createElement('span');
+    progress.className = 'scroll-progress';
+    progress.setAttribute('aria-hidden', 'true');
+    header.appendChild(progress);
+  }
+
+  // back-to-top button
+  var top = document.createElement('button');
+  top.type = 'button';
+  top.className = 'back-to-top';
+  top.setAttribute('aria-label', 'Back to top');
+  top.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  top.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+  document.body.appendChild(top);
+
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if (header) header.classList.toggle('is-scrolled', y > 8);
+    if (progress) progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+    top.classList.toggle('is-visible', y > 600);
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+})();
+
+// --------------------------------------------------------------------
+// Touch feedback: phones and tablets have no mouse, so :hover effects
+// (card lifts, image zooms, button sheens, sliding arrows) never show or
+// get stuck. Every :hover rule in the site stylesheet gets a twin that
+// uses the .is-hover class; while a finger is down on an element (and
+// briefly after), that element and its ancestors get .is-hover. A touch
+// that turns into a scroll cancels it straight away.
+// --------------------------------------------------------------------
+(function () {
+  if (!('PointerEvent' in window)) return;
+
+  function mirrorHoverRules(list, parent) {
+    for (var i = list.length - 1; i >= 0; i--) {
+      var rule = list[i];
+      if (rule.cssRules && !rule.selectorText) {          // @media / @supports blocks
+        mirrorHoverRules(rule.cssRules, rule);
+        continue;
+      }
+      if (!rule.selectorText || rule.selectorText.indexOf(':hover') === -1) continue;
+      var selector = rule.selectorText.replace(/:hover/g, '.is-hover');
+      try { parent.insertRule(selector + '{' + rule.style.cssText + '}', i + 1); } catch (e) {}
+    }
+  }
+  Array.prototype.forEach.call(document.styleSheets, function (sheet) {
+    if (!sheet.href || sheet.href.indexOf('/css/styles.css') === -1) return;
+    try { mirrorHoverRules(sheet.cssRules, sheet); } catch (e) {}
+  });
+
+  var active = [];
+  var releaseTimer = null;
+  function clear() {
+    clearTimeout(releaseTimer);
+    active.forEach(function (el) { el.classList.remove('is-hover'); });
+    active = [];
+  }
+  document.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse') return;
+    clear();
+    for (var el = e.target; el && el !== document.body && el.nodeType === 1; el = el.parentElement) {
+      el.classList.add('is-hover');
+      active.push(el);
+    }
+  }, { passive: true });
+  document.addEventListener('pointerup', function (e) {
+    if (e.pointerType === 'mouse' || !active.length) return;
+    clearTimeout(releaseTimer);
+    releaseTimer = setTimeout(clear, 450);     // keep the effect visible briefly after a quick tap
+  }, { passive: true });
+  document.addEventListener('pointercancel', clear, { passive: true });   // the touch became a scroll
+  window.addEventListener('scroll', function () { if (active.length) clear(); }, { passive: true });
+})();

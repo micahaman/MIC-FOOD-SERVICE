@@ -434,6 +434,14 @@ button { font-family: inherit; cursor: pointer; }
 .award-card figcaption { margin-top: auto; padding: 16px 18px 20px; }
 .award-card h4 { font: 700 15px var(--font-body); color: var(--char); line-height: 1.3; }
 .award-card figcaption p { margin-top: 8px; font-size: 12.5px; line-height: 1.5; color: var(--char-soft); }
+@media (max-width: 560px) {
+  /* phones: two award cards per row, with tighter spacing and type */
+  .awards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .award-card-media { padding: 10px; }
+  .award-card figcaption { padding: 12px 12px 14px; }
+  .award-card h4 { font-size: 13px; }
+  .award-card figcaption p { font-size: 11.5px; }
+}
 
 /* Award lightbox */
 /* About — Life at Miguelitos photo tiles (one tile per category) */
@@ -2694,7 +2702,12 @@ h3, h4 { font-family: var(--font-body); font-weight: 700; line-height: 1.2; }
   .tagline-strip-inner { flex-direction: column; gap: 4px; }
 }
 @media (max-width: 560px) {
-  .biz-grid { grid-template-columns: 1fr; }
+  /* phones: two package cards per row, with tighter spacing and type */
+  .biz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .biz-card { padding: 10px; border-radius: 12px; }
+  .biz-card h3 { margin-top: 10px; font-size: 12px; }
+  .biz-card p { font-size: 12px; line-height: 1.5; }
+  .biz-card-link { margin-top: 10px; font-size: 10.5px; }
   .footer-grid { grid-template-columns: 1fr; }
 }
 
@@ -2775,22 +2788,40 @@ body.spotlight-open { overflow: hidden; }
 .market-chip .flag { flex-shrink: 0; }
 .flag.fi { width: 1.3em; height: 1.3em; border-radius: 3px; background-size: cover; flex-shrink: 0; }
 
-/* Export — where to find Miguelitos */
-.where-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
-.where-country { border-top: 2px solid var(--char); padding-top: 18px; }
-.where-country h3 { display: flex; align-items: center; gap: 10px; font-size: 22px; }
-.where-country h3 .flag.fi { width: 26px; height: 26px; border-radius: 5px; }
-.where-list {
-  margin: 18px 0 0; padding: 0; list-style: none;
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 28px;
+/* Export — where to find Miguelitos: one card per country */
+.where-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.where-country {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; gap: 8px; min-height: 176px;
+  padding: 26px 24px 22px;
+  background: var(--white); border: 1px solid rgba(28,11,6,0.08); border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(28,11,6,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.where-list li { padding: 4px 0 4px 16px; border-left: 2px solid var(--rule); }
-@media (max-width: 900px) {
-  .where-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.where-country::before { /* brand accent along the top */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+  background: linear-gradient(90deg, var(--atsuete), var(--turmeric));
 }
-@media (max-width: 560px) {
-  .where-list { grid-template-columns: 1fr; }
+.where-country:hover { transform: translateY(-5px); box-shadow: 0 18px 36px rgba(28,11,6,0.13); }
+/* the country's flag as a large tilted watermark in the corner */
+.where-flag-bg.fi {
+  position: absolute; right: -34px; bottom: -34px; z-index: -1;
+  width: 150px; height: 150px; border-radius: 26px;
+  background-size: cover; opacity: 0.1; rotate: -14deg;
+  transition: opacity 0.35s ease, rotate 0.45s ease;
 }
+.where-country:hover .where-flag-bg.fi { opacity: 0.2; rotate: -6deg; }
+.where-country h3 { display: flex; align-items: center; gap: 10px; font-size: 21px; line-height: 1.2; }
+.where-country h3 .flag.fi {
+  width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
+  background-size: cover; box-shadow: 0 0 0 3px #fff, 0 3px 10px rgba(28,11,6,0.22);
+}
+.where-country h3 .flag.fi + .flag.fi { margin-left: -16px; }   /* overlap stacked flags (Middle East) */
+.where-region {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--char-soft);
+}
+.where-list { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.where-list li { padding: 2px 0 2px 14px; border-left: 2px solid var(--atsuete); }
 .where-entry { display: flex; flex-direction: column; gap: 6px; }
 .where-entry-head { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
 .where-entry strong { font-size: 15.5px; font-weight: 700; color: var(--char); line-height: 1.3; }
@@ -2799,6 +2830,22 @@ body.spotlight-open { overflow: hidden; }
   background: rgba(215, 31, 20, 0.09); border-radius: 999px; padding: 3px 10px; white-space: nowrap;
 }
 .where-address, .where-branches { font-size: 13px; font-weight: 400; color: var(--char-soft); line-height: 1.5; }
+.where-cta {
+  margin-top: auto; padding-top: 14px; align-self: flex-start;
+  font-size: 14px; font-weight: 600; color: var(--atsuete-text); text-decoration: none;
+}
+.where-cta span { display: inline-block; transition: transform 0.25s ease; }
+.where-cta:hover span, .where-country:hover .where-cta span { transform: translateX(4px); }
+@media (max-width: 900px) {
+  .where-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .where-grid { grid-template-columns: 1fr; gap: 14px; }
+  .where-country { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .where-country, .where-flag-bg.fi { transition: none; }
+}
 
 /* Spotlight — cards that show an icon instead of a photo (equipment) */
 .spotlight-media svg { width: 62%; height: 62%; }
@@ -3173,4 +3220,85 @@ body.spotlight-open { overflow: hidden; }
   }
   .page-hero--text > .container { width: 100%; padding-top: 40px; padding-bottom: 40px; }
   .page-hero--text .page-hero-text p { font-size: 18.5px; line-height: 1.7; }
+}
+
+/* ==========================================================================
+   Site-wide polish: section accents, button sheen, card lift, textures,
+   header on scroll, reading progress, back-to-top, selection & scrollbar
+   ========================================================================== */
+/* animated accent bar under section headings (grows when revealed) */
+.section-head h2::after {
+  content: ""; display: block; width: 64px; height: 4px; margin-top: 14px; border-radius: 4px;
+  background: linear-gradient(90deg, var(--atsuete), var(--turmeric));
+  transform-origin: left center; transform: scaleX(1);
+}
+.section-head--center h2::after, .page-hero--text h2::after { margin-left: auto; margin-right: auto; transform-origin: center; }
+.section-head.reveal h2::after { transform: scaleX(0); transition: transform 0.9s cubic-bezier(.22,1,.36,1) 0.25s; }
+.section-head.reveal.is-visible h2::after { transform: scaleX(1); }
+.section-dark .section-head h2::after, .section-machines h2::after { background: linear-gradient(90deg, var(--turmeric), #fff3); }
+
+/* primary buttons: lift + light sheen on hover */
+.btn-primary { position: relative; overflow: hidden; isolation: isolate; transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; }
+.btn-primary::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+  transform: translateX(-120%); transition: transform 0.7s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(215,31,20,0.28); }
+.btn-primary:hover::after { transform: translateX(120%); }
+
+/* gentle lift for cards that had no hover state */
+.compliance-row, .mv-card, .branch-card, .info-item { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.compliance-row:hover, .mv-card:hover, .branch-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(28,11,6,0.1); }
+.compliance-row-icon img { transition: transform 0.4s ease; }
+.compliance-row:hover .compliance-row-icon img { transform: scale(1.05); }
+
+/* subtle dot texture on the beige alternate sections */
+.section-alt {
+  background-image: radial-gradient(rgba(28,11,6,0.07) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+/* header: soft shadow once the page scrolls, with a reading-progress bar */
+.site-header { transition: box-shadow 0.3s ease; }
+.site-header.is-scrolled { box-shadow: 0 8px 24px rgba(28,11,6,0.12); }
+.scroll-progress {
+  position: absolute; left: 0; bottom: -1px; height: 3px; width: 100%;
+  background: linear-gradient(90deg, var(--atsuete), var(--turmeric));
+  transform-origin: left center; transform: scaleX(0); pointer-events: none;
+}
+
+/* back-to-top button */
+.back-to-top {
+  position: fixed; right: 20px; bottom: 22px; z-index: 900;
+  width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+  display: grid; place-items: center;
+  background: var(--atsuete); color: #fff;
+  box-shadow: 0 10px 24px rgba(215,31,20,0.35);
+  opacity: 0; visibility: hidden; transform: translateY(14px) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background 0.2s ease;
+}
+.back-to-top svg { width: 20px; height: 20px; }
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.back-to-top:hover { background: #A91E15; transform: translateY(-3px); }
+body:has(.cookie-banner) .back-to-top { bottom: 150px; }   /* stay clear of the cookie banner */
+
+/* footer: gradient line along the top */
+.site-footer { position: relative; }
+.site-footer::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+  background: linear-gradient(90deg, var(--atsuete), var(--turmeric), var(--atsuete));
+}
+
+/* brand-coloured text selection and scrollbar */
+::selection { background: rgba(215,31,20,0.85); color: #fff; }
+html { scrollbar-color: var(--atsuete) #EFE6DB; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #EFE6DB; }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--atsuete), #A91E15); border-radius: 10px; border: 2px solid #EFE6DB; }
+
+@media (prefers-reduced-motion: reduce) {
+  .section-head.reveal h2::after { transform: scaleX(1); transition: none; }
+  .btn-primary, .btn-primary::after, .compliance-row, .mv-card, .branch-card, .back-to-top { transition: none; }
+  .btn-primary:hover, .compliance-row:hover, .mv-card:hover, .branch-card:hover { transform: none; }
 }
