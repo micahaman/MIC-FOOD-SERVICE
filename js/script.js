@@ -504,6 +504,12 @@ window.addEventListener("load", function () {
       statusEl.className = kind || '';
     }
 
+    // Back from FormSubmit after an inquiry with an attachment: show the thank-you
+    if (/[?&]sent=1(&|$)/.test(location.search) && location.hash === '#' + form.id) {
+      show(options.success, 'success');
+      try { history.replaceState(null, '', location.pathname + location.hash); } catch (err) {}
+    }
+
     // Mark fields invalid only after the visitor has touched them
     form.addEventListener('blur', function (e) {
       var el = e.target;
@@ -555,6 +561,37 @@ window.addEventListener("load", function () {
           return;
         }
       }
+      // FormSubmit only delivers attachments from a regular (non-AJAX)
+      // multipart post, so inquiries with a file are submitted that way and
+      // FormSubmit sends the visitor back here (?sent=1) to see the thank-you.
+      if (fileInput && fileInput.files && fileInput.files[0]) {
+        var extras = {
+          _subject: options.subject(form),
+          _template: 'table',
+          _captcha: 'false',
+          _next: location.origin + location.pathname + '?sent=1#' + form.id
+        };
+        Object.keys(extras).forEach(function (key) {
+          var input = form.querySelector('input[type="hidden"][name="' + key + '"]');
+          if (!input) {
+            input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            form.appendChild(input);
+          }
+          input.value = extras[key];
+        });
+        form.action = 'https://formsubmit.co/' + FORM_RECIPIENT;
+        form.method = 'POST';
+        form.enctype = 'multipart/form-data';
+        try { localStorage.setItem(COOLDOWN_KEY, String(Date.now())); } catch (err) {}
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', form_id: form.id, with_attachment: true });
+        if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+        HTMLFormElement.prototype.submit.call(form);
+        return;
+      }
+
       data.append('_subject', options.subject(form));
       data.append('_template', 'table');
       data.append('_captcha', 'false');
