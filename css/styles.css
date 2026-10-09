@@ -380,6 +380,9 @@ button { font-family: inherit; cursor: pointer; }
   display: flex; align-items: center; justify-content: center;
 }
 .compliance-row-icon img { width: 100%; height: 100%; object-fit: contain; }
+/* several logos for one certification (e.g. Halal) sit side by side */
+.compliance-row-icon--group { width: 340px; gap: 14px; }
+.compliance-row-icon--group img { flex: 1 1 0; min-width: 0; height: 100px; }
 .compliance-row-body { flex: 1; }
 .compliance-row-body h4 {
   font-family: var(--font-body); font-weight: 600; font-size: 17px; color: var(--char);
@@ -388,6 +391,8 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 560px) {
   .compliance-row { flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px; }
   .compliance-row-icon { width: 120px; height: 90px; }
+  .compliance-row-icon--group { width: 100%; max-width: 300px; }
+  .compliance-row-icon--group img { height: 80px; }
 }
 
 /* About — In the News press cards */
