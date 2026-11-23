@@ -40,8 +40,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="theme-color" content="#3D140C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=79">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@700;800&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=90">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -116,30 +116,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="section-alt">
+<section class="section-alt founders-section">
   <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Leadership</span>
-      <h2>Our Founders</h2>
-      <p style="font-weight:700; color:var(--char); font-size:19px;">Built on <strong class="value-highlight">Sipag, Tiyaga, at Sakripisyo</strong></p>
-    </div>
-
-    <div class="founders-showcase">
-      <div class="founders-photos">
-        <div class="founders-glow" aria-hidden="true"></div>
-        <div class="founder-portrait">
-          <img src="assets/Founders/web/michelle-aman.webp" alt="Michelle Aman, President of Miguelitos International Corporation">
-        </div>
-        <div class="founder-portrait founder-portrait--overlap">
-          <img src="assets/Founders/web/marlon-aman.webp" alt="Marlon Aman, Chief Executive Officer of Miguelitos International Corporation">
+    <div class="founders-banner">
+      <div class="founders-intro">
+        <span class="eyebrow">Leadership</span>
+        <h2 class="founders-title">Our <span>Founders</span></h2>
+        <p class="founders-tagline">Built on <strong class="value-highlight">Sipag, Tiyaga, at Sakripisyo</strong></p>
+        <p class="founders-lede">Since entering the industry in 2002, our journey has been guided by three values we have always held close to our hearts: <strong class="value-highlight">Sipag, Tiyaga, at Sakripisyo</strong> — hard work, perseverance, and sacrifice.</p>
+        <button type="button" class="founders-story-btn" aria-expanded="false" aria-controls="founders-story">Our Story <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <div class="founders-art" aria-hidden="false">
+        <div class="founders-stage">
+          <svg class="founders-shapes" viewBox="0 0 730 500" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+            <defs>
+              <radialGradient id="fs-circle" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#F6E9D8"/><stop offset="1" stop-color="#ECD7BC"/></radialGradient>
+              <linearGradient id="fs-swoosh" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7A0F0B"/><stop offset=".55" stop-color="#B3170F"/><stop offset="1" stop-color="#D71F14"/></linearGradient>
+            </defs>
+            <!-- beige circle right behind the founders -->
+            <circle cx="345" cy="245" r="250" fill="url(#fs-circle)"/>
+            <!-- red crescent: a second circle, offset to the lower right, with the beige circle cut out of it,
+                 so its inner edge follows the beige circle exactly and both ends taper evenly -->
+            <mask id="fs-crescent-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="730" height="500">
+              <rect width="730" height="500" fill="#fff"/>
+              <circle cx="345" cy="245" r="250" fill="#000"/>
+            </mask>
+            <circle cx="413" cy="270" r="250" fill="url(#fs-swoosh)" mask="url(#fs-crescent-cut)"/>
+          </svg>
+          <img class="founders-img founders-img--marlon" src="assets/Founders/web/marlon-aman.webp?v=3" alt="Marlon Aman, Chief Executive Officer of Miguelitos International Corporation">
+          <img class="founders-img founders-img--michelle" src="assets/Founders/web/michelle-aman.webp?v=3" alt="Michelle Aman, President of Miguelitos International Corporation">
         </div>
       </div>
-      <div class="founders-text-card">
-        <p>Since entering the industry in 2002, our journey has been guided by three values we have always held close to our hearts: <strong class="value-highlight">Sipag, Tiyaga, at Sakripisyo</strong> — hard work, perseverance, and sacrifice.</p>
-        <p>These values have shaped how we built Miguelitos and how we continue to run the company today. From the beginning, we have remained committed to quality, while continuously developing food products and solutions that respond to the changing needs of our customers, partners, and the communities we serve.</p>
-        <p>As Miguelitos has grown beyond the Philippines, our purpose has grown with it. Through our products, we hope to bring a familiar taste of home to Filipinos around the world, while also introducing Filipino flavors and food concepts to new markets.</p>
-        <p>As we look toward the future, we remain grounded in the same values that started our journey—working hard, persevering through challenges, and making the sacrifices necessary to build a company that can be carried forward for generations.</p>
-        <p class="founder-signature">&mdash; Marlon &amp; Michelle Aman<span>Founders, Miguelitos</span></p>
+      <div class="founders-story" id="founders-story" role="region" aria-label="Our story" hidden>
+        <div class="founders-story-body">
+          <div class="founders-story-head">
+            <h3>Our Story</h3>
+            <button type="button" class="founders-story-close" aria-label="Close our story">&times;</button>
+          </div>
+          <p>Since entering the industry in 2002, our journey has been guided by three values we have always held close to our hearts: <strong class="value-highlight">Sipag, Tiyaga, at Sakripisyo</strong> — hard work, perseverance, and sacrifice.</p>
+          <p>These values have shaped how we built Miguelitos and how we continue to run the company today. From the beginning, we have remained committed to quality, while continuously developing food products and solutions that respond to the changing needs of our customers, partners, and the communities we serve.</p>
+          <p>As Miguelitos has grown beyond the Philippines, our purpose has grown with it. Through our products, we hope to bring a familiar taste of home to Filipinos around the world, while also introducing Filipino flavors and food concepts to new markets.</p>
+          <p>As we look toward the future, we remain grounded in the same values that started our journey—working hard, persevering through challenges, and making the sacrifices necessary to build a company that can be carried forward for generations.</p>
+          <p class="founder-signature">&mdash; Marlon &amp; Michelle Aman<span>Founders, Miguelitos</span></p>
+        </div>
       </div>
     </div>
   </div>
@@ -515,6 +534,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script src="js/script.js?v=13"></script>
+<script src="js/script.js?v=15"></script>
 </body>
 </html>

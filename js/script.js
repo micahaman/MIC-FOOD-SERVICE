@@ -1574,3 +1574,30 @@ document.addEventListener('click', function (e) {
   document.addEventListener('pointercancel', clear, { passive: true });   // the touch became a scroll
   window.addEventListener('scroll', function () { if (active.length) clear(); }, { passive: true });
 })();
+
+// --------------------------------------------------------------------
+// About — "Our Story" button swaps the intro text for the founders' full
+// story (the photos stay in place); the close button or Escape restore it.
+// --------------------------------------------------------------------
+(function () {
+  var btn = document.querySelector('.founders-story-btn');
+  var panel = document.getElementById('founders-story');
+  if (!btn || !panel) return;
+  var closeBtn = panel.querySelector('.founders-story-close');
+  var banner = panel.closest('.founders-banner');
+  function open() {
+    panel.hidden = false;
+    banner.classList.add('is-story-open');
+    btn.setAttribute('aria-expanded', 'true');
+    closeBtn.focus({ preventScroll: true });
+  }
+  function close() {
+    panel.hidden = true;
+    banner.classList.remove('is-story-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus({ preventScroll: true });
+  }
+  btn.addEventListener('click', function () { panel.hidden ? open() : close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) close(); });
+})();

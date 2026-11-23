@@ -314,30 +314,11 @@ button { font-family: inherit; cursor: pointer; }
 
 /* Our Founders — large overlapping portraits with frosted name tags, text card below */
 .value-highlight { color: var(--atsuete); font-weight: 800; }
-.founders-showcase { margin-top: 8px; }
-.founders-photos { position: relative; display: flex; justify-content: center; align-items: flex-end; padding-top: 10px; }
-.founders-glow {
-  position: absolute; inset: -10% 10%; z-index: 0; border-radius: 50%;
-  background: var(--gradient-brand); filter: blur(70px); opacity: 0.24; pointer-events: none;
-}
-.founder-portrait { position: relative; z-index: 1; }
-.founder-portrait--overlap { margin-left: -48px; z-index: 2; }
-.founder-portrait img { height: 480px; width: auto; max-width: 100%; display: block; filter: drop-shadow(0 20px 30px rgba(36,27,20,0.22)); }
-.founders-text-card {
-  max-width: 920px; margin: 4px auto 0; background: var(--white); border: var(--border); border-radius: var(--radius);
-  padding: 34px 38px;
-}
-.founders-text-card p { text-align: justify; }
-.founders-text-card p + p { margin-top: 16px; }
 .founder-signature { margin-top: 28px; font: 700 17px var(--font-body); color: var(--char); }
 .founder-signature span { display: block; margin-top: 4px; font: 500 13px var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--atsuete); }
 @media (max-width: 720px) {
-  .founder-portrait img { height: 300px; }
-  .founder-portrait--overlap { margin-left: -24px; }
-  .founders-text-card { padding: 26px 22px; }
 }
 @media (max-width: 480px) {
-  .founder-portrait img { height: 220px; }
 }
 
 .logo-wall {
@@ -3302,3 +3283,92 @@ html { scrollbar-color: var(--atsuete) #EFE6DB; }
   .btn-primary, .btn-primary::after, .compliance-row, .mv-card, .branch-card, .back-to-top { transition: none; }
   .btn-primary:hover, .compliance-row:hover, .mv-card:hover, .branch-card:hover { transform: none; }
 }
+
+/* ==========================================================================
+   About — Our Founders banner: intro on the left, founders on the right;
+   "Our Story" opens the full text over the banner on a 90%-opaque panel
+   ========================================================================== */
+/* full-bleed band: touches the sections above and below, text lines up with the page */
+.founders-section { padding: 0; }
+.founders-section > .container { max-width: none; padding: 0; }
+.founders-banner {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 20px;
+  min-height: 500px;
+  padding-left: max(28px, calc((100vw - var(--container)) / 2 + 34px));
+  padding-right: max(0px, calc((100vw - var(--container)) / 2));
+  background: linear-gradient(120deg, #FFFDF9 0%, #FBF1E6 100%);
+}
+/* the shapes sit only behind the founders, sized to their column */
+.founders-stage { position: relative; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+/* centred on the founders: the circle's centre (x 345 of 730) lines up with the middle of the pair */
+.founders-shapes {
+  position: absolute; top: 0; left: 50%; height: 100%; width: auto; aspect-ratio: 73 / 50;
+  transform: translateX(-47.26%); z-index: 0; pointer-events: none;
+}
+.founders-intro { grid-column: 1; grid-row: 1; align-self: center; padding: 48px 0; }
+.founders-title {
+  margin-top: 10px; font-family: 'Playfair Display', Georgia, serif; font-weight: 800;
+  font-size: clamp(40px, 5vw, 64px); letter-spacing: 0.01em; text-transform: uppercase; color: var(--char); line-height: 1;
+}
+.founders-title span { color: var(--atsuete); }
+.founders-tagline { margin-top: 18px; font: 700 clamp(18px, 1.8vw, 22px) var(--font-body); color: var(--char); }
+.founders-lede { margin-top: 14px; max-width: 46ch; font-size: 15.5px; line-height: 1.7; color: var(--char-soft); }
+.founders-story-btn {
+  margin-top: 26px; display: inline-flex; align-items: center; gap: 12px;
+  padding: 12px 24px; border: 0; border-radius: 999px; cursor: pointer;
+  background: #8E1410; color: #fff; font: 700 15px var(--font-body);
+  box-shadow: 0 10px 22px rgba(142,20,16,0.28); transition: background 0.25s ease, transform 0.25s ease;
+}
+.founders-story-btn span { transition: transform 0.25s ease; }
+.founders-story-btn:hover { background: var(--atsuete); transform: translateY(-2px); }
+.founders-story-btn:hover span { transform: translateX(4px); }
+/* right: founders over a soft circle and a red swoosh */
+.founders-art { grid-column: 2; grid-row: 1; position: relative; height: 100%; min-height: 500px; display: flex; align-items: flex-end; justify-content: center; padding-right: 150px; }
+.founders-img { position: relative; display: block; height: 440px; width: auto; filter: drop-shadow(0 18px 24px rgba(28,11,6,0.22)); }
+.founders-img--michelle {   /* right of Marlon, a little smaller, layered in front of him */
+  height: 400px; z-index: 2; margin-left: -30px;
+  filter: drop-shadow(-14px 10px 18px rgba(28,11,6,0.28)) drop-shadow(0 18px 24px rgba(28,11,6,0.2));
+}
+.founders-img--marlon { height: 440px; z-index: 1; }
+/* the full story, over the banner */
+/* the story sits in the intro's place without changing the section's size:
+   contain: size stops it from growing the row, and it scrolls if it's ever longer */
+.founders-story {
+  grid-column: 1; grid-row: 1; align-self: stretch; contain: size; overflow-y: auto; margin: 22px 0;
+  padding: 22px 26px; border-radius: 18px;
+  background: rgba(255,251,245,0.9); box-shadow: 0 14px 34px rgba(28,11,6,0.1);
+  animation: storyIn 0.35s ease;
+}
+.founders-banner.is-story-open .founders-intro { visibility: hidden; }
+.founders-story[hidden] { display: none; }
+.founders-story-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.founders-story h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; color: var(--char); }
+.founders-story p { font-size: 14px; line-height: 1.6; color: var(--char); text-align: justify; }
+.founders-story p + p { margin-top: 8px; }
+.founders-story-close {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--char); color: #fff; font-size: 22px; line-height: 1;
+}
+.founders-story-close:hover { background: var(--atsuete); }
+@keyframes storyIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (max-width: 900px) {
+  .founders-banner { grid-template-columns: 1fr; padding: 0 24px; }
+  .founders-intro { padding: 36px 0 8px; }
+  .founders-art { min-height: 340px; padding-right: 0; }
+  .founders-img { height: 320px; }
+  .founders-img--michelle { height: 292px; margin-left: -22px; }
+  .founders-img--marlon { height: 320px; }
+  /* phones/tablets: the story takes the intro's place above the photos */
+  .founders-art { grid-column: 1; grid-row: 2; }
+  .founders-story { margin: 16px 0 8px; padding: 18px 16px; }
+  .founders-story h3 { font-size: 24px; }
+  .founders-story p { font-size: 14px; text-align: left; }
+}
+@media (max-width: 480px) {
+  .founders-art { min-height: 270px; }
+  .founders-img { height: 250px; }
+  .founders-img--michelle { height: 228px; margin-left: -18px; }
+  .founders-img--marlon { height: 250px; }
+}
+@media (prefers-reduced-motion: reduce) { .founders-story { animation: none; } }
